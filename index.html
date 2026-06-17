@@ -265,7 +265,7 @@ footer b{color:var(--bronze);font-variant:small-caps;letter-spacing:1px;}
         <button class="btn" id="copyBtn">Copy</button>
       </div>
     </div>
-    <div class="note"><b>How it reads.</b> Word by word from the lexicon, then bent by Valdorian grammar: tense suffixes, plurals (<i>-ai</i>), the collective (<i>vel-</i>), genitive (<i>-en</i>), and negation (<i>nav-</i>). Pronouns can carry a register prefix &mdash; build them under <b>Pronouns</b>. Words not yet in the lexicon are marked in red; coin them under <b>Forge</b>.</div>
+    <div class="note"><b>How it reads.</b> Word for word from the lexicon, then set in Valdorian order: adjectives and the genitive fall after the noun they touch, while tense suffixes, plurals (<i>-ai</i>), the collective (<i>vel-</i>), and negation (<i>nav-</i>) attach to their words. Pronouns can carry a register prefix &mdash; build them under <b>Pronouns</b>. Words not yet in the lexicon are marked in red; coin them under <b>Forge</b>.</div>
   </section>
 
   <!-- ============ FORGE ============ -->
@@ -301,6 +301,22 @@ footer b{color:var(--bronze);font-variant:small-caps;letter-spacing:1px;}
       <div class="out" id="natOut" style="min-height:0;margin-top:10px;"></div>
     </div>
 
+    <h2>Generate a name</h2>
+    <p class="body">Coin new people, settlements, and ships in Valdorian sound. Place names can be drawn from real roots, so they carry a meaning.</p>
+    <div class="field">
+      <div class="row">
+        <select id="genKind">
+          <option value="person">person</option>
+          <option value="place">place (from roots)</option>
+          <option value="house">house / line</option>
+          <option value="ship">ship</option>
+        </select>
+        <button class="btn solid" id="genBtn">Generate</button>
+        <button class="btn" id="genMore">More</button>
+      </div>
+      <div id="genOut" style="margin-top:12px;"></div>
+    </div>
+
     <h2>Add a word to the lexicon</h2>
     <p class="body">New entries are saved in this browser and used by every tool above.</p>
     <div class="field">
@@ -320,6 +336,13 @@ footer b{color:var(--bronze);font-variant:small-caps;letter-spacing:1px;}
         <span id="addMsg" style="color:var(--verd);font-size:13px;"></span>
       </div>
       <div class="status" id="lexStatus"></div>
+      <div class="row" style="margin-top:14px;border-top:1px solid var(--line);padding-top:14px;">
+        <button class="btn" id="exportBtn">Export my words</button>
+        <button class="btn" id="importBtn">Import words</button>
+        <input type="file" id="importFile" accept="application/json,.json" style="display:none;">
+        <span id="ioMsg" style="color:var(--verd);font-size:13px;"></span>
+      </div>
+      <p class="body" style="font-size:13px;margin-top:8px;">Export saves the words you have added as a file you can keep, move to another device, or share. Import merges a saved file back in.</p>
     </div>
   </section>
 
@@ -662,13 +685,13 @@ function tenseSuffix(v,kind){
 function applyMorph(rec,kind,opts){
   const v=rec.v,pos=rec.pos,en=rec.full;
   if(kind==='plural'){
-    if(pos!=='n'&&pos!=='title') return {v,en,note:null};
-    if(opts&&opts.afterNumber) return {v,en,note:'pl.'};
-    return {v:pluralForm(v),en,note:'pl.'};
+    if(pos!=='n'&&pos!=='title') return {v,en,pos,note:null};
+    if(opts&&opts.afterNumber) return {v,en,pos,note:'pl.'};
+    return {v:pluralForm(v),en,pos,note:'pl.'};
   }
-  if(kind==='past') return pos==='v'?{v:v+'or',en,note:'past'}:{v,en,note:null};
-  if(kind==='cont') return pos==='v'?{v:v+'ael',en,note:'cont.'}:{v,en,note:null};
-  return {v,en,note:null};
+  if(kind==='past') return pos==='v'?{v:v+'or',en,pos,note:'past'}:{v,en,pos,note:null};
+  if(kind==='cont') return pos==='v'?{v:v+'ael',en,pos,note:'cont.'}:{v,en,pos,note:null};
+  return {v,en,pos,note:null};
 }
 function resolveEng(w,opts){
   w=w.toLowerCase();
@@ -692,18 +715,41 @@ function resolveEng(w,opts){
   return null;
 }
 const STOP_DROP={ }; // English articles map onto sa/ti via lexicon already
-function translateEnToVal(text){
-  const words=text.split(/(\s+)/);
-  const out=[]; let prevNum=false;
-  for(const chunk of words){
-    if(/^\s+$/.test(chunk)){ out.push({space:chunk}); continue; }
+function splitWords(text){
+  return (text||'').split(/\s+/).filter(Boolean).map(chunk=>{
     const m=chunk.match(/^([^\wÀ-ÿ']*)([\wÀ-ÿ']+?)([^\wÀ-ÿ']*)$/);
-    let pre='',core=chunk,post='';
-    if(m){ pre=m[1]; core=m[2]; post=m[3]; }
-    if(!core){ out.push({v:chunk,raw:true}); continue; }
-    const rr=resolveEng(core,{afterNumber:prevNum});
-    if(rr){ out.push({v:rr.v,en:core,note:rr.note,pre,post}); prevNum=(vToEn[rr.v.toLowerCase()]||{}).pos==='num'; }
-    else { out.push({v:null,en:core,pre,post}); prevNum=false; }
+    if(!m) return {pre:'',core:chunk,post:'',raw:true};
+    return {pre:m[1],core:m[2],post:m[3]};
+  });
+}
+function translateEnToVal(text){
+  const out=[]; let prevNum=false;
+  for(const tk of splitWords(text)){
+    if(tk.raw){ out.push({v:tk.core,en:tk.core,pos:null,pre:'',post:'',miss:false}); continue; }
+    const rr=resolveEng(tk.core,{afterNumber:prevNum});
+    if(rr){ out.push({v:rr.v,en:tk.core,note:rr.note,pos:rr.pos,pre:tk.pre,post:tk.post,miss:false}); prevNum=(rr.pos==='num'); }
+    else { out.push({v:null,en:tk.core,pos:null,pre:tk.pre,post:tk.post,miss:true}); prevNum=false; }
+  }
+  return out;
+}
+/* move attributive adjectives to follow their noun (Valdorian order) */
+function reorderEnToVal(toks){
+  const out=[]; let pend=[];
+  for(const t of toks){
+    if(t.pos==='adj'){ pend.push(t); continue; }
+    if(t.pos==='n'||t.pos==='title'){ out.push(t); pend.forEach(p=>out.push(p)); pend=[]; }
+    else { pend.forEach(p=>out.push(p)); pend=[]; out.push(t); }
+  }
+  pend.forEach(p=>out.push(p));
+  return out;
+}
+/* move post-nominal adjectives back before their noun (readable English) */
+function reorderValToEn(toks){
+  const out=[]; let lastNoun=-1, after=false;
+  for(const t of toks){
+    if((t.pos==='n'||t.pos==='title')){ out.push(t); lastNoun=out.length-1; after=true; }
+    else if(t.pos==='adj' && after && lastNoun>=0){ out.splice(lastNoun,0,t); lastNoun++; }
+    else { out.push(t); after=false; }
   }
   return out;
 }
@@ -737,14 +783,11 @@ function stripAffixes(word){
   return {root:w,notes,reg,neg,coll};
 }
 function translateValToEn(text){
-  const words=text.split(/(\s+)/); const out=[];
-  for(const chunk of words){
-    if(/^\s+$/.test(chunk)){ out.push({space:chunk}); continue; }
-    const m=chunk.match(/^([^\wÀ-ÿ']*)([\wÀ-ÿ']+?)([^\wÀ-ÿ']*)$/);
-    let pre='',core=chunk,post='';
-    if(m){ pre=m[1]; core=m[2]; post=m[3]; }
-    const lc=core.toLowerCase();
-    if(vToEn[lc]){ out.push({en:vToEn[lc].en,v:core,pre,post}); continue; }
+  const out=[];
+  for(const tk of splitWords(text)){
+    if(tk.raw){ out.push({en:tk.core,v:tk.core,pos:null,pre:'',post:'',miss:false}); continue; }
+    const lc=tk.core.toLowerCase();
+    if(vToEn[lc]){ out.push({en:vToEn[lc].en,v:tk.core,pos:vToEn[lc].pos,pre:tk.pre,post:tk.post,miss:false}); continue; }
     const s=stripAffixes(lc);
     if(vToEn[s.root]){
       let gloss=vToEn[s.root].en;
@@ -753,13 +796,12 @@ function translateValToEn(text){
       if(s.coll) tags.push('collective');
       if(s.neg) tags.push('negated');
       s.notes.forEach(n=>tags.push(n));
-      // fold the meaning-bearing affixes into the readback gloss
       let read=gloss.replace(/^to /,'');
       if(s.neg) read='not '+read;
       if(s.coll) read='the '+read;
-      out.push({en:read,v:core,note:tags.join(' \u00b7 ')||null,pre,post});
+      out.push({en:read,v:tk.core,note:tags.join(' \u00b7 ')||null,pos:vToEn[s.root].pos,pre:tk.pre,post:tk.post,miss:false});
     } else {
-      out.push({en:null,v:core,pre,post});
+      out.push({en:null,v:tk.core,pos:null,pre:tk.pre,post:tk.post,miss:true});
     }
   }
   return out;
@@ -825,29 +867,27 @@ function renderTranslate(){
   const text=$('inText').value;
   const out=$('outBox'), gloss=$('glossBox');
   if(!text.trim()){ out.innerHTML='<div class="placeholder">The translation will appear here.</div>'; gloss.innerHTML=''; return; }
-  const toks = dir==='en2val' ? translateEnToVal(text) : translateValToEn(text);
-  let roman='', glossHtml='';
+  let toks = dir==='en2val' ? translateEnToVal(text) : translateValToEn(text);
+  toks = dir==='en2val' ? reorderEnToVal(toks) : reorderValToEn(toks);
+  let romanParts=[], glossHtml='', plainParts=[];
   toks.forEach(t=>{
-    if(t.space){ roman+=t.space; return; }
-    if(dir==='en2val'){
-      if(t.v){ roman+=(t.pre||'')+t.v+(t.post||'');
-        glossHtml+='<div class="tok"><span class="t-v">'+escapeHtml(t.v)+'</span><span class="t-en">'+escapeHtml(t.en)+'</span>'+(t.note?'<span class="t-note">'+escapeHtml(t.note)+'</span>':'')+'</div>';
-      } else { roman+=(t.pre||'')+'<span class="miss">'+escapeHtml(t.en)+'</span>'+(t.post||'');
-        glossHtml+='<div class="tok bad"><span class="t-v">'+escapeHtml(t.en)+'</span><span class="t-en">not in lexicon</span></div>';
-      }
+    const form = dir==='en2val' ? t.v : t.en;
+    const surface = dir==='en2val' ? t.en : t.v;
+    if(!t.miss && form!=null){
+      romanParts.push((t.pre||'')+escapeHtml(form)+(t.post||''));
+      plainParts.push((t.pre||'')+form+(t.post||''));
+      glossHtml+='<div class="tok"><span class="t-v">'+escapeHtml(dir==='en2val'?t.v:t.v)+'</span><span class="t-en">'+escapeHtml(dir==='en2val'?t.en:t.en)+'</span>'+(t.note?'<span class="t-note">'+escapeHtml(t.note)+'</span>':'')+'</div>';
     } else {
-      if(t.en){ roman+=(t.pre||'')+t.en+(t.post||'');
-        glossHtml+='<div class="tok"><span class="t-v">'+escapeHtml(t.v)+'</span><span class="t-en">'+escapeHtml(t.en)+'</span>'+(t.note?'<span class="t-note">'+escapeHtml(t.note)+'</span>':'')+'</div>';
-      } else { roman+=(t.pre||'')+'<span class="miss">'+escapeHtml(t.v)+'</span>'+(t.post||'');
-        glossHtml+='<div class="tok bad"><span class="t-v">'+escapeHtml(t.v)+'</span><span class="t-en">unknown</span></div>';
-      }
+      romanParts.push((t.pre||'')+'<span class="miss">'+escapeHtml(surface)+'</span>'+(t.post||''));
+      plainParts.push((t.pre||'')+surface+(t.post||''));
+      glossHtml+='<div class="tok bad"><span class="t-v">'+escapeHtml(surface)+'</span><span class="t-en">'+(dir==='en2val'?'not in lexicon':'unknown')+'</span></div>';
     }
   });
-  const plain = dir==='en2val' ? toks.map(t=>t.space?t.space:(t.v?((t.pre||'')+t.v+(t.post||'')):((t.pre||'')+t.en+(t.post||'')))).join('') :
-                                 toks.map(t=>t.space?t.space:(t.en?((t.pre||'')+t.en+(t.post||'')):((t.pre||'')+t.v+(t.post||'')))).join('');
-  out.innerHTML='<div class="roman">'+roman+'</div>'+(dir==='en2val'?'<div class="ipa">'+escapeHtml(ipaText(plain.replace(/<[^>]+>/g,'')))+'</div>':'');
+  const roman=romanParts.join(' ').replace(/\s+([.,;:!?])/g,'$1');
+  const plain=plainParts.join(' ').replace(/\s+([.,;:!?])/g,'$1');
+  out.innerHTML='<div class="roman">'+roman+'</div>'+(dir==='en2val'?'<div class="ipa">'+escapeHtml(ipaText(plain))+'</div>':'');
   out.classList.toggle('show-ipa',$('ipaToggle').checked && dir==='en2val');
-  out.dataset.plain=plain.replace(/<[^>]+>/g,'');
+  out.dataset.plain=plain;
   gloss.innerHTML=glossHtml;
 }
 $('inText').addEventListener('input',renderTranslate);
@@ -927,6 +967,73 @@ $('natBtn').addEventListener('click',()=>{
   if(!/[aeiou]$/.test(s)) s+='ae';                            // give a Valdorian tail
   s=s.charAt(0).toUpperCase()+s.slice(1);
   $('natOut').innerHTML='<div class="roman">'+escapeHtml(s)+'</div><div class="ipa" style="display:block">'+escapeHtml(ipaText(s))+'</div>';
+});
+
+/* forge: name & place generator */
+const NG={
+  onset:['v','th','dh','l','lh','r','rh','m','n','s','t','d','k','g','f','b','vr','thr','dr','kr','sl','vl','mr','','',''],
+  nucleus:['a','e','i','o','u','a','e','i','o','ae','ai','ei','oi'],
+  coda:['','','','','n','r','l','th','s','rn','lh','dh','m'],
+  end:['eth','an','or','ael','in','is','el','oth','wen','rian','aen','iel'],
+  houseEnd:['eth','orn','ael','wen','is','oren'],
+  geo:[['mira','water'],['mirath','sea'],['vald','land'],['karn','hill'],['karneth','mountain'],['thael','tree'],['thaewen','forest'],['gorth','stone'],['silae','sand'],['sirae','valley'],['veloth','river'],['mirae','lake'],['aurel','sun'],['niloth','moon'],['theld','fire'],['dorn','earth'],['uloth','sky'],['aile','ice'],['lhoth','rain'],['rhovan','wind'],['aur','light'],['lirae','flower'],['mirsael','coast']]
+};
+function pick(a){ return a[Math.floor(Math.random()*a.length)]; }
+function cleanName(s){
+  s=s.replace(/([a-z])\1\1+/g,'$1$1').replace(/([aeiou]{3,})/g,m=>m.slice(0,2));
+  s=s.replace(/h{2,}/g,'h');
+  return s.charAt(0).toUpperCase()+s.slice(1);
+}
+function syll(){ return pick(NG.onset)+pick(NG.nucleus)+(Math.random()<0.4?pick(NG.coda):''); }
+function genPerson(){ const n=pick([2,2,2,3]); let s=''; for(let i=0;i<n-1;i++) s+=syll(); s+=pick(NG.end); return {form:cleanName(s)}; }
+function genHouse(){ let s=syll()+(Math.random()<0.5?syll():'')+pick(NG.houseEnd); return {form:cleanName(s)}; }
+function genShip(){ const pool=lex().filter(d=>['n','adj'].includes(d.pos)&&d.v.length>=4&&d.v.length<=9); const d=pick(pool);
+  return {form:(Math.random()<0.5?'Sa ':'')+cleanName(d.v),gloss:d.en}; }
+function genPlace(){ let a=pick(NG.geo),b=pick(NG.geo); let t=0; while(b[0]===a[0]&&t++<5) b=pick(NG.geo);
+  let form=(a[0]+b[0]).replace(/([aeiou])\1/,'$1'); return {form:cleanName(form),gloss:a[1]+' + '+b[1]}; }
+function genOne(kind){ return kind==='place'?genPlace():kind==='house'?genHouse():kind==='ship'?genShip():genPerson(); }
+function doGenerate(){
+  const kind=$('genKind').value; const seen={}; const items=[];
+  let guard=0; while(items.length<6 && guard++<40){ const it=genOne(kind); if(seen[it.form])continue; seen[it.form]=1; items.push(it); }
+  $('genOut').innerHTML=items.map(it=>
+    '<div class="ctile"><span><span class="conj-form" style="font-size:19px;cursor:pointer" data-c="'+escapeHtml(it.form)+'">'+escapeHtml(it.form)+'</span>'+
+    (it.gloss?' <span class="en" style="color:var(--ink-dim);font-style:italic;font-size:13px">'+escapeHtml(it.gloss)+'</span>':'')+
+    '</span><span class="ipa" style="color:var(--verd);font-family:ui-monospace,monospace;font-size:12px">'+escapeHtml(ipaText(it.form.replace(/^Sa /,'')))+'</span></div>'
+  ).join('');
+  $('genOut').querySelectorAll('[data-c]').forEach(el=>el.onclick=()=>{ if(navigator.clipboard) navigator.clipboard.writeText(el.dataset.c); el.style.color='var(--verd)'; setTimeout(()=>el.style.color='',700); });
+}
+$('genBtn').addEventListener('click',doGenerate);
+$('genMore').addEventListener('click',doGenerate);
+
+/* forge: import / export lexicon */
+$('exportBtn').addEventListener('click',()=>{
+  if(!customWords.length){ $('ioMsg').textContent='No added words to export yet.'; setTimeout(()=>$('ioMsg').textContent='',1800); return; }
+  const payload={format:'valdorian-lexicon',version:1,exported:new Date().toISOString(),words:customWords};
+  const blob=new Blob([JSON.stringify(payload,null,2)],{type:'application/json'});
+  const url=URL.createObjectURL(blob); const a=document.createElement('a');
+  a.href=url; a.download='valdorian-lexicon.json'; document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(url);
+  $('ioMsg').textContent='Exported '+customWords.length+' word'+(customWords.length===1?'':'s')+'.'; setTimeout(()=>$('ioMsg').textContent='',2400);
+});
+$('importBtn').addEventListener('click',()=>$('importFile').click());
+$('importFile').addEventListener('change',e=>{
+  const file=e.target.files&&e.target.files[0]; if(!file) return;
+  const r=new FileReader();
+  r.onload=()=>{
+    try{
+      const data=JSON.parse(r.result);
+      const incoming=Array.isArray(data)?data:(data.words||[]);
+      if(!Array.isArray(incoming)||!incoming.length){ $('ioMsg').textContent='No words found in that file.'; return; }
+      const have={}; lex().forEach(d=>have[d.v.toLowerCase()]=1);
+      let added=0;
+      incoming.forEach(w=>{ if(!w||!w.v||!w.en) return; const k=String(w.v).toLowerCase(); if(have[k])return;
+        customWords.push({v:String(w.v),en:String(w.en),pos:w.pos||'n'}); have[k]=1; added++; });
+      saveCustom(); rebuildMaps(); renderDict(); buildNumTable(); buildVerbList(); updateWantsBadge(); renderWants(); renderTranslate();
+      $('ioMsg').textContent='Imported '+added+' new word'+(added===1?'':'s')+(added<incoming.length?' ('+(incoming.length-added)+' already known)':'')+'.';
+    }catch(err){ $('ioMsg').textContent='That file could not be read as a lexicon.'; }
+    e.target.value='';
+    setTimeout(()=>$('ioMsg').textContent='',3500);
+  };
+  r.readAsText(file);
 });
 
 /* forge: add word */
