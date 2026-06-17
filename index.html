@@ -626,7 +626,41 @@ const LS_KEY="valdorian_custom_v1";
 let customWords=[], storageOK=true;
 function loadCustom(){ try{const r=localStorage.getItem(LS_KEY); customWords=r?JSON.parse(r):[];}catch(e){storageOK=false;customWords=[];} }
 function saveCustom(){ try{localStorage.setItem(LS_KEY,JSON.stringify(customWords));}catch(e){storageOK=false;} updateLexStatus(); }
-function lex(){ return DATA.concat(customWords); }
+
+/* ====================== FETCHED LEXICON (lexicon.json) ====================== */
+/* Words live in lexicon.json next to this file. Add words there, commit, and they
+   load on next page load — no need to rebuild this program file. Built-in DATA stays
+   authoritative: any fetched word whose Valdorian spelling already exists is skipped. */
+let fetchedWords=[];
+async function loadFetchedLexicon(){
+  try{
+    const res=await fetch('lexicon.json',{cache:'no-store'});
+    if(!res.ok) throw new Error('HTTP '+res.status);
+    const raw=await res.json();
+    const arr=Array.isArray(raw)?raw:(raw&&Array.isArray(raw.words)?raw.words:null);
+    if(!arr) throw new Error('expected an array of {v,en,pos} entries');
+    const haveV={}; DATA.forEach(d=>{ haveV[d.v.toLowerCase()]=1; });
+    const merged=[]; let added=0, skipped=0;
+    arr.forEach(w=>{
+      if(!w||w.v==null||w.en==null){ skipped++; return; }
+      const v=String(w.v).trim(), en=String(w.en).trim();
+      if(!v||!en){ skipped++; return; }
+      const kv=v.toLowerCase();
+      if(haveV[kv]){ skipped++; return; } /* built-in word wins */
+      haveV[kv]=1;
+      const entry={v:v,en:en,pos:w.pos||'n'};
+      if(w.note!=null) entry.note=String(w.note);
+      merged.push(entry); added++;
+    });
+    fetchedWords=merged;
+    console.info('[Valdorian] lexicon.json: '+added+' word'+(added===1?'':'s')+' loaded'+(skipped?', '+skipped+' skipped (built-in duplicate or invalid)':'')+'.');
+  }catch(e){
+    fetchedWords=[];
+    console.warn('[Valdorian] lexicon.json not loaded ('+(e&&e.message?e.message:e)+') \u2014 running on built-in words only.');
+  }
+}
+
+function lex(){ return DATA.concat(fetchedWords).concat(customWords); }
 
 /* ====================== MAPS ====================== */
 let vToEn={}, enToV={};
@@ -1264,9 +1298,15 @@ function gotoConjugate(form){ const tab=document.querySelector('.tab[data-v="con
 $('verbInput').addEventListener('input',renderConj);
 
 /* ====================== INIT ====================== */
-loadCustom(); loadWants(); rebuildMaps();
-renderDict(); buildNumTable(); renderNumber(); renderPrButtons(); renderPronoun(); updateLexStatus();
-buildVerbList(); updateWantsBadge(); renderWants();
+function renderAll(){
+  rebuildMaps();
+  renderDict(); buildNumTable(); renderNumber(); renderPrButtons(); renderPronoun(); updateLexStatus();
+  buildVerbList(); updateWantsBadge(); renderWants();
+}
+/* Boot immediately on built-in + saved words so nothing blocks on the network. */
+loadCustom(); loadWants(); renderAll();
+/* Then pull lexicon.json (GitHub Pages / any web host) and fold its words in. */
+loadFetchedLexicon().then(()=>{ renderAll(); if($('inText')&&$('inText').value.trim()) renderTranslate(); });
 </script>
 </body>
 </html>
