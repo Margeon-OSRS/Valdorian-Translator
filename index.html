@@ -61,7 +61,7 @@ h1{
 .rule::after{content:"\2042";position:absolute;left:50%;top:50%;transform:translate(-50%,-55%);
   color:var(--verd);background:var(--abyss);padding:0 12px;font-size:15px;}
 
-/* hero compounding ticker — the signature */
+/* hero compounding ticker, the signature */
 .forge-ticker{max-width:640px;margin:0 auto 26px;text-align:center;
   background:linear-gradient(180deg,var(--panel),var(--slate));border:1px solid var(--line);
   border-radius:6px;padding:18px 16px;min-height:96px;}
@@ -100,8 +100,8 @@ input.vin{min-height:0;}
 textarea::placeholder,input.vin::placeholder{color:#566;font-style:italic;}
 .out{min-height:70px;}
 .out .roman{font-size:22px;color:var(--ink);overflow-wrap:anywhere;}
-.vethrin{font-family:'Vethrin';}
-.out .roman.vethrin{font-family:'Vethrin';font-size:32px;line-height:1.75;letter-spacing:1px;color:var(--bronze);}
+.out .script{font-family:'Vethrin';font-size:34px;line-height:1.8;letter-spacing:1px;color:var(--bronze);margin-top:12px;padding-top:12px;border-top:1px solid var(--line);overflow-wrap:anywhere;}
+.out .script .miss{color:var(--err);}
 .out .ipa{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:15px;color:var(--verd);margin-top:8px;overflow-wrap:anywhere;display:none;}
 .out.show-ipa .ipa{display:block;}
 .out .placeholder{color:#566;font-style:italic;font-size:18px;}
@@ -147,6 +147,7 @@ td .ipa{font-family:ui-monospace,monospace;color:var(--verd);font-size:13px;}
   padding:15px 16px;display:flex;flex-direction:column;gap:6px;min-height:128px;transition:border-color .18s,transform .18s;}
 .wcard:hover{border-color:var(--verd-dim);transform:translateY(-2px);}
 .wcard .hw{font-family:'Cinzel',serif;color:var(--bronze);font-size:21px;line-height:1.15;overflow-wrap:anywhere;}
+.wcard .wscript{font-family:'Vethrin';font-size:26px;line-height:1.4;letter-spacing:1px;color:var(--verd);overflow-wrap:anywhere;}
 .wcard .src{align-self:flex-start;font-family:'Cinzel',serif;font-size:9px;letter-spacing:1.5px;text-transform:uppercase;
   padding:2px 8px;border-radius:9px;border:1px solid var(--verd-dim);color:var(--verd);opacity:.9;}
 .wcard .src.added{color:var(--bronze);border-color:var(--bronze-dim);}
@@ -175,6 +176,17 @@ select{background:var(--slate);border:1px solid var(--line);color:var(--ink);fon
 .tab-badge{display:inline-block;margin-left:7px;min-width:16px;padding:0 5px;border-radius:9px;background:var(--bronze-dim);color:var(--ink);font-size:10px;line-height:16px;text-align:center;letter-spacing:0;vertical-align:middle;}
 .tab.active .tab-badge{background:var(--abyss);color:var(--verd);}
 .tab-badge.hidden{display:none;}
+/* forge sub-tabs */
+.forge-nav{display:flex;justify-content:center;gap:6px;flex-wrap:wrap;margin:0 auto 22px;
+  border:1px solid var(--line);border-radius:6px;padding:6px;background:linear-gradient(180deg,var(--panel),var(--slate));max-width:560px;}
+.forge-tab{font-family:'Cinzel',serif;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;
+  background:transparent;border:1px solid transparent;color:var(--ink-dim);padding:8px 14px;cursor:pointer;border-radius:3px;transition:all .15s;}
+.forge-tab:hover{color:var(--ink);}
+.forge-tab.active{color:var(--abyss);background:var(--bronze-soft);border-color:var(--bronze-soft);font-weight:700;}
+.forge-panel{display:none;animation:fade .25s ease;}
+.forge-panel.active{display:block;}
+.forge-panel h2{margin-top:0;}
+@media(max-width:480px){.forge-tab{padding:7px 10px;letter-spacing:1px;}}
 /* mode buttons (wants) */
 .modebar{display:flex;justify-content:center;gap:6px;margin-bottom:16px;}
 .modebtn{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;background:transparent;border:1px solid var(--line);color:var(--ink-dim);padding:8px 16px;cursor:pointer;border-radius:2px;transition:all .15s;}
@@ -275,92 +287,117 @@ footer b{color:var(--bronze);font-variant:small-caps;letter-spacing:1px;}
       <div class="lbl">
         <span id="outLbl">Valdorian</span>
         <label class="toggle"><input type="checkbox" id="ipaToggle"> show voice (IPA)</label>
-        <label class="toggle" id="scriptTog"><input type="checkbox" id="scriptToggle"> show script</label>
       </div>
       <div class="out" id="outBox"><div class="placeholder">The translation will appear here.</div></div>
       <div class="gloss" id="glossBox"></div>
       <div class="row" style="margin-top:13px;">
         <button class="btn" id="copyBtn">Copy</button>
+        <button class="btn" id="pngBtn">Export script (PNG)</button>
       </div>
     </div>
-    <div class="note"><b>How it reads.</b> Word for word from the lexicon, then set in Valdorian order: adjectives and the genitive fall after the noun they touch, while tense suffixes, plurals (<i>-ai</i>), the collective (<i>vel-</i>), and negation (<i>nav-</i>) attach to their words. Pronouns can carry a register prefix &mdash; build them under <b>Pronouns</b>. Words not yet in the lexicon are marked in red; coin them under <b>Forge</b>.</div>
+    <div class="note"><b>How it reads.</b> Word for word from the lexicon, then set in Valdorian order: adjectives and the genitive fall after the noun they touch, while tense suffixes, plurals (<i>-ai</i>), the collective (<i>vel-</i>), and negation (<i>nav-</i>) attach to their words. Pronouns can carry a register prefix; build them under <b>Pronouns</b>. Words not yet in the lexicon are marked in red; coin them under <b>Forge</b>.</div>
   </section>
 
   <!-- ============ FORGE ============ -->
   <section class="view" id="v-forge">
-    <h2>Compound</h2>
-    <p class="body">Valdorian builds meaning by joining roots. Stack two and read the seam.</p>
-    <div class="field">
-      <div class="row">
-        <input class="vin" id="cmpA" placeholder="first root or word" style="flex:1;min-width:120px;">
-        <span style="color:var(--ink-dim);font-size:22px;">+</span>
-        <input class="vin" id="cmpB" placeholder="second root or word" style="flex:1;min-width:120px;">
-      </div>
-      <div class="row" style="margin-top:12px;">
-        <button class="btn solid" id="cmpBtn">Join</button>
-        <span id="cmpHint" style="color:var(--ink-dim);font-size:13px;"></span>
-      </div>
-      <div class="out" id="cmpOut" style="min-height:0;margin-top:10px;"></div>
+    <p class="body" style="text-align:center;margin:0 auto 18px;max-width:560px;">The forge is where the tongue grows. Join roots, take a word apart, bring a foreign name into Valdorian sound, coin new names, or add an entry to the shared lexicon.</p>
+
+    <div class="forge-nav" id="forgeNav">
+      <button class="forge-tab active" data-f="compound">Compound</button>
+      <button class="forge-tab" data-f="unforge">Unforge</button>
+      <button class="forge-tab" data-f="nativize">Nativize</button>
+      <button class="forge-tab" data-f="generate">Generate</button>
+      <button class="forge-tab" data-f="addword">Add word</button>
     </div>
 
-    <h2>Unforge</h2>
-    <p class="body">Peel a Valdorian word back into its affixes and roots.</p>
-    <div class="field">
-      <input class="vin" id="segIn" placeholder="e.g. velvaelanai, navsoren, miravald">
-      <div class="row" style="margin-top:12px;"><button class="btn solid" id="segBtn">Unforge</button></div>
-      <div class="out" id="segOut" style="min-height:0;margin-top:10px;"></div>
+    <!-- Compound -->
+    <div class="forge-panel active" id="fp-compound">
+      <h2>Compound</h2>
+      <p class="body">Valdorian builds meaning by joining roots. Stack two and read the seam.</p>
+      <div class="field">
+        <div class="row">
+          <input class="vin" id="cmpA" placeholder="first root or word" style="flex:1;min-width:120px;">
+          <span style="color:var(--ink-dim);font-size:22px;">+</span>
+          <input class="vin" id="cmpB" placeholder="second root or word" style="flex:1;min-width:120px;">
+        </div>
+        <div class="row" style="margin-top:12px;">
+          <button class="btn solid" id="cmpBtn">Join</button>
+          <span id="cmpHint" style="color:var(--ink-dim);font-size:13px;"></span>
+        </div>
+        <div class="out" id="cmpOut" style="min-height:0;margin-top:10px;"></div>
+      </div>
     </div>
 
-    <h2>Nativize a name</h2>
-    <p class="body">Map a foreign name or word into Valdorian sound and spelling.</p>
-    <div class="field">
-      <input class="vin" id="natIn" placeholder="e.g. Christopher, Brooklyn, espresso">
-      <div class="row" style="margin-top:12px;"><button class="btn solid" id="natBtn">Nativize</button></div>
-      <div class="out" id="natOut" style="min-height:0;margin-top:10px;"></div>
+    <!-- Unforge -->
+    <div class="forge-panel" id="fp-unforge">
+      <h2>Unforge</h2>
+      <p class="body">Peel a Valdorian word back into its affixes and roots.</p>
+      <div class="field">
+        <input class="vin" id="segIn" placeholder="e.g. velvaelanai, navsoren, miravald">
+        <div class="row" style="margin-top:12px;"><button class="btn solid" id="segBtn">Unforge</button></div>
+        <div class="out" id="segOut" style="min-height:0;margin-top:10px;"></div>
+      </div>
     </div>
 
-    <h2>Generate a name</h2>
-    <p class="body">Coin new people, settlements, and ships in Valdorian sound. Place names can be drawn from real roots, so they carry a meaning.</p>
-    <div class="field">
-      <div class="row">
-        <select id="genKind">
-          <option value="person">person</option>
-          <option value="place">place (from roots)</option>
-          <option value="house">house / line</option>
-          <option value="ship">ship</option>
-        </select>
-        <button class="btn solid" id="genBtn">Generate</button>
-        <button class="btn" id="genMore">More</button>
+    <!-- Nativize -->
+    <div class="forge-panel" id="fp-nativize">
+      <h2>Nativize a name</h2>
+      <p class="body">Map a foreign name or word into Valdorian sound and spelling.</p>
+      <div class="field">
+        <input class="vin" id="natIn" placeholder="e.g. Christopher, Brooklyn, espresso">
+        <div class="row" style="margin-top:12px;"><button class="btn solid" id="natBtn">Nativize</button></div>
+        <div class="out" id="natOut" style="min-height:0;margin-top:10px;"></div>
       </div>
-      <div id="genOut" style="margin-top:12px;"></div>
     </div>
 
-    <h2>Add a word to the lexicon</h2>
-    <p class="body">New entries are saved in this browser and used by every tool above.</p>
-    <div class="field">
-      <div class="row">
-        <input class="vin" id="newV" placeholder="Valdorian form" style="flex:1;min-width:120px;">
-        <input class="vin" id="newEn" placeholder="meaning" style="flex:1;min-width:120px;">
-        <select id="newPos">
-          <option value="n">noun</option><option value="v">verb</option><option value="adj">adjective</option>
-          <option value="adv">adverb</option><option value="prep">preposition</option><option value="conj">conjunction</option>
-          <option value="pron">pronoun</option><option value="det">determiner</option><option value="num">number</option>
-          <option value="ord">ordinal</option><option value="title">title</option><option value="intj">interjection</option><option value="q">question</option>
-        </select>
+    <!-- Generate -->
+    <div class="forge-panel" id="fp-generate">
+      <h2>Generate a name</h2>
+      <p class="body">Coin new people, settlements, and ships in Valdorian sound. Place names can be drawn from real roots, so they carry a meaning.</p>
+      <div class="field">
+        <div class="row">
+          <select id="genKind">
+            <option value="person">person</option>
+            <option value="place">place (from roots)</option>
+            <option value="house">house / line</option>
+            <option value="ship">ship</option>
+          </select>
+          <button class="btn solid" id="genBtn">Generate</button>
+          <button class="btn" id="genMore">More</button>
+        </div>
+        <div id="genOut" style="margin-top:12px;"></div>
       </div>
-      <div class="row" style="margin-top:12px;">
-        <button class="btn solid" id="addBtn">Add word</button>
-        <button class="btn" id="clearBtn">Clear my words</button>
-        <span id="addMsg" style="color:var(--verd);font-size:13px;"></span>
+    </div>
+
+    <!-- Add word -->
+    <div class="forge-panel" id="fp-addword">
+      <h2>Add a word to the lexicon</h2>
+      <p class="body">New entries are saved in this browser and used by every tool in the forge.</p>
+      <div class="field">
+        <div class="row">
+          <input class="vin" id="newV" placeholder="Valdorian form" style="flex:1;min-width:120px;">
+          <input class="vin" id="newEn" placeholder="meaning" style="flex:1;min-width:120px;">
+          <select id="newPos">
+            <option value="n">noun</option><option value="v">verb</option><option value="adj">adjective</option>
+            <option value="adv">adverb</option><option value="prep">preposition</option><option value="conj">conjunction</option>
+            <option value="pron">pronoun</option><option value="det">determiner</option><option value="num">number</option>
+            <option value="ord">ordinal</option><option value="title">title</option><option value="intj">interjection</option><option value="q">question</option>
+          </select>
+        </div>
+        <div class="row" style="margin-top:12px;">
+          <button class="btn solid" id="addBtn">Add word</button>
+          <button class="btn" id="clearBtn">Clear my words</button>
+          <span id="addMsg" style="color:var(--verd);font-size:13px;"></span>
+        </div>
+        <div class="status" id="lexStatus"></div>
+        <div class="row" style="margin-top:14px;border-top:1px solid var(--line);padding-top:14px;">
+          <button class="btn" id="exportBtn">Export my words</button>
+          <button class="btn" id="importBtn">Import words</button>
+          <input type="file" id="importFile" accept="application/json,.json" style="display:none;">
+          <span id="ioMsg" style="color:var(--verd);font-size:13px;"></span>
+        </div>
+        <p class="body" style="font-size:13px;margin-top:8px;">Export saves the words you have added as a file you can keep, move to another device, or share. Import merges a saved file back in.</p>
       </div>
-      <div class="status" id="lexStatus"></div>
-      <div class="row" style="margin-top:14px;border-top:1px solid var(--line);padding-top:14px;">
-        <button class="btn" id="exportBtn">Export my words</button>
-        <button class="btn" id="importBtn">Import words</button>
-        <input type="file" id="importFile" accept="application/json,.json" style="display:none;">
-        <span id="ioMsg" style="color:var(--verd);font-size:13px;"></span>
-      </div>
-      <p class="body" style="font-size:13px;margin-top:8px;">Export saves the words you have added as a file you can keep, move to another device, or share. Import merges a saved file back in.</p>
     </div>
   </section>
 
@@ -385,7 +422,7 @@ footer b{color:var(--bronze);font-variant:small-caps;letter-spacing:1px;}
   <!-- ============ WANTS ============ -->
   <section class="view" id="v-wants">
     <h2>Wants</h2>
-    <p class="body">When you translate from English, any word the lexicon cannot answer is gathered here &mdash; the Confederation's standing list of words still to be coined. Or switch to <b>Core</b> to see how much of a foundational vocabulary the tongue already carries.</p>
+    <p class="body">When you translate from English, any word the lexicon cannot answer is gathered here: the Confederation's standing list of words still to be coined. Or switch to <b>Core</b> to see how much of a foundational vocabulary the tongue already carries.</p>
     <div class="modebar">
       <button class="modebtn active" data-wmode="use">Gathered</button>
       <button class="modebtn" data-wmode="core">Core coverage</button>
@@ -412,7 +449,7 @@ footer b{color:var(--bronze);font-variant:small-caps;letter-spacing:1px;}
         <button class="ctier-btn" data-ctier="craft">Craft &amp; world</button>
         <button class="ctier-btn" data-ctier="realm">Law, faith &amp; thought</button>
       </div>
-      <div class="core-count" id="coreCount">&mdash;</div>
+      <div class="core-count" id="coreCount">&ndash;</div>
       <div class="core-bar"><i id="coreBar" style="width:0%"></i></div>
       <p class="body" style="text-align:center;font-style:italic;font-size:13px" id="coreSub"></p>
       <div id="coreBody"></div>
@@ -422,7 +459,7 @@ footer b{color:var(--bronze);font-variant:small-caps;letter-spacing:1px;}
   <!-- ============ CONJUGATE ============ -->
   <section class="view" id="v-conj">
     <h2>Conjugate</h2>
-    <p class="body">Enter any verb &mdash; in Valdorian or English &mdash; to see it across all six tenses and the negated form. Tense is a suffix on the verb's tail; negation is the prefix <b>nav-</b>.</p>
+    <p class="body">Enter any verb, in Valdorian or English, to see it across all six tenses and the negated form. Tense is a suffix on the verb's tail; negation is the prefix <b>nav-</b>.</p>
     <div class="field">
       <input class="vin" id="verbInput" list="verbList" placeholder="e.g. vethir, vaelan, or &ldquo;to love&rdquo;">
       <datalist id="verbList"></datalist>
@@ -435,7 +472,7 @@ footer b{color:var(--bronze);font-variant:small-caps;letter-spacing:1px;}
     <div class="field">
       <input class="vin" id="numIn" type="number" min="0" max="9999" placeholder="0 &ndash; 9999" value="247">
       <div class="bigform" style="margin:14px 0 0;">
-        <div class="bf-v" id="numV">&mdash;</div>
+        <div class="bf-v" id="numV">&ndash;</div>
         <div class="bf-ipa" id="numIpa"></div>
         <div class="bf-en" id="numOrd"></div>
       </div>
@@ -447,7 +484,7 @@ footer b{color:var(--bronze);font-variant:small-caps;letter-spacing:1px;}
   <!-- ============ PRONOUNS ============ -->
   <section class="view" id="v-pronouns">
     <h2>Pronoun builder</h2>
-    <p class="body">Valdorian marks <b>register</b> &mdash; how the speaker stands to the one addressed &mdash; with a prefix on the pronoun. Neutral takes none.</p>
+    <p class="body">Valdorian marks <b>register</b>, how the speaker stands to the one addressed, with a prefix on the pronoun. Neutral takes none.</p>
 
     <h3>Person</h3>
     <div class="pgrid" id="prPerson"></div>
@@ -459,7 +496,7 @@ footer b{color:var(--bronze);font-variant:small-caps;letter-spacing:1px;}
     <div class="pgrid" id="prReg"></div>
 
     <div class="bigform">
-      <div class="bf-v" id="prV">&mdash;</div>
+      <div class="bf-v" id="prV">&ndash;</div>
       <div class="bf-ipa" id="prIpa"></div>
       <div class="bf-en" id="prEn"></div>
       <div class="row" style="justify-content:center;margin-top:12px;"><button class="btn" id="prCopy">Copy</button></div>
@@ -469,7 +506,7 @@ footer b{color:var(--bronze);font-variant:small-caps;letter-spacing:1px;}
   <!-- ============ GRAMMAR ============ -->
   <section class="view" id="v-grammar">
     <h2>The Tongue</h2>
-    <p class="body">Valdorian &mdash; <b>Vethrin</b>, "the spoken" &mdash; is the lingua franca of the Confederation, carried across Valdoria, Varn, and Charskin Isle. It is built to be transparent: roots join at the seam, and every grammatical change is a single, visible affix.</p>
+    <p class="body">Valdorian (<b>Vethrin</b>, "the spoken") is the lingua franca of the Confederation, carried across Valdoria, Varn, and Charskin Isle. It is built to be transparent: roots join at the seam, and every grammatical change is a single, visible affix.</p>
 
     <h3>Sound</h3>
     <p class="body">The tongue favours liquids and soft fricatives. Its signatures are the digraphs <b>th</b> /&theta;/, <b>dh</b> /&eth;/, <b>lh</b> /&#x29;/ (a palatal l), and <b>rh</b> /&#x281;/, with clustered onsets like <b>vr-</b>, <b>thr-</b>, <b>dr-</b>, and <b>mir-</b>. It has no <b>c, q, x, j</b>, nor the sounds <i>sh, zh, ts</i>. Vowels are <b>a e i o u</b>; the diphthongs <b>ae</b> /&aelig;/, <b>ai</b>, <b>ei</b>, <b>oi</b>.</p>
@@ -482,7 +519,7 @@ footer b{color:var(--bronze);font-variant:small-caps;letter-spacing:1px;}
     <table><thead><tr><th>Tense</th><th>Suffix</th><th>Example (vethir, "speak")</th></tr></thead><tbody>
       <tr><td><span class="en">far past</span></td><td><span class="v">-oren</span></td><td><span class="v">vethiroren</span></td></tr>
       <tr><td><span class="en">near past</span></td><td><span class="v">-or</span></td><td><span class="v">vethiror</span></td></tr>
-      <tr><td><span class="en">present</span></td><td><span class="v">&mdash;</span></td><td><span class="v">vethir</span></td></tr>
+      <tr><td><span class="en">present</span></td><td><span class="v">&ndash;</span></td><td><span class="v">vethir</span></td></tr>
       <tr><td><span class="en">continuous</span></td><td><span class="v">-ael</span></td><td><span class="v">vethirael</span></td></tr>
       <tr><td><span class="en">near future</span></td><td><span class="v">-ith</span></td><td><span class="v">vethirith</span></td></tr>
       <tr><td><span class="en">far future</span></td><td><span class="v">-ithen</span></td><td><span class="v">vethirithen</span></td></tr>
@@ -492,7 +529,7 @@ footer b{color:var(--bronze);font-variant:small-caps;letter-spacing:1px;}
     <h3>Number</h3>
     <p class="body">Two plurals, split by how a thing is counted. A <b>count plural</b> takes the suffix <b>-ai</b> (<b>-i</b> after a vowel):</p>
     <p class="body"><span class="ex"><span class="v">andel</span> <span class="en">friend</span> <span class="ar">&rarr;</span> <span class="v">andelai</span> <span class="en">friends</span></span></p>
-    <p class="body">A <b>collective</b> &mdash; a whole people or body taken as one &mdash; takes the prefix <b>vel-</b>:</p>
+    <p class="body">A <b>collective</b> (a whole people or body taken as one) takes the prefix <b>vel-</b>:</p>
     <p class="body"><span class="ex"><span class="v">valan</span> <span class="en">person</span> <span class="ar">&rarr;</span> <span class="v">velvalan</span> <span class="en">the people</span></span></p>
 
     <h3>Genitive &amp; negation</h3>
@@ -503,7 +540,7 @@ footer b{color:var(--bronze);font-variant:small-caps;letter-spacing:1px;}
     <p class="body">A pronoun shows how the speaker stands to the one addressed. The neutral form is bare; the exalted prefix <b>vae-</b> is used toward a sovereign, the Senate, or the record; the familiar prefix <b>lo-</b> is used downward or between intimates.</p>
     <table><thead><tr><th>Register</th><th>Prefix</th><th>"you"</th></tr></thead><tbody>
       <tr><td><span class="en">exalted</span></td><td><span class="v">vae-</span></td><td><span class="v">vaevir</span></td></tr>
-      <tr><td><span class="en">neutral</span></td><td><span class="v">&mdash;</span></td><td><span class="v">vir</span></td></tr>
+      <tr><td><span class="en">neutral</span></td><td><span class="v">&ndash;</span></td><td><span class="v">vir</span></td></tr>
       <tr><td><span class="en">familiar</span></td><td><span class="v">lo-</span></td><td><span class="v">lovir</span></td></tr>
     </tbody></table>
 
@@ -515,7 +552,7 @@ footer b{color:var(--bronze);font-variant:small-caps;letter-spacing:1px;}
 
     <div class="note"><b>A line, all at once.</b><br>
       <span class="ex"><span class="v">Velvalan vaelanor sa soluthar.</span></span><br>
-      <span style="color:var(--ink-dim);font-style:italic;">"The people loved the confederation." &mdash; collective <i>vel-</i>, past <i>-or</i>, the article <i>sa</i>, the grand compound <i>soluthar</i>.</span></div>
+      <span style="color:var(--ink-dim);font-style:italic;">"The people loved the confederation." Built from collective <i>vel-</i>, past <i>-or</i>, the article <i>sa</i>, and the grand compound <i>soluthar</i>.</span></div>
   </section>
 
   <footer>
@@ -647,7 +684,7 @@ function saveCustom(){ try{localStorage.setItem(LS_KEY,JSON.stringify(customWord
 
 /* ====================== FETCHED LEXICON (lexicon.json) ====================== */
 /* Words live in lexicon.json next to this file. Add words there, commit, and they
-   load on next page load — no need to rebuild this program file. Built-in DATA stays
+   load on next page load; no need to rebuild this program file. Built-in DATA stays
    authoritative: any fetched word whose Valdorian spelling already exists is skipped. */
 let fetchedWords=[];
 async function loadFetchedLexicon(){
@@ -674,7 +711,7 @@ async function loadFetchedLexicon(){
     console.info('[Valdorian] lexicon.json: '+added+' word'+(added===1?'':'s')+' loaded'+(skipped?', '+skipped+' skipped (built-in duplicate or invalid)':'')+'.');
   }catch(e){
     fetchedWords=[];
-    console.warn('[Valdorian] lexicon.json not loaded ('+(e&&e.message?e.message:e)+') \u2014 running on built-in words only.');
+    console.warn('[Valdorian] lexicon.json not loaded ('+(e&&e.message?e.message:e)+'); running on built-in words only.');
   }
 }
 
@@ -895,6 +932,14 @@ document.querySelectorAll('.tab').forEach(t=>t.addEventListener('click',()=>{
   $('v-'+t.dataset.v).classList.add('active');
 }));
 
+/* forge sub-tabs */
+document.querySelectorAll('.forge-tab').forEach(t=>t.addEventListener('click',()=>{
+  document.querySelectorAll('.forge-tab').forEach(x=>x.classList.remove('active'));
+  document.querySelectorAll('.forge-panel').forEach(x=>x.classList.remove('active'));
+  t.classList.add('active');
+  $('fp-'+t.dataset.f).classList.add('active');
+}));
+
 /* hero ticker */
 const SEEDS=[
   ['mira','water','vald','land','miravald','island'],
@@ -918,7 +963,7 @@ let dir='en2val';
 function renderTranslate(){
   const text=$('inText').value;
   const out=$('outBox'), gloss=$('glossBox');
-  if(!text.trim()){ out.innerHTML='<div class="placeholder">The translation will appear here.</div>'; gloss.innerHTML=''; return; }
+  if(!text.trim()){ out.innerHTML='<div class="placeholder">The translation will appear here.</div>'; gloss.innerHTML=''; if($('pngBtn')) $('pngBtn').style.display='none'; return; }
   let toks = dir==='en2val' ? translateEnToVal(text) : translateValToEn(text);
   toks = dir==='en2val' ? reorderEnToVal(toks) : reorderValToEn(toks);
   let romanParts=[], glossHtml='', plainParts=[];
@@ -937,16 +982,14 @@ function renderTranslate(){
   });
   const roman=romanParts.join(' ').replace(/\s+([.,;:!?])/g,'$1');
   const plain=plainParts.join(' ').replace(/\s+([.,;:!?])/g,'$1');
-  const useScript = $('scriptToggle') && $('scriptToggle').checked && dir==='en2val';
-  out.innerHTML='<div class="roman'+(useScript?' vethrin':'')+'">'+roman+'</div>'+(dir==='en2val'?'<div class="ipa">'+escapeHtml(ipaText(plain))+'</div>':'');
+  out.innerHTML='<div class="roman">'+roman+'</div>'+(dir==='en2val'?'<div class="script">'+roman+'</div>':'')+(dir==='en2val'?'<div class="ipa">'+escapeHtml(ipaText(plain))+'</div>':'');
   out.classList.toggle('show-ipa',$('ipaToggle').checked && dir==='en2val');
-  if($('scriptTog')) $('scriptTog').style.display = (dir==='en2val') ? '' : 'none';
+  if($('pngBtn')) $('pngBtn').style.display = (dir==='en2val') ? '' : 'none';
   out.dataset.plain=plain;
   gloss.innerHTML=glossHtml;
 }
 $('inText').addEventListener('input',renderTranslate);
 $('ipaToggle').addEventListener('change',renderTranslate);
-if($('scriptToggle')) $('scriptToggle').addEventListener('change',renderTranslate);
 $('swapBtn').addEventListener('click',()=>{
   dir = dir==='en2val' ? 'val2en' : 'en2val';
   const en2v = dir==='en2val';
@@ -957,6 +1000,32 @@ $('swapBtn').addEventListener('click',()=>{
   $('inText').placeholder = en2v?'Type a phrase to render into Valdorian\u2026':'Type Valdorian to read it back\u2026';
   renderTranslate();
 });
+function exportScriptPng(){
+  const text=($('outBox').dataset.plain||'').trim();
+  if(!text || dir!=='en2val') return;
+  const fontPx=72, pad=48, maxW=1200, scale=3;
+  const ink=(getComputedStyle(document.documentElement).getPropertyValue('--bronze')||'#c08a4a').trim();
+  const draw=()=>{
+    const c=document.createElement('canvas'), x=c.getContext('2d');
+    x.font=fontPx+"px 'Vethrin'";
+    const words=text.split(/\s+/); const lines=[]; let cur='';
+    words.forEach(w=>{ const t=cur?cur+' '+w:w; if(x.measureText(t).width>maxW && cur){lines.push(cur);cur=w;} else {cur=t;} });
+    if(cur) lines.push(cur);
+    const lineH=fontPx*1.6;
+    let w=0; lines.forEach(l=>{ w=Math.max(w,x.measureText(l).width); });
+    const W=Math.ceil(w)+pad*2, H=Math.ceil(lineH*lines.length)+pad*2;
+    c.width=W*scale; c.height=H*scale;
+    const ctx=c.getContext('2d'); ctx.scale(scale,scale);
+    ctx.clearRect(0,0,W,H);
+    ctx.font=fontPx+"px 'Vethrin'"; ctx.fillStyle=ink; ctx.textBaseline='top';
+    lines.forEach((l,i)=>{ ctx.fillText(l,pad,pad+i*lineH); });
+    const a=document.createElement('a'); a.href=c.toDataURL('image/png');
+    a.download='vethrin-'+Date.now()+'.png'; document.body.appendChild(a); a.click(); a.remove();
+  };
+  if(document.fonts && document.fonts.load){ document.fonts.load(fontPx+"px 'Vethrin'",text).then(draw).catch(draw); }
+  else { draw(); }
+}
+if($('pngBtn')) $('pngBtn').addEventListener('click',exportScriptPng);
 $('copyBtn').addEventListener('click',()=>{
   const txt=$('outBox').dataset.plain||'';
   if(!txt) return;
@@ -975,14 +1044,14 @@ $('cmpBtn').addEventListener('click',()=>{
   // light euphony: collapse a doubled vowel at the seam
   joined=joined.replace(/([aeiou])\1/,'$1');
   const ma=vToEn[ra]?vToEn[ra].en:a, mb=vToEn[rb]?vToEn[rb].en:b;
-  $('cmpOut').innerHTML='<div class="roman">'+escapeHtml(joined)+'</div><div class="ipa" style="display:block">'+escapeHtml(ipaText(joined))+'</div><div class="t-en" style="color:var(--ink-dim);font-style:italic;margin-top:6px">'+escapeHtml(ma)+' + '+escapeHtml(mb)+'</div>';
+  $('cmpOut').innerHTML='<div class="roman">'+escapeHtml(joined)+'</div><div class="script">'+escapeHtml(joined)+'</div><div class="ipa" style="display:block">'+escapeHtml(ipaText(joined))+'</div><div class="t-en" style="color:var(--ink-dim);font-style:italic;margin-top:6px">'+escapeHtml(ma)+' + '+escapeHtml(mb)+'</div>';
 });
 
 /* forge: unforge */
 $('segBtn').addEventListener('click',()=>{
   const w=$('segIn').value.trim().toLowerCase();
   if(!w){ $('segOut').innerHTML='<span class="placeholder">Enter a Valdorian word.</span>'; return; }
-  if(vToEn[w]){ $('segOut').innerHTML='<div class="roman">'+escapeHtml(w)+'</div><div class="t-en" style="color:var(--ink-dim);font-style:italic">root \u2014 '+escapeHtml(vToEn[w].en)+'</div>'; return; }
+  if(vToEn[w]){ $('segOut').innerHTML='<div class="roman">'+escapeHtml(w)+'</div><div class="t-en" style="color:var(--ink-dim);font-style:italic">root: '+escapeHtml(vToEn[w].en)+'</div>'; return; }
   const s=stripAffixes(w);
   let html='';
   const tags=[];
@@ -1021,7 +1090,7 @@ $('natBtn').addEventListener('click',()=>{
   s=s.replace(/[^a-z]/g,'');
   if(!/[aeiou]$/.test(s)) s+='ae';                            // give a Valdorian tail
   s=s.charAt(0).toUpperCase()+s.slice(1);
-  $('natOut').innerHTML='<div class="roman">'+escapeHtml(s)+'</div><div class="ipa" style="display:block">'+escapeHtml(ipaText(s))+'</div>';
+  $('natOut').innerHTML='<div class="roman">'+escapeHtml(s)+'</div><div class="script">'+escapeHtml(s)+'</div><div class="ipa" style="display:block">'+escapeHtml(ipaText(s))+'</div>';
 });
 
 /* forge: name & place generator */
@@ -1094,7 +1163,7 @@ $('importFile').addEventListener('change',e=>{
 /* forge: add word */
 function updateLexStatus(){
   const el=$('lexStatus'); if(!el) return;
-  if(!storageOK){ el.className='status warn'; el.textContent='This browser blocked saving \u2014 your words last only this session.'; return; }
+  if(!storageOK){ el.className='status warn'; el.textContent='This browser blocked saving; your words last only this session.'; return; }
   el.className='status'; el.textContent=customWords.length+' word'+(customWords.length===1?'':'s')+' saved in this browser.';
 }
 $('addBtn').addEventListener('click',()=>{
@@ -1134,6 +1203,7 @@ function renderDict(){
     const label = POS_LABEL[d.pos]||d.pos;
     return '<article class="wcard">'+
       '<span class="hw">'+escapeHtml(d.v)+'</span>'+
+      '<span class="wscript" aria-hidden="true">'+escapeHtml(d.v)+'</span>'+
       src+ipa+
       '<span class="mean">'+escapeHtml(d.en)+'</span>'+
       '<span class="pos">'+escapeHtml(label)+'</span>'+
@@ -1147,7 +1217,7 @@ $('dictIpa').addEventListener('change',renderDict);
 /* numbers */
 function renderNumber(){
   let n=parseInt($('numIn').value,10);
-  if(isNaN(n)){ $('numV').textContent='\u2014'; $('numIpa').textContent=''; $('numOrd').textContent=''; return; }
+  if(isNaN(n)){ $('numV').textContent='\u2013'; $('numIpa').textContent=''; $('numOrd').textContent=''; return; }
   n=Math.max(0,Math.min(9999,n));
   const card=numToVal(n);
   $('numV').textContent=card;
@@ -1157,8 +1227,8 @@ function renderNumber(){
 $('numIn').addEventListener('input',renderNumber);
 function buildNumTable(){
   const rows=[];
-  for(let i=0;i<=10;i++) rows.push([i,numToVal(i),i>=1?ordToVal(i):'\u2014']);
-  [20,30,40,50,60,70,80,90,100,1000].forEach(i=>rows.push([i,numToVal(i),'\u2014']));
+  for(let i=0;i<=10;i++) rows.push([i,numToVal(i),i>=1?ordToVal(i):'\u2013']);
+  [20,30,40,50,60,70,80,90,100,1000].forEach(i=>rows.push([i,numToVal(i),'\u2013']));
   $('numTable').innerHTML=rows.map(r=>'<tr><td><span class="en">'+r[0]+'</span></td><td><span class="v">'+escapeHtml(r[1])+'</span></td><td><span class="v">'+escapeHtml(r[2])+'</span></td></tr>').join('');
 }
 
@@ -1247,7 +1317,7 @@ function renderWantsUse(){
   body.querySelectorAll('.w-forge').forEach(b=>b.onclick=()=>forgeWant(b.dataset.w));
   body.querySelectorAll('.w-dismiss').forEach(b=>b.onclick=()=>dismissWant(b.dataset.w));
 }
-function forgeWant(w){ $('newEn').value=w; const ft=document.querySelector('.tab[data-v="forge"]'); if(ft) ft.click(); $('newV').focus(); }
+function forgeWant(w){ $('newEn').value=w; const ft=document.querySelector('.tab[data-v="forge"]'); if(ft) ft.click(); const sub=document.querySelector('.forge-tab[data-f="addword"]'); if(sub) sub.click(); $('newV').focus(); }
 function dismissWant(w){ delete wants[(w||'').toLowerCase()]; saveWants(); renderWantsUse(); updateWantsBadge(); }
 
 const CTIERS={
