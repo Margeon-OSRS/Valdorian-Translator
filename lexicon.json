@@ -1,159 +1,1088 @@
-[
-  { "v": "sa", "en": "the", "pos": "article" },
-  { "v": "vor", "en": "and", "pos": "conjunction" },
-  { "v": "thae", "en": "or", "pos": "conjunction" },
-  { "v": "dhel", "en": "but", "pos": "conjunction" },
-  { "v": "irth", "en": "if", "pos": "conjunction" },
-  { "v": "thurel", "en": "because", "pos": "conjunction" },
-  { "v": "mae", "en": "with", "pos": "preposition" },
-  { "v": "namae", "en": "without", "pos": "preposition", "note": "na- (neg) + mae" },
-  { "v": "drin", "en": "in", "pos": "preposition" },
-  { "v": "athel", "en": "on", "pos": "preposition" },
-  { "v": "duleth", "en": "under", "pos": "preposition" },
-  { "v": "ulvor", "en": "above", "pos": "preposition" },
-  { "v": "ren", "en": "to, toward", "pos": "preposition" },
-  { "v": "thraen", "en": "from", "pos": "preposition" },
-  { "v": "sael", "en": "at", "pos": "preposition" },
-  { "v": "luth", "en": "for", "pos": "preposition" },
-  { "v": "dha", "en": "this", "pos": "determiner" },
-  { "v": "tho", "en": "that", "pos": "determiner" },
-  { "v": "dhasel", "en": "here", "pos": "adverb", "note": "dha (this) + -sel (place)" },
-  { "v": "thosel", "en": "there", "pos": "adverb", "note": "tho (that) + -sel (place)" },
-  { "v": "vey", "en": "yes", "pos": "particle" },
-  { "v": "nav", "en": "no", "pos": "particle" },
-  { "v": "venar", "en": "who", "pos": "pronoun" },
-  { "v": "manar", "en": "what", "pos": "pronoun" },
-  { "v": "selar", "en": "where", "pos": "adverb" },
-  { "v": "tholar", "en": "when", "pos": "adverb" },
-  { "v": "thurar", "en": "why", "pos": "adverb" },
-  { "v": "midhar", "en": "how", "pos": "adverb" },
-  { "v": "olir", "en": "all", "pos": "determiner" },
-  { "v": "thessa", "en": "some", "pos": "determiner" },
-  { "v": "navthessa", "en": "none", "pos": "determiner", "note": "na- (neg) + thessa" },
-  { "v": "voldra", "en": "many", "pos": "determiner" },
-  { "v": "mindra", "en": "few", "pos": "determiner" },
-  { "v": "olira", "en": "every", "pos": "determiner" },
-  { "v": "pluren", "en": "more", "pos": "determiner" },
-  { "v": "minren", "en": "less", "pos": "determiner" },
-
-  { "v": "vis", "en": "to be", "pos": "verb" },
-  { "v": "draeth", "en": "to have", "pos": "verb" },
-  { "v": "daur", "en": "to go", "pos": "verb" },
-  { "v": "venth", "en": "to come", "pos": "verb" },
-  { "v": "lir", "en": "to see", "pos": "verb" },
-  { "v": "saur", "en": "to hear", "pos": "verb" },
-  { "v": "mith", "en": "to know", "pos": "verb" },
-  { "v": "morren", "en": "to think", "pos": "verb" },
-  { "v": "veth", "en": "to speak", "pos": "verb" },
-  { "v": "draen", "en": "to want", "pos": "verb" },
-  { "v": "muth", "en": "to need", "pos": "verb" },
-  { "v": "thael", "en": "to make, to build", "pos": "verb" },
-  { "v": "graen", "en": "to take", "pos": "verb" },
-  { "v": "darel", "en": "to give", "pos": "verb" },
-  { "v": "edhel", "en": "to eat", "pos": "verb" },
-  { "v": "mirath", "en": "to drink", "pos": "verb", "note": "tied to mira (water)" },
-  { "v": "dormel", "en": "to sleep", "pos": "verb" },
-  { "v": "vyren", "en": "to live", "pos": "verb" },
-  { "v": "morth", "en": "to die", "pos": "verb" },
-  { "v": "tharel", "en": "to work", "pos": "verb" },
-  { "v": "obren", "en": "to buy", "pos": "verb" },
-  { "v": "saldren", "en": "to sell", "pos": "verb" },
-  { "v": "argren", "en": "to pay", "pos": "verb" },
-  { "v": "marken", "en": "to trade", "pos": "verb" },
-  { "v": "graven", "en": "to write", "pos": "verb" },
-  { "v": "lethir", "en": "to read", "pos": "verb" },
-  { "v": "vael", "en": "to love", "pos": "verb" },
-  { "v": "vurth", "en": "to fight", "pos": "verb" },
-  { "v": "ambren", "en": "to walk", "pos": "verb" },
-  { "v": "helen", "en": "to help", "pos": "verb" },
-  { "v": "vorel", "en": "to open", "pos": "verb" },
-  { "v": "klauren", "en": "to close", "pos": "verb" },
-  { "v": "staren", "en": "to stand", "pos": "verb" },
-  { "v": "saeden", "en": "to sit", "pos": "verb" },
-
-  { "v": "mira", "en": "water", "pos": "noun" },
-  { "v": "vald", "en": "land, earth", "pos": "noun" },
-  { "v": "vyrra", "en": "fire", "pos": "noun" },
-  { "v": "aelir", "en": "wind, air", "pos": "noun" },
-  { "v": "garn", "en": "stone", "pos": "noun" },
-  { "v": "dravel", "en": "tree", "pos": "noun" },
-  { "v": "veldrav", "en": "forest", "pos": "noun", "note": "vel- (collective) + drav" },
-  { "v": "thalmir", "en": "sea", "pos": "noun", "note": "thal + mir (water)" },
-  { "v": "garoth", "en": "mountain", "pos": "noun" },
-  { "v": "mirvel", "en": "river", "pos": "noun", "note": "mir (water) + vel" },
-  { "v": "aelarn", "en": "sky", "pos": "noun" },
-  { "v": "solir", "en": "sun", "pos": "noun" },
-  { "v": "lunel", "en": "moon", "pos": "noun" },
-  { "v": "astril", "en": "star", "pos": "noun" },
-  { "v": "diel", "en": "day", "pos": "noun" },
-  { "v": "nethir", "en": "night", "pos": "noun" },
-  { "v": "annel", "en": "year", "pos": "noun" },
-  { "v": "andel", "en": "house", "pos": "noun" },
-  { "v": "veldur", "en": "city", "pos": "noun" },
-  { "v": "vidra", "en": "road", "pos": "noun" },
-  { "v": "porth", "en": "gate, door", "pos": "noun" },
-  { "v": "valum", "en": "wall", "pos": "noun" },
-  { "v": "gol", "en": "gold", "pos": "noun" },
-  { "v": "argal", "en": "silver", "pos": "noun" },
-  { "v": "ferral", "en": "iron", "pos": "noun" },
-  { "v": "nummel", "en": "coin", "pos": "noun" },
-  { "v": "marksel", "en": "market", "pos": "noun", "note": "mark + -sel (place)" },
-  { "v": "valan", "en": "person", "pos": "noun", "note": "val + -an" },
-  { "v": "velvalan", "en": "people", "pos": "noun", "note": "collective of valan" },
-  { "v": "viran", "en": "man", "pos": "noun" },
-  { "v": "lirana", "en": "woman", "pos": "noun" },
-  { "v": "minel", "en": "child", "pos": "noun" },
-  { "v": "amiren", "en": "friend", "pos": "noun" },
-  { "v": "navamiren", "en": "enemy", "pos": "noun", "note": "na- (neg) + amiren" },
-  { "v": "matel", "en": "mother", "pos": "noun" },
-  { "v": "patel", "en": "father", "pos": "noun" },
-  { "v": "fratel", "en": "brother", "pos": "noun" },
-  { "v": "soral", "en": "sister", "pos": "noun" },
-  { "v": "regnar", "en": "ruler", "pos": "noun" },
-  { "v": "ledhin", "en": "law", "pos": "noun" },
-  { "v": "vethel", "en": "word", "pos": "noun", "note": "veth (speak) + el" },
-  { "v": "nomel", "en": "name", "pos": "noun" },
-  { "v": "soreth", "en": "truth", "pos": "noun", "note": "sor (true) + -eth (abstract)" },
-  { "v": "lumel", "en": "light", "pos": "noun" },
-  { "v": "umbren", "en": "shadow", "pos": "noun" },
-  { "v": "manel", "en": "hand", "pos": "noun" },
-  { "v": "okel", "en": "eye", "pos": "noun" },
-  { "v": "kordel", "en": "heart", "pos": "noun" },
-  { "v": "kapel", "en": "head", "pos": "noun" },
-  { "v": "sangel", "en": "blood", "pos": "noun" },
-  { "v": "peden", "en": "foot", "pos": "noun" },
-  { "v": "edhen", "en": "food", "pos": "noun" },
-
-  { "v": "soren", "en": "true", "pos": "adjective" },
-  { "v": "navsoren", "en": "false", "pos": "adjective", "note": "na- (neg) + soren" },
-  { "v": "ruven", "en": "red", "pos": "adjective" },
-  { "v": "saelen", "en": "blue", "pos": "adjective" },
-  { "v": "viriden", "en": "green", "pos": "adjective" },
-  { "v": "alben", "en": "white", "pos": "adjective" },
-  { "v": "atren", "en": "black", "pos": "adjective" },
-  { "v": "golen", "en": "golden", "pos": "adjective", "note": "gol + -en (adj)" },
-  { "v": "magnen", "en": "great, big", "pos": "adjective" },
-  { "v": "minen", "en": "small", "pos": "adjective", "note": "min + -en" },
-  { "v": "bonen", "en": "good", "pos": "adjective" },
-  { "v": "malen", "en": "bad", "pos": "adjective" },
-  { "v": "noven", "en": "new", "pos": "adjective" },
-  { "v": "veten", "en": "old", "pos": "adjective" },
-  { "v": "forten", "en": "strong", "pos": "adjective" },
-  { "v": "navforten", "en": "weak", "pos": "adjective", "note": "na- (neg) + forten" },
-  { "v": "alten", "en": "high", "pos": "adjective" },
-  { "v": "imen", "en": "low", "pos": "adjective" },
-  { "v": "lonen", "en": "long", "pos": "adjective" },
-  { "v": "breven", "en": "short", "pos": "adjective" },
-  { "v": "frigen", "en": "cold", "pos": "adjective" },
-  { "v": "ferven", "en": "hot, warm", "pos": "adjective" },
-  { "v": "raden", "en": "fast", "pos": "adjective" },
-  { "v": "lenten", "en": "slow", "pos": "adjective" },
-
-  { "v": "nuel", "en": "now", "pos": "adverb" },
-  { "v": "thuel", "en": "then", "pos": "adverb" },
-  { "v": "hodel", "en": "today", "pos": "adverb" },
-  { "v": "dielith", "en": "tomorrow", "pos": "adverb", "note": "diel (day) + -ith (future)" },
-  { "v": "dielor", "en": "yesterday", "pos": "adverb", "note": "diel (day) + -or (past)" },
-  { "v": "semvel", "en": "always", "pos": "adverb" },
-  { "v": "navsemvel", "en": "never", "pos": "adverb", "note": "na- (neg) + semvel" }
-]
+{
+  "format": "valdorian-lexicon",
+  "version": 1,
+  "words": [
+    {
+      "v": "soluthel",
+      "en": "treaty/compact",
+      "pos": "n"
+    },
+    {
+      "v": "velthel",
+      "en": "decree (document)",
+      "pos": "n"
+    },
+    {
+      "v": "dhethael",
+      "en": "statute/legal code",
+      "pos": "n"
+    },
+    {
+      "v": "morrensel",
+      "en": "council chamber/hall",
+      "pos": "n"
+    },
+    {
+      "v": "morrenel",
+      "en": "assembly",
+      "pos": "n"
+    },
+    {
+      "v": "morrun",
+      "en": "quorum",
+      "pos": "n"
+    },
+    {
+      "v": "veladh",
+      "en": "oath",
+      "pos": "n"
+    },
+    {
+      "v": "vethadh",
+      "en": "vow/pledge",
+      "pos": "n"
+    },
+    {
+      "v": "dhethun",
+      "en": "verdict/ruling",
+      "pos": "n"
+    },
+    {
+      "v": "dhaeun",
+      "en": "penalty/fine",
+      "pos": "n"
+    },
+    {
+      "v": "selveth",
+      "en": "mercy/pardon",
+      "pos": "n"
+    },
+    {
+      "v": "velthun",
+      "en": "ledger entry/claim",
+      "pos": "n"
+    },
+    {
+      "v": "velvun",
+      "en": "record/document",
+      "pos": "n"
+    },
+    {
+      "v": "velthsel",
+      "en": "archive",
+      "pos": "n"
+    },
+    {
+      "v": "saelthel",
+      "en": "charter",
+      "pos": "n"
+    },
+    {
+      "v": "ornadh",
+      "en": "edict/mandate",
+      "pos": "n"
+    },
+    {
+      "v": "veshun",
+      "en": "testimony",
+      "pos": "n"
+    },
+    {
+      "v": "morrendun",
+      "en": "council seat",
+      "pos": "n"
+    },
+    {
+      "v": "kaeldun",
+      "en": "tax/levy",
+      "pos": "n"
+    },
+    {
+      "v": "ruseldun",
+      "en": "toll/tariff",
+      "pos": "n"
+    },
+    {
+      "v": "kaeldur",
+      "en": "debt",
+      "pos": "n"
+    },
+    {
+      "v": "goldun",
+      "en": "wealth/treasure",
+      "pos": "n"
+    },
+    {
+      "v": "velthin",
+      "en": "scribe/clerk",
+      "pos": "title"
+    },
+    {
+      "v": "kaeldan",
+      "en": "merchant/trader",
+      "pos": "title"
+    },
+    {
+      "v": "durin",
+      "en": "smith",
+      "pos": "title"
+    },
+    {
+      "v": "ruslhaelan",
+      "en": "pathfinder/scout",
+      "pos": "title",
+      "note": "map-maker for the Guild"
+    },
+    {
+      "v": "lhaeldin",
+      "en": "spy/informant",
+      "pos": "title"
+    },
+    {
+      "v": "draelorn",
+      "en": "captain/commander",
+      "pos": "title"
+    },
+    {
+      "v": "mirran",
+      "en": "sailor/mariner",
+      "pos": "title"
+    },
+    {
+      "v": "vorthorn",
+      "en": "marshal/warden",
+      "pos": "title"
+    },
+    {
+      "v": "kaelsel",
+      "en": "exchange/counting-house",
+      "pos": "n"
+    },
+    {
+      "v": "kaelar",
+      "en": "goods/cargo",
+      "pos": "n"
+    },
+    {
+      "v": "kaeldael",
+      "en": "wage/pay",
+      "pos": "n"
+    },
+    {
+      "v": "kaelun",
+      "en": "price/cost",
+      "pos": "n"
+    },
+    {
+      "v": "kaeleth",
+      "en": "profit/gain",
+      "pos": "n"
+    },
+    {
+      "v": "kaelmin",
+      "en": "loss",
+      "pos": "n"
+    },
+    {
+      "v": "goldsel",
+      "en": "treasury",
+      "pos": "n"
+    },
+    {
+      "v": "kaelvel",
+      "en": "caravan",
+      "pos": "n"
+    },
+    {
+      "v": "dursael",
+      "en": "forge/smithy",
+      "pos": "n"
+    },
+    {
+      "v": "durmar",
+      "en": "mine",
+      "pos": "n"
+    },
+    {
+      "v": "kaelnal",
+      "en": "guild",
+      "pos": "n"
+    },
+    {
+      "v": "saelnir",
+      "en": "colony/outpost",
+      "pos": "n"
+    },
+    {
+      "v": "valdael",
+      "en": "domain/territory",
+      "pos": "n"
+    },
+    {
+      "v": "valdfen",
+      "en": "border/frontier",
+      "pos": "n"
+    },
+    {
+      "v": "vorthsel",
+      "en": "fortress",
+      "pos": "n"
+    },
+    {
+      "v": "vorthel",
+      "en": "wall/rampart",
+      "pos": "n"
+    },
+    {
+      "v": "draelsael",
+      "en": "camp/castra",
+      "pos": "n"
+    },
+    {
+      "v": "mirvath",
+      "en": "harbor/port",
+      "pos": "n"
+    },
+    {
+      "v": "mirusel",
+      "en": "canal",
+      "pos": "n"
+    },
+    {
+      "v": "rusroth",
+      "en": "highway",
+      "pos": "n"
+    },
+    {
+      "v": "trusel",
+      "en": "bridge",
+      "pos": "n"
+    },
+    {
+      "v": "isvel",
+      "en": "gate",
+      "pos": "n"
+    },
+    {
+      "v": "dorvel",
+      "en": "door",
+      "pos": "n"
+    },
+    {
+      "v": "lhaelvel",
+      "en": "window",
+      "pos": "n"
+    },
+    {
+      "v": "isin",
+      "en": "key",
+      "pos": "n"
+    },
+    {
+      "v": "aursel",
+      "en": "lamp/lantern",
+      "pos": "n"
+    },
+    {
+      "v": "ornvel",
+      "en": "banner/standard",
+      "pos": "n"
+    },
+    {
+      "v": "velthil",
+      "en": "book/tome",
+      "pos": "n"
+    },
+    {
+      "v": "velthis",
+      "en": "page",
+      "pos": "n"
+    },
+    {
+      "v": "dorhil",
+      "en": "ink",
+      "pos": "n"
+    },
+    {
+      "v": "veldril",
+      "en": "pen/stylus",
+      "pos": "n"
+    },
+    {
+      "v": "velthsil",
+      "en": "seal/stamp",
+      "pos": "n"
+    },
+    {
+      "v": "valdvelth",
+      "en": "map",
+      "pos": "n",
+      "note": "land-record; for the Mapping Guild"
+    },
+    {
+      "v": "vethvel",
+      "en": "letter/message",
+      "pos": "n"
+    },
+    {
+      "v": "thel",
+      "en": "thread",
+      "pos": "n"
+    },
+    {
+      "v": "thelir",
+      "en": "needle",
+      "pos": "n"
+    },
+    {
+      "v": "thelsel",
+      "en": "loom",
+      "pos": "n"
+    },
+    {
+      "v": "thelae",
+      "en": "cloth/textile",
+      "pos": "n"
+    },
+    {
+      "v": "velael",
+      "en": "cloak/robe",
+      "pos": "n"
+    },
+    {
+      "v": "velar",
+      "en": "garment/clothing",
+      "pos": "n"
+    },
+    {
+      "v": "norvil",
+      "en": "wool",
+      "pos": "n"
+    },
+    {
+      "v": "thelvir",
+      "en": "to weave",
+      "pos": "v"
+    },
+    {
+      "v": "velvir",
+      "en": "to bind/tie",
+      "pos": "v"
+    },
+    {
+      "v": "vraen",
+      "en": "cloud",
+      "pos": "n"
+    },
+    {
+      "v": "miris",
+      "en": "mist/fog",
+      "pos": "n"
+    },
+    {
+      "v": "thelvor",
+      "en": "thunder",
+      "pos": "n"
+    },
+    {
+      "v": "theldrae",
+      "en": "lightning",
+      "pos": "n"
+    },
+    {
+      "v": "ailir",
+      "en": "frost",
+      "pos": "n"
+    },
+    {
+      "v": "mirdorn",
+      "en": "marsh/bog",
+      "pos": "n"
+    },
+    {
+      "v": "gorvel",
+      "en": "cave",
+      "pos": "n"
+    },
+    {
+      "v": "karnvor",
+      "en": "cliff",
+      "pos": "n"
+    },
+    {
+      "v": "valdrae",
+      "en": "plain/field",
+      "pos": "n"
+    },
+    {
+      "v": "thaelrae",
+      "en": "meadow",
+      "pos": "n"
+    },
+    {
+      "v": "mirun",
+      "en": "well/spring",
+      "pos": "n"
+    },
+    {
+      "v": "mirdov",
+      "en": "waterfall",
+      "pos": "n"
+    },
+    {
+      "v": "thaeldor",
+      "en": "root",
+      "pos": "n"
+    },
+    {
+      "v": "thaelin",
+      "en": "branch",
+      "pos": "n"
+    },
+    {
+      "v": "thaelis",
+      "en": "leaf",
+      "pos": "n"
+    },
+    {
+      "v": "thaelir",
+      "en": "seed",
+      "pos": "n"
+    },
+    {
+      "v": "thaesil",
+      "en": "grass",
+      "pos": "n"
+    },
+    {
+      "v": "theldil",
+      "en": "smoke",
+      "pos": "n"
+    },
+    {
+      "v": "theldur",
+      "en": "coal",
+      "pos": "n"
+    },
+    {
+      "v": "theldin",
+      "en": "ember",
+      "pos": "n"
+    },
+    {
+      "v": "theldis",
+      "en": "ash",
+      "pos": "n"
+    },
+    {
+      "v": "korven",
+      "en": "north",
+      "pos": "n",
+      "note": "direction"
+    },
+    {
+      "v": "dalven",
+      "en": "south",
+      "pos": "n",
+      "note": "direction"
+    },
+    {
+      "v": "aurven",
+      "en": "east",
+      "pos": "n",
+      "note": "direction"
+    },
+    {
+      "v": "ulven",
+      "en": "west",
+      "pos": "n",
+      "note": "direction"
+    },
+    {
+      "v": "uravel",
+      "en": "season",
+      "pos": "n"
+    },
+    {
+      "v": "thaeloth",
+      "en": "harvest",
+      "pos": "n"
+    },
+    {
+      "v": "maen",
+      "en": "hand",
+      "pos": "n"
+    },
+    {
+      "v": "kaln",
+      "en": "head",
+      "pos": "n"
+    },
+    {
+      "v": "vaelir",
+      "en": "heart",
+      "pos": "n"
+    },
+    {
+      "v": "lhin",
+      "en": "eye",
+      "pos": "n"
+    },
+    {
+      "v": "vethin",
+      "en": "mouth",
+      "pos": "n"
+    },
+    {
+      "v": "falin",
+      "en": "foot",
+      "pos": "n"
+    },
+    {
+      "v": "draen",
+      "en": "arm",
+      "pos": "n"
+    },
+    {
+      "v": "vraedil",
+      "en": "blood",
+      "pos": "n"
+    },
+    {
+      "v": "gornil",
+      "en": "bone",
+      "pos": "n"
+    },
+    {
+      "v": "velsil",
+      "en": "skin",
+      "pos": "n"
+    },
+    {
+      "v": "thaesin",
+      "en": "hair",
+      "pos": "n"
+    },
+    {
+      "v": "vethrae",
+      "en": "voice",
+      "pos": "n"
+    },
+    {
+      "v": "rhovin",
+      "en": "breath",
+      "pos": "n"
+    },
+    {
+      "v": "maelis",
+      "en": "bread",
+      "pos": "n"
+    },
+    {
+      "v": "ruvael",
+      "en": "wine",
+      "pos": "n"
+    },
+    {
+      "v": "morvil",
+      "en": "meat/flesh",
+      "pos": "n"
+    },
+    {
+      "v": "miran",
+      "en": "fish",
+      "pos": "n"
+    },
+    {
+      "v": "thaelos",
+      "en": "fruit",
+      "pos": "n"
+    },
+    {
+      "v": "gorsil",
+      "en": "salt",
+      "pos": "n"
+    },
+    {
+      "v": "mirkel",
+      "en": "cup",
+      "pos": "n"
+    },
+    {
+      "v": "drimin",
+      "en": "knife",
+      "pos": "n"
+    },
+    {
+      "v": "esketh",
+      "en": "fear",
+      "pos": "n"
+    },
+    {
+      "v": "soveth",
+      "en": "joy",
+      "pos": "n"
+    },
+    {
+      "v": "orveth",
+      "en": "honor",
+      "pos": "n"
+    },
+    {
+      "v": "dharveth",
+      "en": "shame",
+      "pos": "n"
+    },
+    {
+      "v": "duraveth",
+      "en": "courage",
+      "pos": "n"
+    },
+    {
+      "v": "norveth",
+      "en": "wisdom",
+      "pos": "n"
+    },
+    {
+      "v": "durael",
+      "en": "power/might",
+      "pos": "n"
+    },
+    {
+      "v": "durel",
+      "en": "strength",
+      "pos": "n"
+    },
+    {
+      "v": "orvael",
+      "en": "glory/renown",
+      "pos": "n"
+    },
+    {
+      "v": "dhethoth",
+      "en": "justice",
+      "pos": "n"
+    },
+    {
+      "v": "veshael",
+      "en": "faith/belief",
+      "pos": "n"
+    },
+    {
+      "v": "navesh",
+      "en": "doubt",
+      "pos": "n"
+    },
+    {
+      "v": "norael",
+      "en": "will/resolve",
+      "pos": "n"
+    },
+    {
+      "v": "vraemorn",
+      "en": "wrath",
+      "pos": "n"
+    },
+    {
+      "v": "morveth",
+      "en": "anger",
+      "pos": "n"
+    },
+    {
+      "v": "vethaer",
+      "en": "to ask",
+      "pos": "v"
+    },
+    {
+      "v": "vethaen",
+      "en": "to answer",
+      "pos": "v"
+    },
+    {
+      "v": "selael",
+      "en": "to help/aid",
+      "pos": "v"
+    },
+    {
+      "v": "aelvir",
+      "en": "to need",
+      "pos": "v"
+    },
+    {
+      "v": "elvir",
+      "en": "to feel",
+      "pos": "v"
+    },
+    {
+      "v": "lhaeldir",
+      "en": "to find/discover",
+      "pos": "v"
+    },
+    {
+      "v": "dairir",
+      "en": "to lose",
+      "pos": "v"
+    },
+    {
+      "v": "kethel",
+      "en": "to keep",
+      "pos": "v"
+    },
+    {
+      "v": "faeldir",
+      "en": "to send",
+      "pos": "v"
+    },
+    {
+      "v": "kethael",
+      "en": "to receive",
+      "pos": "v"
+    },
+    {
+      "v": "kethrir",
+      "en": "to carry/bear",
+      "pos": "v"
+    },
+    {
+      "v": "kelvir",
+      "en": "to hold/grasp",
+      "pos": "v"
+    },
+    {
+      "v": "faendir",
+      "en": "to bring",
+      "pos": "v"
+    },
+    {
+      "v": "isvir",
+      "en": "to open",
+      "pos": "v"
+    },
+    {
+      "v": "fenvir",
+      "en": "to close/shut",
+      "pos": "v"
+    },
+    {
+      "v": "dharvir",
+      "en": "to break",
+      "pos": "v"
+    },
+    {
+      "v": "doril",
+      "en": "to mend/repair",
+      "pos": "v"
+    },
+    {
+      "v": "thaevir",
+      "en": "to grow",
+      "pos": "v"
+    },
+    {
+      "v": "thaelvir",
+      "en": "to plant/sow",
+      "pos": "v"
+    },
+    {
+      "v": "thaelkir",
+      "en": "to reap/harvest",
+      "pos": "v"
+    },
+    {
+      "v": "lhasir",
+      "en": "to free/release",
+      "pos": "v"
+    },
+    {
+      "v": "veladhir",
+      "en": "to swear (an oath)",
+      "pos": "v"
+    },
+    {
+      "v": "kaeldir",
+      "en": "to pay",
+      "pos": "v"
+    },
+    {
+      "v": "duril",
+      "en": "to owe",
+      "pos": "v"
+    },
+    {
+      "v": "velthkir",
+      "en": "to reckon/tally",
+      "pos": "v",
+      "note": "ledger sense"
+    },
+    {
+      "v": "velsir",
+      "en": "to inscribe/record",
+      "pos": "v"
+    },
+    {
+      "v": "morrir",
+      "en": "to vote",
+      "pos": "v"
+    },
+    {
+      "v": "durvir",
+      "en": "to forge",
+      "pos": "v"
+    },
+    {
+      "v": "mirfael",
+      "en": "to sail",
+      "pos": "v"
+    },
+    {
+      "v": "falvir",
+      "en": "to march",
+      "pos": "v"
+    },
+    {
+      "v": "felvir",
+      "en": "to flee",
+      "pos": "v"
+    },
+    {
+      "v": "velvael",
+      "en": "to gather/collect",
+      "pos": "v"
+    },
+    {
+      "v": "kaelvir",
+      "en": "to trade",
+      "pos": "v"
+    },
+    {
+      "v": "vraevir",
+      "en": "to fight",
+      "pos": "v"
+    },
+    {
+      "v": "vraewir",
+      "en": "to win",
+      "pos": "v"
+    },
+    {
+      "v": "ornvir",
+      "en": "to command/order",
+      "pos": "v"
+    },
+    {
+      "v": "guren",
+      "en": "heavy",
+      "pos": "adj"
+    },
+    {
+      "v": "rhoven",
+      "en": "light (in weight)",
+      "pos": "adj"
+    },
+    {
+      "v": "kelven",
+      "en": "deep",
+      "pos": "adj"
+    },
+    {
+      "v": "trahen",
+      "en": "wide",
+      "pos": "adj"
+    },
+    {
+      "v": "minen",
+      "en": "narrow",
+      "pos": "adj"
+    },
+    {
+      "v": "dailen",
+      "en": "long",
+      "pos": "adj"
+    },
+    {
+      "v": "felen",
+      "en": "short",
+      "pos": "adj"
+    },
+    {
+      "v": "duren",
+      "en": "hard",
+      "pos": "adj"
+    },
+    {
+      "v": "thelen",
+      "en": "soft",
+      "pos": "adj"
+    },
+    {
+      "v": "drimen",
+      "en": "sharp",
+      "pos": "adj"
+    },
+    {
+      "v": "gornen",
+      "en": "dull/blunt",
+      "pos": "adj"
+    },
+    {
+      "v": "silren",
+      "en": "clean",
+      "pos": "adj"
+    },
+    {
+      "v": "dornen",
+      "en": "dirty",
+      "pos": "adj"
+    },
+    {
+      "v": "kaelen",
+      "en": "rich/wealthy",
+      "pos": "adj"
+    },
+    {
+      "v": "minkael",
+      "en": "poor",
+      "pos": "adj"
+    },
+    {
+      "v": "noren",
+      "en": "wise",
+      "pos": "adj"
+    },
+    {
+      "v": "minoren",
+      "en": "foolish",
+      "pos": "adj"
+    },
+    {
+      "v": "duraven",
+      "en": "brave",
+      "pos": "adj"
+    },
+    {
+      "v": "soluten",
+      "en": "loyal/faithful",
+      "pos": "adj"
+    },
+    {
+      "v": "dhethen",
+      "en": "just/lawful",
+      "pos": "adj"
+    },
+    {
+      "v": "velen",
+      "en": "swift/fast",
+      "pos": "adj"
+    },
+    {
+      "v": "thalen",
+      "en": "slow",
+      "pos": "adj"
+    },
+    {
+      "v": "naven",
+      "en": "empty",
+      "pos": "adj"
+    },
+    {
+      "v": "olven",
+      "en": "full",
+      "pos": "adj"
+    },
+    {
+      "v": "auren",
+      "en": "bright",
+      "pos": "adj"
+    },
+    {
+      "v": "naluren",
+      "en": "dark",
+      "pos": "adj"
+    },
+    {
+      "v": "selven",
+      "en": "quiet/calm",
+      "pos": "adj"
+    },
+    {
+      "v": "elaren",
+      "en": "loud",
+      "pos": "adj"
+    },
+    {
+      "v": "navlhaen",
+      "en": "hidden/secret",
+      "pos": "adj"
+    },
+    {
+      "v": "arven",
+      "en": "ready",
+      "pos": "adj"
+    },
+    {
+      "v": "morthen",
+      "en": "deadly/dangerous",
+      "pos": "adj"
+    },
+    {
+      "v": "gileten",
+      "en": "silver/silvern",
+      "pos": "adj"
+    },
+    {
+      "v": "velduren",
+      "en": "iron (of iron)",
+      "pos": "adj"
+    },
+    {
+      "v": "dharven",
+      "en": "broken",
+      "pos": "adj"
+    },
+    {
+      "v": "vorthvel",
+      "en": "army/host",
+      "pos": "n"
+    },
+    {
+      "v": "vraethel",
+      "en": "battle",
+      "pos": "n"
+    },
+    {
+      "v": "vraethael",
+      "en": "victory",
+      "pos": "n"
+    },
+    {
+      "v": "vraedov",
+      "en": "defeat",
+      "pos": "n"
+    },
+    {
+      "v": "dharnan",
+      "en": "enemy/foe",
+      "pos": "n"
+    },
+    {
+      "v": "draelir",
+      "en": "spear",
+      "pos": "n"
+    },
+    {
+      "v": "lhirin",
+      "en": "arrow",
+      "pos": "n"
+    },
+    {
+      "v": "vorthil",
+      "en": "armor",
+      "pos": "n"
+    },
+    {
+      "v": "draelnel",
+      "en": "legion",
+      "pos": "n"
+    }
+  ]
+}
