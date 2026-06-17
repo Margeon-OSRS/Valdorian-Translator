@@ -138,6 +138,20 @@ td{padding:9px 10px;border-bottom:1px solid var(--line);vertical-align:top;font-
 td .v{color:var(--ink);}td .en{color:var(--ink-dim);}
 td .ipa{font-family:ui-monospace,monospace;color:var(--verd);font-size:13px;}
 .pos-tag{font-size:10px;letter-spacing:.5px;text-transform:uppercase;color:var(--verd);border:1px solid var(--verd-dim);border-radius:9px;padding:1px 7px;}
+/* lexicon as cards */
+.dict-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px;margin:14px 0 4px;}
+.wcard{background:linear-gradient(180deg,var(--panel),var(--slate));border:1px solid var(--line);border-radius:8px;
+  padding:15px 16px;display:flex;flex-direction:column;gap:6px;min-height:128px;transition:border-color .18s,transform .18s;}
+.wcard:hover{border-color:var(--verd-dim);transform:translateY(-2px);}
+.wcard .hw{font-family:'Cinzel',serif;color:var(--bronze);font-size:21px;line-height:1.15;overflow-wrap:anywhere;}
+.wcard .src{align-self:flex-start;font-family:'Cinzel',serif;font-size:9px;letter-spacing:1.5px;text-transform:uppercase;
+  padding:2px 8px;border-radius:9px;border:1px solid var(--verd-dim);color:var(--verd);opacity:.9;}
+.wcard .src.added{color:var(--bronze);border-color:var(--bronze-dim);}
+.wcard .ipa{font-family:ui-monospace,Menlo,Consolas,monospace;color:var(--verd);font-size:13px;overflow-wrap:anywhere;}
+.wcard .mean{color:var(--ink);font-size:16px;font-weight:600;line-height:1.25;}
+.wcard .pos{color:var(--ink-dim);font-style:italic;font-size:13px;margin-top:auto;padding-top:4px;}
+.dict-empty{grid-column:1/-1;text-align:center;color:var(--ink-dim);font-style:italic;padding:28px 0;}
+@media(max-width:540px){.dict-grid{grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px;}.wcard{padding:13px 13px;min-height:112px;}}
 
 .controls{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:14px;}
 .controls input[type=search]{flex:1;min-width:160px;background:var(--slate);border:1px solid var(--line);color:var(--ink);
@@ -358,10 +372,10 @@ footer b{color:var(--bronze);font-variant:small-caps;letter-spacing:1px;}
         <option value="pron">pronouns</option><option value="det">determiners</option><option value="num">numbers</option>
         <option value="ord">ordinals</option><option value="title">titles</option><option value="intj">interjections</option><option value="q">questions</option>
       </select>
-      <label class="toggle"><input type="checkbox" id="dictIpa"> voice</label>
+      <label class="toggle"><input type="checkbox" id="dictIpa" checked> voice</label>
     </div>
     <div id="dictCount" class="status" style="text-align:left;"></div>
-    <table><thead><tr><th>Valdorian</th><th>Meaning</th><th>Part</th></tr></thead><tbody id="dictBody"></tbody></table>
+    <div id="dictGrid" class="dict-grid"></div>
   </section>
 
   <!-- ============ WANTS ============ -->
@@ -1090,21 +1104,34 @@ $('clearBtn').addEventListener('click',()=>{
 });
 
 /* dictionary */
+const POS_LABEL={n:"Noun",v:"Verb",adj:"Adjective",adv:"Adverb",prep:"Preposition",conj:"Conjunction",
+  pron:"Pronoun",det:"Determiner",num:"Number",ord:"Ordinal",title:"Title",intj:"Interjection",q:"Question"};
 function renderDict(){
   const q=($('dictSearch').value||'').trim().toLowerCase();
   const pos=$('dictPos').value;
   const showIpa=$('dictIpa').checked;
+  const fset={}; fetchedWords.forEach(w=>fset[w.v.toLowerCase()]=1);
+  const cset={}; customWords.forEach(w=>cset[w.v.toLowerCase()]=1);
   let rows=lex().filter(d=>{
     if(pos&&d.pos!==pos) return false;
     if(!q) return true;
     return d.v.toLowerCase().includes(q)||d.en.toLowerCase().includes(q);
   }).sort((a,b)=>a.v.toLowerCase().localeCompare(b.v.toLowerCase()));
   $('dictCount').textContent=rows.length+' of '+lex().length+' entries';
-  $('dictBody').innerHTML=rows.map(d=>
-    '<tr><td><span class="v">'+escapeHtml(d.v)+'</span>'+(showIpa?'<br><span class="ipa">'+escapeHtml(ipaText(d.v))+'</span>':'')+'</td>'+
-    '<td><span class="en">'+escapeHtml(d.en)+'</span></td>'+
-    '<td><span class="pos-tag">'+escapeHtml(d.pos)+'</span></td></tr>'
-  ).join('');
+  if(!rows.length){ $('dictGrid').innerHTML='<div class="dict-empty">No words match that search.</div>'; return; }
+  $('dictGrid').innerHTML=rows.map(d=>{
+    const k=d.v.toLowerCase();
+    const src = cset[k] ? '<span class="src added">added</span>'
+              : fset[k] ? '<span class="src">lexicon</span>' : '';
+    const ipa = showIpa ? '<span class="ipa">'+escapeHtml(ipaText(d.v))+'</span>' : '';
+    const label = POS_LABEL[d.pos]||d.pos;
+    return '<article class="wcard">'+
+      '<span class="hw">'+escapeHtml(d.v)+'</span>'+
+      src+ipa+
+      '<span class="mean">'+escapeHtml(d.en)+'</span>'+
+      '<span class="pos">'+escapeHtml(label)+'</span>'+
+    '</article>';
+  }).join('');
 }
 $('dictSearch').addEventListener('input',renderDict);
 $('dictPos').addEventListener('change',renderDict);
