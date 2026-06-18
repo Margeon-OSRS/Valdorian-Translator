@@ -811,14 +811,97 @@ function splitWords(text){
     return {pre:m[1],core:m[2],post:m[3]};
   });
 }
+/* ===== particles: English function words realised as Valdorian affixes ===== */
+const NEGATORS = new Set(["not","never","n't","dont","don't","doesnt","doesn't","didnt","didn't",
+  "cant","can't","cannot","wont","won't","isnt","isn't","arent","aren't","wasnt","wasn't","werent","weren't"]);
+const FUTURE   = new Set(["will","shall","'ll","ll"]);   // -> -ith  (future)
+const PAST_AUX = new Set(["did"]);                       // -> -or   (past) on next verb
+const DROP_AUX = new Set(["do","does"]);                 // do-support: silent
+const GEN_PREP = new Set(["of"]);                        // next noun -> -en (genitive)
+const FARPAST  = new Set(["would"]);                     // -> -oren (far past / conditional)
+const ART_AFTER_ALL = new Set(["the","sa"]);             // swallowed inside "all the N"
+
+function vowelStart(s){ return !!s && 'aeiou'.indexOf(s[0].toLowerCase())>=0; }
+function negPrefix(v){ return vowelStart(v) ? 'na'+v : 'nav'+v; }
+function genSuffix(v){ return /en$/.test(v) ? v : v+'en'; }
+function futSuffix(v){ return v+'ith'; }
+function farPastSuffix(v){ return v+'oren'; }
+
+/* lemma resolver: the bare root record for an English word, ignoring inflection */
+function resolveRoot(w){
+  w=(w||'').toLowerCase();
+  if(enToV[w]) return enToV[w][0];
+  if(IRREG_EN[w]){ const lemma=IRREG_EN[w][0]; if(enToV[lemma]) return enToV[lemma][0]; }
+  const tries=[];
+  if(w.length>4&&w.endsWith('ies')) tries.push(w.slice(0,-3)+'y');
+  if(w.length>3&&w.endsWith('es'))  tries.push(w.slice(0,-2));
+  if(w.length>2&&w.endsWith('s')&&!w.endsWith('ss')) tries.push(w.slice(0,-1));
+  for(const stem of tries){ if(enToV[stem]) return enToV[stem][0]; }
+  return null;
+}
+
 function translateEnToVal(text){
   const out=[]; let prevNum=false;
+  let pendNeg=false, pendFut=false, pendPast=false, pendFarPast=false, pendGen=false;
+  let pendColl=false, usedPending=false;
+
+  function flushAll(){ if(pendColl){ const r=resolveEng('all'); if(r) out.push({v:r.v,en:'all',note:null,pos:r.pos,pre:'',post:'',miss:false}); pendColl=false; } }
+  function flushUsed(){ if(usedPending){ const r=resolveEng('used'); out.push(r?{v:r.v,en:'used',note:r.note,pos:r.pos,pre:'',post:'',miss:false}:{v:null,en:'used',pos:null,pre:'',post:'',miss:true}); usedPending=false; } }
+
   for(const tk of splitWords(text)){
-    if(tk.raw){ out.push({v:tk.core,en:tk.core,pos:null,pre:'',post:'',miss:false}); continue; }
-    const rr=resolveEng(tk.core,{afterNumber:prevNum});
-    if(rr){ out.push({v:rr.v,en:tk.core,note:rr.note,pos:rr.pos,pre:tk.pre,post:tk.post,miss:false}); prevNum=(rr.pos==='num'); }
-    else { out.push({v:null,en:tk.core,pos:null,pre:tk.pre,post:tk.post,miss:true}); prevNum=false; }
+    if(tk.raw){ flushAll(); flushUsed(); out.push({v:tk.core,en:tk.core,pos:null,pre:'',post:'',miss:false}); continue; }
+    const lc=tk.core.toLowerCase();
+
+    /* continue an open "all ..." or "used ..." cluster */
+    if(pendColl && ART_AFTER_ALL.has(lc)){ continue; }                 // swallow "the" in "all the N"
+    if(usedPending){
+      if(lc==='to'){ pendFarPast=true; usedPending=false; continue; }  // "used to" -> far past
+      flushUsed();                                                      // "used" was the verb; fall through
+    }
+
+    /* intercept grammar particles before lexicon lookup */
+    if(NEGATORS.has(lc)){ flushAll(); pendNeg=true; prevNum=false; continue; }
+    if(FUTURE.has(lc)){   flushAll(); pendFut=true; prevNum=false; continue; }
+    if(FARPAST.has(lc)){  flushAll(); pendFarPast=true; prevNum=false; continue; }
+    if(PAST_AUX.has(lc)){ flushAll(); pendPast=true; prevNum=false; continue; }
+    if(DROP_AUX.has(lc)){ flushAll(); prevNum=false; continue; }
+    if(GEN_PREP.has(lc)){ flushAll(); pendGen=true; prevNum=false; continue; }
+    if(lc==='all'){       flushAll(); pendColl=true; prevNum=false; continue; }
+    if(lc==='used'){      flushAll(); usedPending=true; prevNum=false; continue; }
+
+    /* collective: "all (the) N" -> vel- on the root noun, no count plural */
+    if(pendColl){
+      const root=resolveRoot(tk.core);
+      if(root && (root.pos==='n'||root.pos==='title')){
+        let v='vel'+root.v, note='coll.';
+        if(pendGen){ v=genSuffix(v); note+=' · of'; pendGen=false; }
+        if(pendNeg){ v=negPrefix(v); note+=' · not'; pendNeg=false; }
+        out.push({v,en:tk.core,note,pos:root.pos,pre:tk.pre,post:tk.post,miss:false});
+        pendColl=false; prevNum=false; continue;
+      }
+      flushAll(); /* "all" wasn't a collective trigger -> emit as determiner, then process word */
+    }
+
+    /* possessive 's -> genitive on this noun */
+    let posGen=false, core=tk.core;
+    if(/['']s$/i.test(lc) && !enToV[lc]){ posGen=true; core=tk.core.replace(/['']s$/i,''); }
+
+    const rr=resolveEng(core,{afterNumber:prevNum});
+    if(rr){
+      let v=rr.v, note=rr.note;
+      if(pendFarPast && rr.pos==='v'){ v=farPastSuffix(rr.v); note='far past'; pendFarPast=false; }
+      else if(pendFut && rr.pos==='v'){ v=futSuffix(rr.v); note='future'; pendFut=false; }
+      else if(pendPast && rr.pos==='v'){ v=rr.v+'or'; note='past'; pendPast=false; }
+      if((pendGen||posGen) && (rr.pos==='n'||rr.pos==='title')){ v=genSuffix(v); note=note?note+' · of':'of/-en'; pendGen=false; }
+      if(pendNeg && ['v','n','adj','pron','title'].includes(rr.pos)){ v=negPrefix(v); note=note?note+' · not':'not'; pendNeg=false; }
+      out.push({v,en:tk.core,note,pos:rr.pos,pre:tk.pre,post:tk.post,miss:false});
+      prevNum=(rr.pos==='num');
+    } else {
+      out.push({v:null,en:tk.core,pos:null,pre:tk.pre,post:tk.post,miss:true});
+      prevNum=false;
+    }
   }
+  flushAll(); flushUsed();
   return out;
 }
 /* move attributive adjectives to follow their noun (Valdorian order) */
