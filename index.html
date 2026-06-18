@@ -123,6 +123,29 @@ textarea::placeholder,input.vin::placeholder{color:#566;font-style:italic;}
 .toggle{display:inline-flex;align-items:center;gap:7px;cursor:pointer;color:var(--ink-dim);font-size:12px;letter-spacing:.5px;text-transform:uppercase;}
 .toggle input{accent-color:var(--verd);width:15px;height:15px;}
 
+/* scrollable, clickable list of roots for the forge */
+.rootbox{margin-top:14px;border-top:1px solid var(--line);padding-top:14px;}
+.rootbox-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:9px;flex-wrap:wrap;}
+.rootbox-head .lbl{margin:0;}
+.rootbox-search{flex:1;min-width:130px;max-width:240px;background:var(--abyss);border:1px solid var(--line);
+  color:var(--ink);font-size:13px;padding:6px 9px;border-radius:2px;}
+.rootbox-search::placeholder{color:#566;font-style:italic;}
+.rootlist{max-height:220px;overflow-y:auto;border:1px solid var(--line);border-radius:3px;background:var(--abyss);
+  display:flex;flex-direction:column;}
+.rootlist::-webkit-scrollbar{width:10px;}
+.rootlist::-webkit-scrollbar-track{background:var(--abyss);}
+.rootlist::-webkit-scrollbar-thumb{background:var(--verd-dim);border-radius:5px;}
+.rootlist{scrollbar-width:thin;scrollbar-color:var(--verd-dim) var(--abyss);}
+.rootlist .ri{display:flex;align-items:baseline;gap:8px;padding:7px 11px;border:none;background:transparent;
+  width:100%;text-align:left;cursor:pointer;border-bottom:1px solid var(--line);transition:background .12s;}
+.rootlist .ri:last-child{border-bottom:none;}
+.rootlist .ri:hover{background:var(--panel2);}
+.rootlist .ri .rv{color:var(--bronze);font-variant:small-caps;letter-spacing:.5px;font-size:15px;}
+.rootlist .ri .ren{color:var(--ink-dim);font-style:italic;font-size:13px;}
+.rootlist .ri .rpos{margin-left:auto;color:var(--verd);font-size:10px;letter-spacing:1px;text-transform:uppercase;}
+.rootlist .empty{padding:11px;color:#566;font-style:italic;font-size:13px;text-align:center;}
+.rootbox-cap{color:var(--ink-dim);font-size:12px;font-style:italic;margin-top:7px;}
+
 h2{font-variant:small-caps;letter-spacing:2px;color:var(--bronze);font-size:21px;margin:30px 0 6px;font-weight:600;}
 h3{font-variant:small-caps;letter-spacing:1.5px;color:var(--verd);font-size:16px;margin:22px 0 8px;font-weight:600;}
 .note{background:var(--slate);border-left:2px solid var(--verd-dim);border-radius:3px;padding:11px 14px;
@@ -302,6 +325,8 @@ footer b{color:var(--bronze);font-variant:small-caps;letter-spacing:1px;}
   <section class="view" id="v-forge">
     <p class="body" style="text-align:center;margin:0 auto 18px;max-width:560px;">The forge is where the tongue grows. Join roots, take a word apart, bring a foreign name into Valdorian sound, coin new names, or add an entry to the shared lexicon.</p>
 
+    <datalist id="rootList"></datalist>
+
     <div class="forge-nav" id="forgeNav">
       <button class="forge-tab active" data-f="compound">Compound</button>
       <button class="forge-tab" data-f="unforge">Unforge</button>
@@ -313,29 +338,45 @@ footer b{color:var(--bronze);font-variant:small-caps;letter-spacing:1px;}
     <!-- Compound -->
     <div class="forge-panel active" id="fp-compound">
       <h2>Compound</h2>
-      <p class="body">Valdorian builds meaning by joining roots. Stack two and read the seam.</p>
+      <p class="body">Valdorian builds meaning by joining roots. Stack two and read the seam. Click a field to pick from the lexicon, or type freely.</p>
       <div class="field">
         <div class="row">
-          <input class="vin" id="cmpA" placeholder="first root or word" style="flex:1;min-width:120px;">
+          <input class="vin" id="cmpA" list="rootList" placeholder="first root or word" style="flex:1;min-width:120px;">
           <span style="color:var(--ink-dim);font-size:22px;">+</span>
-          <input class="vin" id="cmpB" placeholder="second root or word" style="flex:1;min-width:120px;">
+          <input class="vin" id="cmpB" list="rootList" placeholder="second root or word" style="flex:1;min-width:120px;">
         </div>
         <div class="row" style="margin-top:12px;">
           <button class="btn solid" id="cmpBtn">Join</button>
           <span id="cmpHint" style="color:var(--ink-dim);font-size:13px;"></span>
         </div>
         <div class="out" id="cmpOut" style="min-height:0;margin-top:10px;"></div>
+        <div class="rootbox">
+          <div class="rootbox-head">
+            <span class="lbl">Roots</span>
+            <input class="rootbox-search" id="cmpRootSearch" placeholder="filter roots&hellip;">
+          </div>
+          <div class="rootlist" id="cmpRootList"></div>
+          <div class="rootbox-cap">Click a root to drop it into the focused field (first field by default).</div>
+        </div>
       </div>
     </div>
 
     <!-- Unforge -->
     <div class="forge-panel" id="fp-unforge">
       <h2>Unforge</h2>
-      <p class="body">Peel a Valdorian word back into its affixes and roots.</p>
+      <p class="body">Peel a Valdorian word back into its affixes and roots. Click the field to pick a known word, or type one in.</p>
       <div class="field">
-        <input class="vin" id="segIn" placeholder="e.g. velvaelanai, navsoren, miravald">
+        <input class="vin" id="segIn" list="rootList" placeholder="e.g. velvaelanai, navsoren, miravald">
         <div class="row" style="margin-top:12px;"><button class="btn solid" id="segBtn">Unforge</button></div>
         <div class="out" id="segOut" style="min-height:0;margin-top:10px;"></div>
+        <div class="rootbox">
+          <div class="rootbox-head">
+            <span class="lbl">Words &amp; roots</span>
+            <input class="rootbox-search" id="segRootSearch" placeholder="filter roots&hellip;">
+          </div>
+          <div class="rootlist" id="segRootList"></div>
+          <div class="rootbox-cap">Click a word to load it into the field above, then unforge it.</div>
+        </div>
       </div>
     </div>
 
@@ -1482,6 +1523,66 @@ function buildVerbList(){
     const o=document.createElement('option'); o.value=d.v; o.textContent=d.v+' \u00b7 '+d.en; dl.appendChild(o);
   });
 }
+function buildRootList(){
+  // de-duplicated, sorted roots from the whole lexicon
+  rootEntries=[]; const seen=new Set();
+  lex().slice().sort((a,b)=>a.v.localeCompare(b.v)).forEach(d=>{
+    if(seen.has(d.v)) return; seen.add(d.v);
+    rootEntries.push({v:d.v,en:d.en,pos:d.pos});
+  });
+  // autocomplete datalist (kept for type-ahead in the inputs)
+  const dl=$('rootList');
+  if(dl){ dl.innerHTML=''; rootEntries.forEach(d=>{
+    const o=document.createElement('option'); o.value=d.v; o.textContent=d.v+' \u00b7 '+d.en; dl.appendChild(o);
+  }); }
+  // the visible scrollable lists
+  renderRootBox('cmpRootList', ($('cmpRootSearch')||{}).value||'');
+  renderRootBox('segRootList', ($('segRootSearch')||{}).value||'');
+}
+let rootEntries=[];
+const POS_SHORT={n:'n',v:'v',adj:'adj',adv:'adv',prep:'prep',conj:'conj',pron:'pron',det:'det',num:'num',ord:'ord',title:'title',intj:'intj',q:'q'};
+function renderRootBox(boxId, filter){
+  const box=$(boxId); if(!box) return;
+  const q=(filter||'').trim().toLowerCase();
+  const items=q? rootEntries.filter(d=>d.v.toLowerCase().includes(q)||(d.en||'').toLowerCase().includes(q)) : rootEntries;
+  if(!items.length){ box.innerHTML='<div class="empty">no roots match.</div>'; return; }
+  box.innerHTML=items.map(d=>
+    '<button type="button" class="ri" data-v="'+escapeHtml(d.v)+'">'+
+      '<span class="rv">'+escapeHtml(d.v)+'</span>'+
+      '<span class="ren">'+escapeHtml(d.en)+'</span>'+
+      '<span class="rpos">'+escapeHtml(POS_SHORT[d.pos]||d.pos||'')+'</span>'+
+    '</button>'
+  ).join('');
+}
+/* remember which compound field the user last touched, so a click drops the root there */
+let lastCmpField='cmpA';
+let rootBoxWired=false;
+function wireRootBoxes(){
+  if(rootBoxWired) return; rootBoxWired=true;
+  ['cmpA','cmpB'].forEach(id=>{ const el=$(id); if(el) el.addEventListener('focus',()=>{ lastCmpField=id; }); });
+  /* compound list: click drops into the focused field, or the first empty one */
+  const cbox=$('cmpRootList');
+  if(cbox) cbox.addEventListener('click',e=>{ const b=e.target.closest('.ri'); if(!b) return;
+    const v=b.dataset.v;
+    let target=lastCmpField;
+    if($(target)&&$(target).value.trim()){
+      if(!$('cmpA').value.trim()) target='cmpA';
+      else if(!$('cmpB').value.trim()) target='cmpB';
+    }
+    $(target).value=v; $(target).focus(); lastCmpField=target;
+  });
+  /* unforge list: click loads the word and unforges it */
+  const sbox=$('segRootList');
+  if(sbox) sbox.addEventListener('click',e=>{ const b=e.target.closest('.ri'); if(!b) return;
+    $('segIn').value=b.dataset.v; if($('segBtn')) $('segBtn').click(); $('segIn').focus();
+  });
+  /* filter boxes */
+  ['cmpRootSearch','segRootSearch'].forEach(id=>{ const el=$(id); if(!el) return;
+    const boxId = id==='cmpRootSearch'?'cmpRootList':'segRootList';
+    el.addEventListener('input',()=>renderRootBox(boxId, el.value));
+  });
+}
+wireRootBoxes();
 function negate(v){ return v.charAt(0)==='v' ? 'na'+v : 'nav'+v; }
 function renderConj(){
   const raw=$('verbInput').value.trim(); const body=$('conjBody'); body.innerHTML='';
@@ -1506,7 +1607,7 @@ $('verbInput').addEventListener('input',renderConj);
 function renderAll(){
   rebuildMaps();
   renderDict(); buildNumTable(); renderNumber(); renderPrButtons(); renderPronoun(); updateLexStatus();
-  buildVerbList(); updateWantsBadge(); renderWants();
+  buildVerbList(); buildRootList(); updateWantsBadge(); renderWants();
 }
 /* Boot immediately on built-in + saved words so nothing blocks on the network. */
 loadCustom(); loadWants(); renderAll();
