@@ -2090,6 +2090,421 @@
       "v": "dhethan",
       "en": "judge/arbiter",
       "pos": "title"
+    },
+    {
+      "v": "anrae",
+      "en": "where",
+      "pos": "adv"
+    },
+    {
+      "v": "anur",
+      "en": "when",
+      "pos": "adv"
+    },
+    {
+      "v": "anveth",
+      "en": "how",
+      "pos": "adv"
+    },
+    {
+      "v": "delen",
+      "en": "some",
+      "pos": "quant"
+    },
+    {
+      "v": "elen",
+      "en": "other",
+      "pos": "adj"
+    },
+    {
+      "v": "thraen",
+      "en": "thick",
+      "pos": "adj"
+    },
+    {
+      "v": "minraen",
+      "en": "thin",
+      "pos": "adj"
+    },
+    {
+      "v": "solthaer",
+      "en": "wife",
+      "pos": "n"
+    },
+    {
+      "v": "soldaur",
+      "en": "husband",
+      "pos": "n"
+    },
+    {
+      "v": "minvis",
+      "en": "louse",
+      "pos": "n"
+    },
+    {
+      "v": "lhaevis",
+      "en": "worm",
+      "pos": "n"
+    },
+    {
+      "v": "thaelkin",
+      "en": "stick",
+      "pos": "n"
+    },
+    {
+      "v": "thaelsil",
+      "en": "bark",
+      "pos": "n"
+    },
+    {
+      "v": "thelorn",
+      "en": "rope",
+      "pos": "n"
+    },
+    {
+      "v": "gurvil",
+      "en": "fat",
+      "pos": "n"
+    },
+    {
+      "v": "lhiril",
+      "en": "egg",
+      "pos": "n"
+    },
+    {
+      "v": "drimil",
+      "en": "horn",
+      "pos": "n"
+    },
+    {
+      "v": "felir",
+      "en": "tail",
+      "pos": "n"
+    },
+    {
+      "v": "lhiris",
+      "en": "feather",
+      "pos": "n"
+    },
+    {
+      "v": "elavin",
+      "en": "ear",
+      "pos": "n"
+    },
+    {
+      "v": "rhovis",
+      "en": "nose",
+      "pos": "n"
+    },
+    {
+      "v": "maelin",
+      "en": "tooth",
+      "pos": "n"
+    },
+    {
+      "v": "vethil",
+      "en": "tongue",
+      "pos": "n"
+    },
+    {
+      "v": "maendrim",
+      "en": "fingernail",
+      "pos": "n"
+    },
+    {
+      "v": "falael",
+      "en": "leg",
+      "pos": "n"
+    },
+    {
+      "v": "falvin",
+      "en": "knee",
+      "pos": "n"
+    },
+    {
+      "v": "lhirvel",
+      "en": "wing",
+      "pos": "n"
+    },
+    {
+      "v": "maelsel",
+      "en": "belly",
+      "pos": "n"
+    },
+    {
+      "v": "maelvil",
+      "en": "guts",
+      "pos": "n"
+    },
+    {
+      "v": "kalin",
+      "en": "neck",
+      "pos": "n"
+    },
+    {
+      "v": "felsil",
+      "en": "back",
+      "pos": "n"
+    },
+    {
+      "v": "vaelsel",
+      "en": "breast",
+      "pos": "n"
+    },
+    {
+      "v": "vaelvil",
+      "en": "liver",
+      "pos": "n"
+    },
+    {
+      "v": "maeldir",
+      "en": "bite",
+      "pos": "v"
+    },
+    {
+      "v": "ruvel",
+      "en": "suck",
+      "pos": "v"
+    },
+    {
+      "v": "vethdir",
+      "en": "spit",
+      "pos": "v"
+    },
+    {
+      "v": "maeldov",
+      "en": "vomit",
+      "pos": "v"
+    },
+    {
+      "v": "rhovir",
+      "en": "blow",
+      "pos": "v"
+    },
+    {
+      "v": "rhovael",
+      "en": "breathe",
+      "pos": "v"
+    },
+    {
+      "v": "sovir",
+      "en": "laugh",
+      "pos": "v"
+    },
+    {
+      "v": "rhovnir",
+      "en": "smell",
+      "pos": "v"
+    },
+    {
+      "v": "morfir",
+      "en": "kill",
+      "pos": "v"
+    },
+    {
+      "v": "lhaelvir",
+      "en": "hunt",
+      "pos": "v"
+    },
+    {
+      "v": "vorfir",
+      "en": "hit",
+      "pos": "v"
+    },
+    {
+      "v": "drimir",
+      "en": "cut",
+      "pos": "v"
+    },
+    {
+      "v": "drimkir",
+      "en": "split",
+      "pos": "v"
+    },
+    {
+      "v": "draelfir",
+      "en": "stab",
+      "pos": "v"
+    },
+    {
+      "v": "drimvel",
+      "en": "scratch",
+      "pos": "v"
+    },
+    {
+      "v": "gorvir",
+      "en": "dig",
+      "pos": "v"
+    },
+    {
+      "v": "mirvir",
+      "en": "swim",
+      "pos": "v"
+    },
+    {
+      "v": "lhirir",
+      "en": "fly",
+      "pos": "v"
+    },
+    {
+      "v": "seldov",
+      "en": "lie (recline)",
+      "pos": "v"
+    },
+    {
+      "v": "rovir",
+      "en": "turn",
+      "pos": "v"
+    },
+    {
+      "v": "kelfir",
+      "en": "squeeze",
+      "pos": "v"
+    },
+    {
+      "v": "dorvir",
+      "en": "rub",
+      "pos": "v"
+    },
+    {
+      "v": "mirvel",
+      "en": "wash",
+      "pos": "v"
+    },
+    {
+      "v": "silvir",
+      "en": "wipe",
+      "pos": "v"
+    },
+    {
+      "v": "keldir",
+      "en": "pull",
+      "pos": "v"
+    },
+    {
+      "v": "fenfir",
+      "en": "push",
+      "pos": "v"
+    },
+    {
+      "v": "faefir",
+      "en": "throw",
+      "pos": "v"
+    },
+    {
+      "v": "thelvel",
+      "en": "sew",
+      "pos": "v"
+    },
+    {
+      "v": "vethael",
+      "en": "sing",
+      "pos": "v"
+    },
+    {
+      "v": "sovael",
+      "en": "play",
+      "pos": "v"
+    },
+    {
+      "v": "mirsael",
+      "en": "float",
+      "pos": "v"
+    },
+    {
+      "v": "mirfir",
+      "en": "flow",
+      "pos": "v"
+    },
+    {
+      "v": "ailvir",
+      "en": "freeze",
+      "pos": "v"
+    },
+    {
+      "v": "olvir",
+      "en": "swell",
+      "pos": "v"
+    },
+    {
+      "v": "mirvael",
+      "en": "lake",
+      "pos": "n"
+    },
+    {
+      "v": "goris",
+      "en": "sand",
+      "pos": "n"
+    },
+    {
+      "v": "gordis",
+      "en": "dust",
+      "pos": "n"
+    },
+    {
+      "v": "thelfir",
+      "en": "burn",
+      "pos": "v"
+    },
+    {
+      "v": "dharvil",
+      "en": "rotten",
+      "pos": "adj"
+    },
+    {
+      "v": "ornen",
+      "en": "straight",
+      "pos": "adj"
+    },
+    {
+      "v": "irven",
+      "en": "round",
+      "pos": "adj"
+    },
+    {
+      "v": "silven",
+      "en": "smooth",
+      "pos": "adj"
+    },
+    {
+      "v": "miren",
+      "en": "wet",
+      "pos": "adj"
+    },
+    {
+      "v": "thelnen",
+      "en": "dry",
+      "pos": "adj"
+    },
+    {
+      "v": "solven",
+      "en": "correct",
+      "pos": "adj"
+    },
+    {
+      "v": "durhen",
+      "en": "right (side)",
+      "pos": "adj"
+    },
+    {
+      "v": "minhen",
+      "en": "left (side)",
+      "pos": "adj"
+    },
+    {
+      "v": "ens",
+      "en": "at",
+      "pos": "prep"
+    },
+    {
+      "v": "dhesel",
+      "en": "because",
+      "pos": "conj"
+    },
+    {
+      "v": "vesin",
+      "en": "name",
+      "pos": "n"
     }
   ]
 }
