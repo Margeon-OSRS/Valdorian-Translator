@@ -269,7 +269,7 @@ footer b{color:var(--bronze);font-variant:small-caps;letter-spacing:1px;}
     <button class="tab" data-v="conj">Conjugate</button>
     <button class="tab" data-v="numbers">Numbers</button>
     <button class="tab" data-v="pronouns">Pronouns</button>
-    <button class="tab" data-v="grammar">The Tongue</button>
+    <button class="tab" data-v="grammar">Rules</button>
   </div>
 
   <!-- ============ TRANSLATE ============ -->
@@ -505,7 +505,7 @@ footer b{color:var(--bronze);font-variant:small-caps;letter-spacing:1px;}
 
   <!-- ============ GRAMMAR ============ -->
   <section class="view" id="v-grammar">
-    <h2>The Tongue</h2>
+    <h2>Rules</h2>
     <p class="body">Valdorian (<b>Vethrin</b>, "the spoken") is the lingua franca of the Confederation, carried across Valdoria, Varn, and Charskin Isle. It is built to be transparent: roots join at the seam, and every grammatical change is a single, visible affix.</p>
 
     <h3>Sound</h3>
@@ -822,7 +822,7 @@ const FARPAST  = new Set(["would"]);                     // -> -oren (far past /
 const ART_AFTER_ALL = new Set(["the","sa"]);             // swallowed inside "all the N"
 
 function vowelStart(s){ return !!s && 'aeiou'.indexOf(s[0].toLowerCase())>=0; }
-function negPrefix(v){ return vowelStart(v) ? 'na'+v : 'nav'+v; }
+function negPrefix(v){ return v.charAt(0)==='v' ? 'na'+v : 'nav'+v; }
 function genSuffix(v){ return /en$/.test(v) ? v : v+'en'; }
 function futSuffix(v){ return v+'ith'; }
 function farPastSuffix(v){ return v+'oren'; }
