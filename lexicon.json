@@ -1083,6 +1083,1013 @@
       "v": "draelnel",
       "en": "legion",
       "pos": "n"
+    },
+    {
+      "v": "nael",
+      "en": "I/me",
+      "pos": "pron"
+    },
+    {
+      "v": "naen",
+      "en": "we/us",
+      "pos": "pron"
+    },
+    {
+      "v": "thael",
+      "en": "you (singular)",
+      "pos": "pron"
+    },
+    {
+      "v": "thaen",
+      "en": "you (plural)",
+      "pos": "pron"
+    },
+    {
+      "v": "vael",
+      "en": "he/she/it",
+      "pos": "pron"
+    },
+    {
+      "v": "vaen",
+      "en": "they/them",
+      "pos": "pron"
+    },
+    {
+      "v": "sen",
+      "en": "this",
+      "pos": "det"
+    },
+    {
+      "v": "son",
+      "en": "that",
+      "pos": "det"
+    },
+    {
+      "v": "senrae",
+      "en": "here",
+      "pos": "adv"
+    },
+    {
+      "v": "sonrae",
+      "en": "there",
+      "pos": "adv"
+    },
+    {
+      "v": "anken",
+      "en": "who",
+      "pos": "pron"
+    },
+    {
+      "v": "ulken",
+      "en": "what",
+      "pos": "pron"
+    },
+    {
+      "v": "vaelan",
+      "en": "self/one's own",
+      "pos": "pron"
+    },
+    {
+      "v": "aen",
+      "en": "one",
+      "pos": "num"
+    },
+    {
+      "v": "daer",
+      "en": "two",
+      "pos": "num"
+    },
+    {
+      "v": "tir",
+      "en": "three",
+      "pos": "num"
+    },
+    {
+      "v": "karn",
+      "en": "four",
+      "pos": "num"
+    },
+    {
+      "v": "nel",
+      "en": "five",
+      "pos": "num"
+    },
+    {
+      "v": "sirn",
+      "en": "six",
+      "pos": "num"
+    },
+    {
+      "v": "velk",
+      "en": "seven",
+      "pos": "num"
+    },
+    {
+      "v": "dorn",
+      "en": "eight",
+      "pos": "num"
+    },
+    {
+      "v": "gael",
+      "en": "nine",
+      "pos": "num"
+    },
+    {
+      "v": "daeth",
+      "en": "ten",
+      "pos": "num"
+    },
+    {
+      "v": "oren",
+      "en": "hundred",
+      "pos": "num"
+    },
+    {
+      "v": "orethon",
+      "en": "thousand",
+      "pos": "num"
+    },
+    {
+      "v": "navel",
+      "en": "zero/nil",
+      "pos": "num"
+    },
+    {
+      "v": "delven",
+      "en": "half",
+      "pos": "num"
+    },
+    {
+      "v": "aenen",
+      "en": "first",
+      "pos": "ord"
+    },
+    {
+      "v": "daeren",
+      "en": "second",
+      "pos": "ord"
+    },
+    {
+      "v": "olen",
+      "en": "many",
+      "pos": "quant"
+    },
+    {
+      "v": "minel",
+      "en": "few",
+      "pos": "quant"
+    },
+    {
+      "v": "olael",
+      "en": "all",
+      "pos": "quant"
+    },
+    {
+      "v": "naveth",
+      "en": "none/nothing",
+      "pos": "quant"
+    },
+    {
+      "v": "velthael",
+      "en": "number/count",
+      "pos": "n"
+    },
+    {
+      "v": "urael",
+      "en": "time",
+      "pos": "n"
+    },
+    {
+      "v": "aurin",
+      "en": "day",
+      "pos": "n"
+    },
+    {
+      "v": "nalin",
+      "en": "night",
+      "pos": "n"
+    },
+    {
+      "v": "aurael",
+      "en": "morning",
+      "pos": "n"
+    },
+    {
+      "v": "nalael",
+      "en": "evening",
+      "pos": "n"
+    },
+    {
+      "v": "uren",
+      "en": "year",
+      "pos": "n"
+    },
+    {
+      "v": "nalrael",
+      "en": "month",
+      "pos": "n",
+      "note": "lunar cycle"
+    },
+    {
+      "v": "urin",
+      "en": "hour",
+      "pos": "n"
+    },
+    {
+      "v": "uris",
+      "en": "moment/instant",
+      "pos": "n"
+    },
+    {
+      "v": "senur",
+      "en": "now",
+      "pos": "adv"
+    },
+    {
+      "v": "sonur",
+      "en": "then",
+      "pos": "adv"
+    },
+    {
+      "v": "olur",
+      "en": "always",
+      "pos": "adv"
+    },
+    {
+      "v": "navur",
+      "en": "never",
+      "pos": "adv"
+    },
+    {
+      "v": "velur",
+      "en": "soon",
+      "pos": "adv"
+    },
+    {
+      "v": "aurun",
+      "en": "midday/noon",
+      "pos": "n"
+    },
+    {
+      "v": "faenaurin",
+      "en": "tomorrow",
+      "pos": "n"
+    },
+    {
+      "v": "felaurin",
+      "en": "yesterday",
+      "pos": "n"
+    },
+    {
+      "v": "aurel",
+      "en": "sun",
+      "pos": "n"
+    },
+    {
+      "v": "irel",
+      "en": "moon",
+      "pos": "n"
+    },
+    {
+      "v": "aursin",
+      "en": "star",
+      "pos": "n"
+    },
+    {
+      "v": "aurvael",
+      "en": "sky/heavens",
+      "pos": "n"
+    },
+    {
+      "v": "thelas",
+      "en": "fire",
+      "pos": "n"
+    },
+    {
+      "v": "theldae",
+      "en": "flame",
+      "pos": "n"
+    },
+    {
+      "v": "mirel",
+      "en": "water",
+      "pos": "n"
+    },
+    {
+      "v": "mirroth",
+      "en": "river",
+      "pos": "n"
+    },
+    {
+      "v": "mirael",
+      "en": "sea/ocean",
+      "pos": "n"
+    },
+    {
+      "v": "mirdil",
+      "en": "rain",
+      "pos": "n"
+    },
+    {
+      "v": "ailel",
+      "en": "snow",
+      "pos": "n"
+    },
+    {
+      "v": "ailun",
+      "en": "ice",
+      "pos": "n"
+    },
+    {
+      "v": "rhovel",
+      "en": "wind",
+      "pos": "n"
+    },
+    {
+      "v": "vraevel",
+      "en": "storm",
+      "pos": "n"
+    },
+    {
+      "v": "gorael",
+      "en": "earth/ground",
+      "pos": "n"
+    },
+    {
+      "v": "goril",
+      "en": "stone/rock",
+      "pos": "n"
+    },
+    {
+      "v": "gorvael",
+      "en": "mountain",
+      "pos": "n"
+    },
+    {
+      "v": "thaelvel",
+      "en": "forest/wood",
+      "pos": "n"
+    },
+    {
+      "v": "thaelorn",
+      "en": "tree",
+      "pos": "n"
+    },
+    {
+      "v": "aurvis",
+      "en": "flower/bloom",
+      "pos": "n"
+    },
+    {
+      "v": "durmael",
+      "en": "metal",
+      "pos": "n"
+    },
+    {
+      "v": "goldil",
+      "en": "gold (substance)",
+      "pos": "n"
+    },
+    {
+      "v": "thaelas",
+      "en": "timber/wood (material)",
+      "pos": "n"
+    },
+    {
+      "v": "maelan",
+      "en": "person",
+      "pos": "n"
+    },
+    {
+      "v": "maelnal",
+      "en": "people/folk",
+      "pos": "n"
+    },
+    {
+      "v": "daurin",
+      "en": "man",
+      "pos": "n"
+    },
+    {
+      "v": "thaerin",
+      "en": "woman",
+      "pos": "n"
+    },
+    {
+      "v": "minin",
+      "en": "child",
+      "pos": "n"
+    },
+    {
+      "v": "thaeran",
+      "en": "mother",
+      "pos": "n"
+    },
+    {
+      "v": "dauran",
+      "en": "father",
+      "pos": "n"
+    },
+    {
+      "v": "minan",
+      "en": "son",
+      "pos": "n"
+    },
+    {
+      "v": "minael",
+      "en": "daughter",
+      "pos": "n"
+    },
+    {
+      "v": "daurel",
+      "en": "brother",
+      "pos": "n"
+    },
+    {
+      "v": "thaerel",
+      "en": "sister",
+      "pos": "n"
+    },
+    {
+      "v": "solan",
+      "en": "friend/ally",
+      "pos": "n"
+    },
+    {
+      "v": "dharin",
+      "en": "stranger/foreigner",
+      "pos": "n"
+    },
+    {
+      "v": "noran",
+      "en": "elder",
+      "pos": "title"
+    },
+    {
+      "v": "ornan",
+      "en": "lord/ruler",
+      "pos": "title"
+    },
+    {
+      "v": "ornael",
+      "en": "lady/sovereign-fem",
+      "pos": "title"
+    },
+    {
+      "v": "selvin",
+      "en": "servant",
+      "pos": "title"
+    },
+    {
+      "v": "ornin",
+      "en": "master",
+      "pos": "title"
+    },
+    {
+      "v": "velthan",
+      "en": "citizen",
+      "pos": "title",
+      "note": "ledger-bearer; one entered in the public record"
+    },
+    {
+      "v": "morvan",
+      "en": "beast/animal",
+      "pos": "n"
+    },
+    {
+      "v": "lhirael",
+      "en": "bird",
+      "pos": "n"
+    },
+    {
+      "v": "falorn",
+      "en": "horse",
+      "pos": "n"
+    },
+    {
+      "v": "vorvan",
+      "en": "dog/hound",
+      "pos": "n"
+    },
+    {
+      "v": "morvorn",
+      "en": "wolf",
+      "pos": "n"
+    },
+    {
+      "v": "gurvan",
+      "en": "ox/cattle",
+      "pos": "n"
+    },
+    {
+      "v": "norvan",
+      "en": "sheep",
+      "pos": "n"
+    },
+    {
+      "v": "dornvan",
+      "en": "pig/swine",
+      "pos": "n"
+    },
+    {
+      "v": "lhaevorn",
+      "en": "serpent/snake",
+      "pos": "n"
+    },
+    {
+      "v": "dharvan",
+      "en": "rat/vermin",
+      "pos": "n"
+    },
+    {
+      "v": "silen",
+      "en": "white",
+      "pos": "adj"
+    },
+    {
+      "v": "nalen",
+      "en": "black",
+      "pos": "adj"
+    },
+    {
+      "v": "vraeden",
+      "en": "red",
+      "pos": "adj"
+    },
+    {
+      "v": "thaesen",
+      "en": "green",
+      "pos": "adj"
+    },
+    {
+      "v": "mirsen",
+      "en": "blue",
+      "pos": "adj"
+    },
+    {
+      "v": "aursen",
+      "en": "gold/yellow",
+      "pos": "adj"
+    },
+    {
+      "v": "thelden",
+      "en": "grey",
+      "pos": "adj"
+    },
+    {
+      "v": "gorsen",
+      "en": "brown",
+      "pos": "adj"
+    },
+    {
+      "v": "lhinen",
+      "en": "color",
+      "pos": "n"
+    },
+    {
+      "v": "falir",
+      "en": "to go",
+      "pos": "v"
+    },
+    {
+      "v": "faenir",
+      "en": "to come",
+      "pos": "v"
+    },
+    {
+      "v": "lhinir",
+      "en": "to see",
+      "pos": "v"
+    },
+    {
+      "v": "elavir",
+      "en": "to hear",
+      "pos": "v"
+    },
+    {
+      "v": "elavel",
+      "en": "to listen",
+      "pos": "v"
+    },
+    {
+      "v": "vethir",
+      "en": "to speak",
+      "pos": "v"
+    },
+    {
+      "v": "vethel",
+      "en": "to say/tell",
+      "pos": "v"
+    },
+    {
+      "v": "norir",
+      "en": "to know",
+      "pos": "v"
+    },
+    {
+      "v": "norvir",
+      "en": "to think",
+      "pos": "v"
+    },
+    {
+      "v": "norvel",
+      "en": "to learn",
+      "pos": "v"
+    },
+    {
+      "v": "durvel",
+      "en": "to make/build",
+      "pos": "v"
+    },
+    {
+      "v": "kelir",
+      "en": "to take",
+      "pos": "v"
+    },
+    {
+      "v": "faelir",
+      "en": "to give",
+      "pos": "v"
+    },
+    {
+      "v": "maelir",
+      "en": "to eat",
+      "pos": "v"
+    },
+    {
+      "v": "ruvir",
+      "en": "to drink",
+      "pos": "v"
+    },
+    {
+      "v": "vaelvir",
+      "en": "to live",
+      "pos": "v"
+    },
+    {
+      "v": "morvir",
+      "en": "to die",
+      "pos": "v"
+    },
+    {
+      "v": "thaenir",
+      "en": "to be born",
+      "pos": "v"
+    },
+    {
+      "v": "selvir",
+      "en": "to sleep",
+      "pos": "v"
+    },
+    {
+      "v": "arvir",
+      "en": "to wake",
+      "pos": "v"
+    },
+    {
+      "v": "vorvir",
+      "en": "to stand",
+      "pos": "v"
+    },
+    {
+      "v": "selir",
+      "en": "to sit",
+      "pos": "v"
+    },
+    {
+      "v": "falvel",
+      "en": "to walk",
+      "pos": "v"
+    },
+    {
+      "v": "velfir",
+      "en": "to run",
+      "pos": "v"
+    },
+    {
+      "v": "dovir",
+      "en": "to fall",
+      "pos": "v"
+    },
+    {
+      "v": "aurvir",
+      "en": "to rise",
+      "pos": "v"
+    },
+    {
+      "v": "aelir",
+      "en": "to want/desire",
+      "pos": "v"
+    },
+    {
+      "v": "vaelael",
+      "en": "to love",
+      "pos": "v"
+    },
+    {
+      "v": "morvael",
+      "en": "to hate",
+      "pos": "v"
+    },
+    {
+      "v": "eskir",
+      "en": "to fear",
+      "pos": "v"
+    },
+    {
+      "v": "aenir",
+      "en": "to begin",
+      "pos": "v"
+    },
+    {
+      "v": "fenir",
+      "en": "to end/finish",
+      "pos": "v"
+    },
+    {
+      "v": "vorvael",
+      "en": "to attack/make war",
+      "pos": "v"
+    },
+    {
+      "v": "vorthir",
+      "en": "to defend/guard",
+      "pos": "v"
+    },
+    {
+      "v": "ornir",
+      "en": "to rule/govern",
+      "pos": "v"
+    },
+    {
+      "v": "solir",
+      "en": "to obey",
+      "pos": "v"
+    },
+    {
+      "v": "dhethir",
+      "en": "to judge",
+      "pos": "v"
+    },
+    {
+      "v": "velthir",
+      "en": "to claim/file a claim",
+      "pos": "v",
+      "note": "ledger sense"
+    },
+    {
+      "v": "solael",
+      "en": "to trust",
+      "pos": "v"
+    },
+    {
+      "v": "dharvel",
+      "en": "to betray",
+      "pos": "v"
+    },
+    {
+      "v": "kaelir",
+      "en": "to buy",
+      "pos": "v"
+    },
+    {
+      "v": "kaelfir",
+      "en": "to sell",
+      "pos": "v"
+    },
+    {
+      "v": "durvael",
+      "en": "to work/labor",
+      "pos": "v"
+    },
+    {
+      "v": "thalvir",
+      "en": "to wait",
+      "pos": "v"
+    },
+    {
+      "v": "solen",
+      "en": "good",
+      "pos": "adj"
+    },
+    {
+      "v": "dharen",
+      "en": "bad/evil",
+      "pos": "adj"
+    },
+    {
+      "v": "traen",
+      "en": "big/great",
+      "pos": "adj"
+    },
+    {
+      "v": "minven",
+      "en": "small/little",
+      "pos": "adj"
+    },
+    {
+      "v": "aenven",
+      "en": "new",
+      "pos": "adj"
+    },
+    {
+      "v": "urven",
+      "en": "old",
+      "pos": "adj"
+    },
+    {
+      "v": "minuren",
+      "en": "young",
+      "pos": "adj"
+    },
+    {
+      "v": "thelven",
+      "en": "hot/warm",
+      "pos": "adj"
+    },
+    {
+      "v": "ailen",
+      "en": "cold",
+      "pos": "adj"
+    },
+    {
+      "v": "aurnen",
+      "en": "high/tall",
+      "pos": "adj"
+    },
+    {
+      "v": "dovnen",
+      "en": "low",
+      "pos": "adj"
+    },
+    {
+      "v": "senfen",
+      "en": "near",
+      "pos": "adj"
+    },
+    {
+      "v": "sonfen",
+      "en": "far",
+      "pos": "adj"
+    },
+    {
+      "v": "velthen",
+      "en": "true",
+      "pos": "adj",
+      "note": "recorded; established in the record"
+    },
+    {
+      "v": "navelthen",
+      "en": "false",
+      "pos": "adj",
+      "note": "unrecorded; contrary to the record"
+    },
+    {
+      "v": "olnen",
+      "en": "whole/intact",
+      "pos": "adj"
+    },
+    {
+      "v": "veshen",
+      "en": "sacred/holy",
+      "pos": "adj"
+    },
+    {
+      "v": "morren",
+      "en": "public/common",
+      "pos": "adj",
+      "note": "of the assembly or record"
+    },
+    {
+      "v": "vaelen",
+      "en": "private/own",
+      "pos": "adj"
+    },
+    {
+      "v": "lhasen",
+      "en": "free",
+      "pos": "adj"
+    },
+    {
+      "v": "durnen",
+      "en": "indebted/owed",
+      "pos": "adj"
+    },
+    {
+      "v": "durven",
+      "en": "strong",
+      "pos": "adj"
+    },
+    {
+      "v": "minduren",
+      "en": "weak",
+      "pos": "adj"
+    },
+    {
+      "v": "ae",
+      "en": "and",
+      "pos": "conj"
+    },
+    {
+      "v": "os",
+      "en": "or",
+      "pos": "conj"
+    },
+    {
+      "v": "na",
+      "en": "not/no",
+      "pos": "part"
+    },
+    {
+      "v": "sa",
+      "en": "yes",
+      "pos": "part"
+    },
+    {
+      "v": "as",
+      "en": "with",
+      "pos": "prep"
+    },
+    {
+      "v": "nas",
+      "en": "without",
+      "pos": "prep"
+    },
+    {
+      "v": "is",
+      "en": "in/inside",
+      "pos": "prep"
+    },
+    {
+      "v": "uls",
+      "en": "out/outside",
+      "pos": "prep"
+    },
+    {
+      "v": "sur",
+      "en": "on/upon",
+      "pos": "prep"
+    },
+    {
+      "v": "dov",
+      "en": "under/below",
+      "pos": "prep"
+    },
+    {
+      "v": "faes",
+      "en": "to/toward",
+      "pos": "prep"
+    },
+    {
+      "v": "els",
+      "en": "from",
+      "pos": "prep"
+    },
+    {
+      "v": "delfen",
+      "en": "between",
+      "pos": "prep"
+    },
+    {
+      "v": "osel",
+      "en": "if",
+      "pos": "conj"
+    },
+    {
+      "v": "nasel",
+      "en": "but",
+      "pos": "conj"
+    },
+    {
+      "v": "oleth",
+      "en": "very/much",
+      "pos": "adv"
+    },
+    {
+      "v": "aursael",
+      "en": "temple/shrine",
+      "pos": "n",
+      "note": "place of Aurelion"
+    },
+    {
+      "v": "vaelun",
+      "en": "life",
+      "pos": "n"
+    },
+    {
+      "v": "morun",
+      "en": "death",
+      "pos": "n"
+    },
+    {
+      "v": "vaeloth",
+      "en": "soul/spirit",
+      "pos": "n"
+    },
+    {
+      "v": "dhethan",
+      "en": "judge/arbiter",
+      "pos": "title"
     }
   ]
 }
