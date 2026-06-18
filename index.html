@@ -214,6 +214,16 @@ select{background:var(--slate);border:1px solid var(--line);color:var(--ink);fon
 .forge-panel.active{display:block;}
 .forge-panel h2{margin-top:0;}
 @media(max-width:480px){.forge-tab{padding:7px 10px;letter-spacing:1px;}}
+/* dialect sub-tabs */
+.dia-nav{display:flex;justify-content:center;gap:6px;flex-wrap:wrap;margin:0 auto 22px;
+  border:1px solid var(--line);border-radius:6px;padding:6px;background:linear-gradient(180deg,var(--panel),var(--slate));max-width:360px;}
+.dia-tab{font-family:'Cinzel',serif;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;
+  background:transparent;border:1px solid transparent;color:var(--ink-dim);padding:8px 14px;cursor:pointer;border-radius:3px;transition:all .15s;}
+.dia-tab:hover{color:var(--ink);}
+.dia-tab.active{color:var(--abyss);background:var(--bronze-soft);border-color:var(--bronze-soft);font-weight:700;}
+.dia-panel{display:none;animation:fade .25s ease;}
+.dia-panel.active{display:block;}
+.wcard .wstd{color:var(--ink-dim);font-size:11px;font-style:italic;display:block;margin-top:2px;}
 /* mode buttons (wants) */
 .modebar{display:flex;justify-content:center;gap:6px;margin-bottom:16px;}
 .modebtn{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;background:transparent;border:1px solid var(--line);color:var(--ink-dim);padding:8px 16px;cursor:pointer;border-radius:2px;transition:all .15s;}
@@ -607,6 +617,13 @@ footer b{color:var(--bronze);font-variant:small-caps;letter-spacing:1px;}
     <h2>Rural Vethrin</h2>
     <p class="body" style="text-align:center;margin:0 auto 18px;max-width:580px;">The unhurried speech of Valdoria's southern reaches. Not a tongue apart, but standard Vethrin softened in the mouth &mdash; clusters loosen, hard sounds give way, and the last vowel is drawn long. It borrows every word from the standard lexicon and bends the sound, so nothing here needs its own dictionary.</p>
 
+    <div class="dia-nav" id="diaNav">
+      <button class="dia-tab active" data-d="translate">Translate</button>
+      <button class="dia-tab" data-d="lexicon">Lexicon</button>
+    </div>
+
+    <!-- Rural translate -->
+    <div class="dia-panel active" id="dp-translate">
     <div class="dirbar">
       <span class="dirlabel on">English</span>
       <span class="swap" style="cursor:default;opacity:.5">&#8594;</span>
@@ -642,6 +659,26 @@ footer b{color:var(--bronze);font-variant:small-caps;letter-spacing:1px;}
       </tbody>
     </table>
     <div class="note"><b>One tongue, slower.</b> Rural Vethrin keeps the grammar of the standard speech &mdash; the same word order, the same suffixes for tense and number, the same prefixes for the collective and negation. Only the sound relaxes. A speaker of the council halls and a speaker of the southern farms understand one another without trouble; the difference is in the ease of the mouth, not the meaning.</div>
+    </div><!-- /dp-translate -->
+
+    <!-- Rural lexicon -->
+    <div class="dia-panel" id="dp-lexicon">
+      <p class="body" style="text-align:center;margin:0 auto 16px;max-width:560px;">The whole lexicon, spoken the southern way. Every standard word with the rural shifts laid over it &mdash; the standard form is noted beneath each, since the two share one meaning.</p>
+      <div class="controls">
+        <input type="search" id="rdictSearch" placeholder="Search rural, standard, or English&hellip;">
+        <select id="rdictPos">
+          <option value="">all parts</option>
+          <option value="n">nouns</option><option value="v">verbs</option><option value="adj">adjectives</option>
+          <option value="adv">adverbs</option><option value="prep">prepositions</option><option value="conj">conjunctions</option>
+          <option value="pron">pronouns</option><option value="det">determiners</option><option value="num">numbers</option>
+          <option value="ord">ordinals</option><option value="title">titles</option><option value="intj">interjections</option><option value="q">questions</option>
+        </select>
+        <label class="toggle"><input type="checkbox" id="rdictIpa" checked> voice</label>
+        <label class="toggle"><input type="checkbox" id="rdictShifted"> only shifted</label>
+      </div>
+      <div id="rdictCount" class="status" style="text-align:left;"></div>
+      <div id="rdictGrid" class="dict-grid"></div>
+    </div><!-- /dp-lexicon -->
   </section>
 
   <footer>
@@ -1316,6 +1353,59 @@ if($('rdIn')){
   if($('rdPng')) $('rdPng').addEventListener('click',()=>{ drawConscriptPng($('rdOut').dataset.script||$('rdOut').dataset.plain||''); });
 }
 
+/* dialect sub-tabs */
+document.querySelectorAll('.dia-tab').forEach(t=>t.addEventListener('click',()=>{
+  document.querySelectorAll('.dia-tab').forEach(x=>x.classList.remove('active'));
+  document.querySelectorAll('.dia-panel').forEach(x=>x.classList.remove('active'));
+  t.classList.add('active');
+  $('dp-'+t.dataset.d).classList.add('active');
+  if(t.dataset.d==='lexicon') renderRuralDict();
+}));
+
+/* rural lexicon — the standard lexicon with rural rules applied, no second dictionary */
+function renderRuralDict(){
+  if(!$('rdictGrid')) return;
+  const q=($('rdictSearch').value||'').trim().toLowerCase();
+  const pos=$('rdictPos').value;
+  const showIpa=$('rdictIpa').checked;
+  const onlyShifted=$('rdictShifted').checked;
+  const fset={}; fetchedWords.forEach(w=>fset[w.v.toLowerCase()]=1);
+  const cset={}; customWords.forEach(w=>cset[w.v.toLowerCase()]=1);
+  let rows=lex().filter(d=>{
+    if(pos&&d.pos!==pos) return false;
+    const rv=ruralWord(d.v);
+    if(onlyShifted && rv===d.v.toLowerCase()) return false;
+    if(!q) return true;
+    return rv.toLowerCase().includes(q)||d.v.toLowerCase().includes(q)||d.en.toLowerCase().includes(q);
+  }).sort((a,b)=>ruralWord(a.v).localeCompare(ruralWord(b.v)));
+  const total=lex().length;
+  $('rdictCount').textContent=rows.length+' of '+total+' entries'+(onlyShifted?' (shifted only)':'');
+  if(!rows.length){ $('rdictGrid').innerHTML='<div class="dict-empty">No words match that search.</div>'; return; }
+  $('rdictGrid').innerHTML=rows.map(d=>{
+    const k=d.v.toLowerCase();
+    const rv=ruralWord(d.v);
+    const shifted = rv!==k;
+    const src = cset[k] ? '<span class="src added">added</span>'
+              : fset[k] ? '<span class="src">lexicon</span>' : '';
+    const ipa = showIpa ? '<span class="ipa">'+escapeHtml(ruralIPAText(rv))+'</span>' : '';
+    const label = POS_LABEL[d.pos]||d.pos;
+    const std = shifted ? '<span class="wstd">std. '+escapeHtml(d.v)+'</span>' : '';
+    return '<article class="wcard">'+
+      '<span class="hw">'+escapeHtml(rv)+'</span>'+
+      '<span class="wscript" aria-hidden="true">'+escapeHtml(rv)+'</span>'+
+      std+src+ipa+
+      '<span class="mean">'+escapeHtml(d.en)+'</span>'+
+      '<span class="pos">'+escapeHtml(label)+'</span>'+
+    '</article>';
+  }).join('');
+}
+if($('rdictSearch')){
+  $('rdictSearch').addEventListener('input',renderRuralDict);
+  $('rdictPos').addEventListener('change',renderRuralDict);
+  $('rdictIpa').addEventListener('change',renderRuralDict);
+  $('rdictShifted').addEventListener('change',renderRuralDict);
+}
+
 /* forge: compound */
 $('cmpBtn').addEventListener('click',()=>{
   let a=$('cmpA').value.trim().toLowerCase(), b=$('cmpB').value.trim().toLowerCase();
@@ -1434,7 +1524,7 @@ $('importFile').addEventListener('change',e=>{
       let added=0;
       incoming.forEach(w=>{ if(!w||!w.v||!w.en) return; const k=String(w.v).toLowerCase(); if(have[k])return;
         customWords.push({v:String(w.v),en:String(w.en),pos:w.pos||'n'}); have[k]=1; added++; });
-      saveCustom(); rebuildMaps(); renderDict(); buildNumTable(); buildVerbList(); updateWantsBadge(); renderWants(); renderTranslate();
+      saveCustom(); rebuildMaps(); renderDict(); buildNumTable(); buildVerbList(); updateWantsBadge(); renderWants(); renderTranslate(); renderRuralDict();
       $('ioMsg').textContent='Imported '+added+' new word'+(added===1?'':'s')+(added<incoming.length?' ('+(incoming.length-added)+' already known)':'')+'.';
     }catch(err){ $('ioMsg').textContent='That file could not be read as a lexicon.'; }
     e.target.value='';
@@ -1452,14 +1542,14 @@ function updateLexStatus(){
 $('addBtn').addEventListener('click',()=>{
   const v=$('newV').value.trim(), en=$('newEn').value.trim(), pos=$('newPos').value;
   if(!v||!en){ $('addMsg').textContent='Need a form and a meaning.'; return; }
-  customWords.push({v,en,pos}); saveCustom(); rebuildMaps(); renderDict(); buildNumTable(); buildVerbList(); updateWantsBadge(); renderWants();
+  customWords.push({v,en,pos}); saveCustom(); rebuildMaps(); renderDict(); buildNumTable(); buildVerbList(); updateWantsBadge(); renderWants(); renderRuralDict();
   $('newV').value=''; $('newEn').value='';
   $('addMsg').textContent='Added \u201c'+v+'\u201d.'; setTimeout(()=>$('addMsg').textContent='',1600);
   renderTranslate();
 });
 $('clearBtn').addEventListener('click',()=>{
   if(!customWords.length) return;
-  if(confirm('Remove all words you added in this browser?')){ customWords=[]; saveCustom(); rebuildMaps(); renderDict(); buildNumTable(); renderTranslate(); }
+  if(confirm('Remove all words you added in this browser?')){ customWords=[]; saveCustom(); rebuildMaps(); renderDict(); buildNumTable(); renderTranslate(); renderRuralDict(); }
 });
 
 /* dictionary */
@@ -1755,6 +1845,7 @@ function renderAll(){
   rebuildMaps();
   renderDict(); buildNumTable(); renderNumber(); renderPrButtons(); renderPronoun(); updateLexStatus();
   buildVerbList(); buildRootList(); updateWantsBadge(); renderWants();
+  renderRuralDict();
 }
 /* Boot immediately on built-in + saved words so nothing blocks on the network. */
 loadCustom(); loadWants(); renderAll();
