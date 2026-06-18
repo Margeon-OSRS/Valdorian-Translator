@@ -113,6 +113,10 @@ textarea::placeholder,input.vin::placeholder{color:#566;font-style:italic;}
 .tok .t-en{color:var(--ink-dim);font-size:12px;display:block;}
 .tok .t-note{color:var(--verd);font-size:10px;letter-spacing:.5px;display:block;}
 .tok.bad .t-v{color:var(--err);}
+.compare{margin-top:12px;padding-top:11px;border-top:1px solid var(--line);font-size:14px;display:flex;flex-wrap:wrap;gap:8px;align-items:baseline;}
+.compare:empty{display:none;}
+.compare .cmp-lbl{font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--verd);}
+.compare .cmp-val{color:var(--ink-dim);overflow-wrap:anywhere;}
 
 .row{display:flex;gap:8px;flex-wrap:wrap;align-items:center;}
 .btn{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;background:transparent;border:1px solid var(--line);
@@ -179,62 +183,6 @@ td .ipa{font-family:ui-monospace,monospace;color:var(--verd);font-size:13px;}
 .wcard .pos{color:var(--ink-dim);font-style:italic;font-size:13px;margin-top:auto;padding-top:4px;}
 .dict-empty{grid-column:1/-1;text-align:center;color:var(--ink-dim);font-style:italic;padding:28px 0;}
 @media(max-width:540px){.dict-grid{grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px;}.wcard{padding:13px 13px;min-height:112px;}}
-
-/* scratchpad */
-.scratch-fmt{font-family:ui-monospace,Menlo,Consolas,monospace;color:var(--bronze);font-size:0.88em;letter-spacing:.3px;}
-
-/* persistent dock */
-.scratchdock{position:fixed;left:0;right:0;bottom:0;z-index:60;
-  width:100%;max-width:920px;margin:0 auto;
-  background:linear-gradient(180deg,var(--panel2),var(--slate));
-  border:1px solid var(--line);border-bottom:none;border-radius:10px 10px 0 0;
-  box-shadow:0 -10px 40px rgba(0,0,0,0.5);}
-.sd-bar{display:flex;align-items:center;gap:11px;width:100%;cursor:pointer;
-  background:transparent;border:none;color:var(--ink);text-align:left;
-  padding:13px 18px;font-family:'Cinzel',serif;letter-spacing:2px;text-transform:uppercase;font-size:13px;}
-.sd-bar:hover{color:var(--verd);}
-.sd-mark{color:var(--bronze);font-size:15px;}
-.sd-title{flex:0 0 auto;}
-.sd-count{font-family:'Cinzel',serif;font-size:10px;letter-spacing:1px;padding:1px 8px;border-radius:9px;
-  background:var(--bronze-dim);color:var(--ink);}
-.sd-count.hidden{display:none;}
-.sd-chevron{margin-left:auto;color:var(--ink-dim);font-size:16px;transition:transform .22s ease;}
-.scratchdock.collapsed .sd-chevron{transform:rotate(180deg);}
-.sd-body{max-height:62vh;overflow-y:auto;padding:4px 18px 18px;
-  transition:max-height .26s ease,opacity .2s ease,padding .26s ease;}
-.scratchdock.collapsed .sd-body{max-height:0;padding-top:0;padding-bottom:0;opacity:0;overflow:hidden;}
-.sd-body{scrollbar-width:thin;scrollbar-color:var(--verd-dim) var(--slate);}
-.sd-body::-webkit-scrollbar{width:10px;}
-.sd-body::-webkit-scrollbar-track{background:var(--slate);}
-.sd-body::-webkit-scrollbar-thumb{background:var(--verd-dim);border-radius:5px;}
-.sd-intro{color:var(--ink-dim);font-size:13.5px;line-height:1.6;margin:2px 0 12px;max-width:640px;}
-.scratchdock textarea{width:100%;background:var(--abyss);border:1px solid var(--line);border-radius:4px;
-  color:var(--ink);font-family:inherit;font-size:18px;line-height:1.5;padding:11px 13px;min-height:96px;resize:vertical;outline:none;}
-.scratchdock textarea:focus{border-color:var(--verd-dim);}
-.scratchdock textarea::placeholder{color:#566;font-style:italic;}
-
-.scratch-summary{font-family:'Cinzel',serif;font-size:12px;letter-spacing:1px;text-transform:uppercase;color:var(--ink-dim);min-height:16px;margin:11px 0 11px;}
-.scratch-summary b{color:var(--verd);}
-.scratch-list{display:flex;flex-direction:column;gap:8px;}
-.scratch-row{display:flex;align-items:baseline;gap:11px;padding:9px 13px;border:1px solid var(--line);border-radius:4px;background:var(--abyss);}
-.scratch-row .sr-flag{font-family:'Cinzel',serif;font-size:9px;letter-spacing:1.5px;text-transform:uppercase;padding:2px 8px;border-radius:9px;border:1px solid var(--line);white-space:nowrap;color:var(--ink-dim);flex:none;align-self:center;}
-.scratch-row .sr-form{font-family:'Cinzel',serif;color:var(--bronze);font-size:17px;letter-spacing:.5px;overflow-wrap:anywhere;}
-.scratch-row .sr-ipa{font-family:ui-monospace,Menlo,Consolas,monospace;color:var(--verd);font-size:12px;overflow-wrap:anywhere;}
-.scratch-row .sr-mean{color:var(--ink-dim);font-style:italic;overflow-wrap:anywhere;}
-.scratch-row .sr-pos{margin-left:auto;font-family:'Cinzel',serif;color:var(--verd);font-size:10px;letter-spacing:1px;text-transform:uppercase;white-space:nowrap;flex:none;align-self:center;}
-.scratch-row.ready{border-color:var(--verd-dim);}
-.scratch-row.ready .sr-flag{color:var(--verd);border-color:var(--verd-dim);}
-.scratch-row.dup{opacity:.72;}
-.scratch-row.dup .sr-flag{color:var(--bronze);border-color:var(--bronze-dim);}
-.scratch-row.error{border-color:var(--err);}
-.scratch-row.error .sr-flag{color:var(--err);border-color:var(--err);}
-.scratch-row .sr-body{display:flex;flex-direction:column;gap:3px;}
-.scratch-row .sr-raw{color:var(--ink);overflow-wrap:anywhere;}
-.scratch-row .sr-problem{color:var(--err);font-size:13px;font-style:italic;}
-.scratch-empty{text-align:center;color:#566;font-style:italic;font-size:15px;padding:20px 0;border:1px dashed var(--line);border-radius:4px;}
-.btn:disabled{opacity:.4;cursor:not-allowed;}
-.btn.solid:disabled{background:transparent;border-color:var(--line);color:var(--ink-dim);}
-@media(max-width:560px){.sd-body{max-height:70vh;}.scratchdock textarea{font-size:16px;}}
 
 .controls{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:14px;}
 .controls input[type=search]{flex:1;min-width:160px;background:var(--slate);border:1px solid var(--line);color:var(--ink);
@@ -349,6 +297,7 @@ footer b{color:var(--bronze);font-variant:small-caps;letter-spacing:1px;}
     <button class="tab" data-v="numbers">Numbers</button>
     <button class="tab" data-v="pronouns">Pronouns</button>
     <button class="tab" data-v="grammar">Rules</button>
+    <button class="tab" data-v="dialects">Dialects</button>
   </div>
 
   <!-- ============ TRANSLATE ============ -->
@@ -653,32 +602,52 @@ footer b{color:var(--bronze);font-variant:small-caps;letter-spacing:1px;}
       <span style="color:var(--ink-dim);font-style:italic;">"The people loved the confederation." Built from collective <i>vel-</i>, past <i>-or</i>, the article <i>sa</i>, and the grand compound <i>soluthar</i>.</span></div>
   </section>
 
+  <!-- ============ DIALECTS ============ -->
+  <section class="view" id="v-dialects">
+    <h2>Rural Vethrin</h2>
+    <p class="body" style="text-align:center;margin:0 auto 18px;max-width:580px;">The unhurried speech of Valdoria's southern reaches. Not a tongue apart, but standard Vethrin softened in the mouth &mdash; clusters loosen, hard sounds give way, and the last vowel is drawn long. It borrows every word from the standard lexicon and bends the sound, so nothing here needs its own dictionary.</p>
+
+    <div class="dirbar">
+      <span class="dirlabel on">English</span>
+      <span class="swap" style="cursor:default;opacity:.5">&#8594;</span>
+      <span class="dirlabel">Rural Vethrin</span>
+    </div>
+    <div class="field">
+      <div class="lbl"><span>English</span></div>
+      <textarea id="rdIn" placeholder="Type a phrase to render into rural speech&hellip;"></textarea>
+    </div>
+    <div class="field">
+      <div class="lbl">
+        <span>Rural Vethrin</span>
+        <label class="toggle"><input type="checkbox" id="rdIpaToggle"> show voice (IPA)</label>
+      </div>
+      <div class="out" id="rdOut"><div class="placeholder">The rural rendering will appear here.</div></div>
+      <div class="compare" id="rdCompare"></div>
+      <div class="gloss" id="rdGloss"></div>
+      <div class="row" style="margin-top:13px;">
+        <button class="btn" id="rdCopy">Copy</button>
+        <button class="btn" id="rdPng">Export script (PNG)</button>
+      </div>
+    </div>
+
+    <h3>How the south speaks</h3>
+    <table>
+      <thead><tr><th>Shift</th><th>Standard</th><th>Rural</th></tr></thead>
+      <tbody>
+        <tr><td>Tight clusters loosen with an echo vowel (<i>lth, rth, lv</i>)</td><td>velthel</td><td>veladhel</td></tr>
+        <tr><td>Hard stops voice between vowels (<i>t&rarr;d, k&rarr;g, p&rarr;b</i>)</td><td>vethir</td><td>vedhir</td></tr>
+        <tr><td>Sharp <i>th</i> softens to <i>dh</i> between vowels and at word's end</td><td>selveth</td><td>selavedh</td></tr>
+        <tr><td>Hard final <i>-rn</i> relaxes to <i>-ren</i></td><td>vorthorn</td><td>voradhoren</td></tr>
+        <tr><td>The final vowel is drawn long (the southern drawl)</td><td>mira</td><td>miraa</td></tr>
+      </tbody>
+    </table>
+    <div class="note"><b>One tongue, slower.</b> Rural Vethrin keeps the grammar of the standard speech &mdash; the same word order, the same suffixes for tense and number, the same prefixes for the collective and negation. Only the sound relaxes. A speaker of the council halls and a speaker of the southern farms understand one another without trouble; the difference is in the ease of the mouth, not the meaning.</div>
+  </section>
+
   <footer>
     Valdorian &middot; <b>Vethrin</b> tongue toolkit &middot; v1<br>
     Built for the Confederation of Valdoria, Varn &amp; Charskin Isle &middot; one tongue, the spoken record
   </footer>
-</div>
-
-<!-- ============ PERSISTENT SCRATCHPAD DOCK ============ -->
-<div class="scratchdock collapsed" id="scratchDock">
-  <button class="sd-bar" id="scratchToggle" type="button" aria-expanded="false" aria-controls="scratchBody">
-    <span class="sd-mark">&#9998;</span>
-    <span class="sd-title">Scratchpad</span>
-    <span class="sd-count" id="scratchCount"></span>
-    <span class="sd-chevron" id="scratchChevron" aria-hidden="true">&#8743;</span>
-  </button>
-  <div class="sd-body" id="scratchBody">
-    <p class="sd-intro">One word per line, written <span class="scratch-fmt">form &middot; meaning [kind]</span> &mdash; the shape the Forge copies out. The kind is optional. Blank lines and lines starting with <span class="scratch-fmt">#</span> are skipped. What you type stays here between visits; add the ready ones to your lexicon when you are satisfied.</p>
-    <textarea id="scratchText" placeholder="miravald &middot; island [n]&#10;vethir &middot; to speak [v]&#10;# names still to settle&#10;thuldor &middot; stubborn [adj]"></textarea>
-    <div class="scratch-summary" id="scratchSummary"></div>
-    <div class="scratch-list" id="scratchPreview"></div>
-    <div class="row" style="margin-top:13px;">
-      <button class="btn solid" id="scratchAdd">Add ready words</button>
-      <button class="btn" id="scratchClear">Clear bench</button>
-      <span id="scratchMsg" style="color:var(--verd);font-size:13px;"></span>
-    </div>
-    <div class="status" id="scratchStatus" style="text-align:left;"></div>
-  </div>
 </div>
 
 <script>
@@ -1224,6 +1193,10 @@ $('swapBtn').addEventListener('click',()=>{
 function exportScriptPng(){
   const text=($('outBox').dataset.script||$('outBox').dataset.plain||'').trim();
   if(!text || dir!=='en2val') return;
+  drawConscriptPng(text);
+}
+function drawConscriptPng(text){
+  text=(text||'').trim(); if(!text) return;
   const fontPx=72, pad=48, maxW=1200, scale=3;
   const ink=(getComputedStyle(document.documentElement).getPropertyValue('--bronze')||'#c08a4a').trim();
   const draw=()=>{
@@ -1253,6 +1226,95 @@ $('copyBtn').addEventListener('click',()=>{
   navigator.clipboard&&navigator.clipboard.writeText(txt);
   const b=$('copyBtn'); const o=b.textContent; b.textContent='Copied'; setTimeout(()=>b.textContent=o,1000);
 });
+
+/* ====================== RURAL VETHRIN (southern dialect) ======================
+   Rural Vethrin is the unhurried speech of Valdoria's southern reaches. It has no
+   lexicon of its own: it is standard Vethrin, softened in the mouth. These rules
+   run over whatever the standard engine produces, so every word and every
+   inflection is reused. The shifts: rigid consonant clusters loosen with an echo
+   vowel, hard stops voice between vowels, the sharp 'th' softens to 'dh', and the
+   final vowel is drawn out. */
+function ruralWord(v){
+  if(!v) return v;
+  let s=v.toLowerCase();
+  // 1. cluster easing — tight medial stacks relax with an echo vowel
+  s=s.replace(/lth/g,'lath').replace(/rth/g,'rath').replace(/lv(?=[a-z])/g,'lav');
+  // 2. hard final -rn softens to -ren
+  s=s.replace(/rn$/,'ren');
+  // 3. lenition — voiceless stops voice between vowels
+  s=s.replace(/([aeiou])t(?=[aeiou])/g,'$1d')
+     .replace(/([aeiou])k(?=[aeiou])/g,'$1g')
+     .replace(/([aeiou])p(?=[aeiou])/g,'$1b');
+  // 4. 'th' voices between vowels and word-finally
+  s=s.replace(/([aeiou])th(?=[aeiou])/g,'$1dh').replace(/th$/,'dh');
+  // 5. drawl — a final short vowel lengthens (but not after another vowel, e.g. plural -ai)
+  s=s.replace(/([^aeiou]|^)([aeiou])$/,'$1$2$2');
+  return s;
+}
+function ruralIPAText(plain){
+  let p=toIPA(plain);
+  if(!p) return '';
+  // a doubled vowel from the drawl reads as length
+  p=p.replace(/([a\u025bi\u0254u])\1/g,'$1\u02d0');
+  return '/'+p+'/';
+}
+function renderDialect(){
+  const text=$('rdIn').value;
+  const out=$('rdOut'), gloss=$('rdGloss'), cmp=$('rdCompare');
+  if(!text.trim()){
+    out.innerHTML='<div class="placeholder">The rural rendering will appear here.</div>';
+    gloss.innerHTML=''; if(cmp) cmp.innerHTML=''; if($('rdPng')) $('rdPng').style.display='none';
+    out.dataset.plain=''; out.dataset.script=''; return;
+  }
+  let toks=reorderEnToVal(translateEnToVal(text));
+  let ruralRoman=[], ruralPlain=[], stdPlain=[], glossHtml='';
+  toks.forEach(t=>{
+    if(!t.miss && t.v!=null){
+      const std=applyCase(t.v, t.en);
+      const rur=applyCase(ruralWord(t.v), t.en);
+      ruralRoman.push((t.pre||'')+escapeHtml(rur)+(t.post||''));
+      ruralPlain.push((t.pre||'')+rur+(t.post||''));
+      stdPlain.push((t.pre||'')+std+(t.post||''));
+      const shifted = ruralWord(t.v)!==t.v.toLowerCase();
+      glossHtml+='<div class="tok"><span class="t-v">'+escapeHtml(ruralWord(t.v))+'</span>'+
+        (shifted?'<span class="t-note" style="color:var(--ink-dim)">std '+escapeHtml(t.v)+'</span>':'')+
+        '<span class="t-en">'+escapeHtml(t.en)+'</span>'+
+        (t.note?'<span class="t-note">'+escapeHtml(t.note)+'</span>':'')+'</div>';
+    } else {
+      const surf=t.en;
+      ruralRoman.push((t.pre||'')+'<span class="miss">'+escapeHtml(surf)+'</span>'+(t.post||''));
+      ruralPlain.push((t.pre||'')+surf+(t.post||''));
+      stdPlain.push((t.pre||'')+surf+(t.post||''));
+      glossHtml+='<div class="tok bad"><span class="t-v">'+escapeHtml(surf)+'</span><span class="t-en">not in lexicon</span></div>';
+    }
+  });
+  const punct=/\s+([.,;:!?])/g;
+  const roman=ruralRoman.join(' ').replace(punct,'$1');
+  const rplain=ruralPlain.join(' ').replace(punct,'$1');
+  const splain=stdPlain.join(' ').replace(punct,'$1');
+  out.innerHTML='<div class="roman">'+roman+'</div>'+
+    '<div class="script">'+roman+'</div>'+
+    '<div class="ipa">'+escapeHtml(ruralIPAText(rplain))+'</div>';
+  out.classList.toggle('show-ipa', $('rdIpaToggle') && $('rdIpaToggle').checked);
+  out.dataset.plain=rplain; out.dataset.script=rplain;
+  if($('rdPng')) $('rdPng').style.display='';
+  if(cmp){
+    cmp.innerHTML = (splain && splain!==rplain)
+      ? '<span class="cmp-lbl">Standard Vethrin</span><span class="cmp-val">'+escapeHtml(splain)+'</span>'
+      : '<span class="cmp-lbl">Standard Vethrin</span><span class="cmp-val" style="color:var(--ink-dim)">'+escapeHtml(splain)+' &middot; unchanged in the south</span>';
+  }
+  gloss.innerHTML=glossHtml;
+}
+if($('rdIn')){
+  $('rdIn').addEventListener('input',renderDialect);
+  if($('rdIpaToggle')) $('rdIpaToggle').addEventListener('change',renderDialect);
+  if($('rdCopy')) $('rdCopy').addEventListener('click',()=>{
+    const txt=$('rdOut').dataset.plain||''; if(!txt) return;
+    navigator.clipboard&&navigator.clipboard.writeText(txt);
+    const b=$('rdCopy'); const o=b.textContent; b.textContent='Copied'; setTimeout(()=>b.textContent=o,1000);
+  });
+  if($('rdPng')) $('rdPng').addEventListener('click',()=>{ drawConscriptPng($('rdOut').dataset.script||$('rdOut').dataset.plain||''); });
+}
 
 /* forge: compound */
 $('cmpBtn').addEventListener('click',()=>{
@@ -1688,179 +1750,14 @@ function renderConj(){
 function gotoConjugate(form){ const tab=document.querySelector('.tab[data-v="conj"]'); if(tab) tab.click(); $('verbInput').value=form; renderConj(); $('verbInput').focus(); }
 $('verbInput').addEventListener('input',renderConj);
 
-/* ====================== SCRATCHPAD ====================== */
-/* A staging bench: paste words as "form · meaning [kind]" (the shape the Forge
-   copies out), preview how each will land, then add the ready ones in bulk.
-   The raw text persists in this browser between visits. */
-const LS_SCRATCH="valdorian_scratch_v1";
-const LS_SCRATCH_OPEN="valdorian_scratch_open_v1";
-function loadScratch(){
-  try{ const r=localStorage.getItem(LS_SCRATCH); if(r!=null && $('scratchText')) $('scratchText').value=r; }catch(e){}
-}
-function saveScratch(){
-  try{ localStorage.setItem(LS_SCRATCH,$('scratchText').value); }catch(e){}
-}
-function setDockOpen(open){
-  const d=$('scratchDock'); if(!d) return;
-  d.classList.toggle('collapsed',!open);
-  const t=$('scratchToggle'); if(t) t.setAttribute('aria-expanded', open?'true':'false');
-  try{ localStorage.setItem(LS_SCRATCH_OPEN, open?'1':'0'); }catch(e){}
-  if(open){ renderScratch(); const ta=$('scratchText'); if(ta) setTimeout(()=>ta.focus(),120); }
-}
-function loadDockState(){
-  let open=false; try{ open=localStorage.getItem(LS_SCRATCH_OPEN)==='1'; }catch(e){}
-  const d=$('scratchDock'); if(d) d.classList.toggle('collapsed',!open);
-  const t=$('scratchToggle'); if(t) t.setAttribute('aria-expanded', open?'true':'false');
-}
-/* part-of-speech codes and the plain labels that map onto them */
-const KIND_MAP={
-  n:'n',noun:'n',
-  v:'v',verb:'v',
-  adj:'adj',adjective:'adj',
-  adv:'adv',adverb:'adv',
-  prep:'prep',preposition:'prep',
-  conj:'conj',conjunction:'conj',
-  pron:'pron',pronoun:'pron',
-  det:'det',determiner:'det',article:'det',
-  num:'num',number:'num',numeral:'num',cardinal:'num',
-  ord:'ord',ordinal:'ord',
-  title:'title',
-  intj:'intj',interjection:'intj',interj:'intj',exclamation:'intj',
-  q:'q',question:'q'
-};
-/* split a line into [form, meaning] on the first separator (·, •, or a spaced dash) */
-function splitFormMeaning(s){
-  let best=null;
-  const consider=(index,len)=>{ if(index!=null && index!==-1 && (best===null||index<best.index)) best={index,len}; };
-  consider(s.indexOf('\u00b7'),1);   /* · */
-  consider(s.indexOf('\u2022'),1);   /* • */
-  const dm=s.match(/\s[-\u2013\u2014]\s/); /* spaced - – — */
-  if(dm) consider(dm.index,dm[0].length);
-  if(!best) return null;
-  return [s.slice(0,best.index).trim(), s.slice(best.index+best.len).trim()];
-}
-function classifyKind(kindRaw){
-  if(!kindRaw) return {pos:'n', label:(POS_LABEL['n']||'n')};       /* no kind given: default noun */
-  const k=kindRaw.toLowerCase();
-  if(KIND_MAP[k]) return {pos:KIND_MAP[k], label:(POS_LABEL[KIND_MAP[k]]||KIND_MAP[k])};
-  return {pos:k, label:kindRaw};                                    /* unknown plain label: keep it as-is */
-}
-function parseScratchLine(raw){
-  const trimmed=(raw||'').trim();
-  if(!trimmed || trimmed.charAt(0)==='#') return {type:'skip'};
-  let body=trimmed, kindRaw='';
-  const km=trimmed.match(/\[([^\]]*)\]\s*$/);
-  if(km){ kindRaw=km[1].trim(); body=trimmed.slice(0,km.index).trim(); }
-  const parts=splitFormMeaning(body);
-  if(!parts) return {type:'error', raw:trimmed, problem:'Needs a \u00b7 between the form and its meaning.'};
-  const form=parts[0], meaning=parts[1];
-  if(!form)    return {type:'error', raw:trimmed, problem:'Missing the form before the \u00b7.'};
-  if(!meaning) return {type:'error', raw:trimmed, problem:'Missing the meaning after the \u00b7.'};
-  const kind=classifyKind(kindRaw);
-  return {type:'word', form:form, meaning:meaning, pos:kind.pos, posLabel:kind.label};
-}
-function parseScratch(text){
-  const have={}; lex().forEach(d=>{ have[d.v.toLowerCase()]=1; });
-  const seen={}, out=[];
-  (text||'').split(/\r?\n/).forEach(line=>{
-    const r=parseScratchLine(line);
-    if(r.type==='word'){
-      const key=r.form.toLowerCase();
-      r.status = (have[key]||seen[key]) ? 'dup' : 'ready';
-      seen[key]=1;
-    }
-    out.push(r);
-  });
-  return out;
-}
-function renderScratch(){
-  if(!$('scratchText')) return;
-  const items=parseScratch($('scratchText').value);
-  const words=items.filter(r=>r.type==='word');
-  const ready=words.filter(r=>r.status==='ready');
-  const dup=words.filter(r=>r.status==='dup');
-  const errs=items.filter(r=>r.type==='error');
-
-  const pieces=['<b>'+ready.length+'</b> ready to add'];
-  if(dup.length)  pieces.push(dup.length+' already in the lexicon');
-  if(errs.length) pieces.push(errs.length+' to fix');
-  $('scratchSummary').innerHTML = (words.length||errs.length) ? pieces.join(' \u00b7 ') : '';
-
-  const rows=items.filter(r=>r.type!=='skip');
-  if(!rows.length){
-    $('scratchPreview').innerHTML='<div class="scratch-empty">Nothing on the bench yet. Paste or type words above to see them take shape.</div>';
-  } else {
-    $('scratchPreview').innerHTML=rows.map(r=>{
-      if(r.type==='error'){
-        return '<div class="scratch-row error"><span class="sr-flag">fix</span>'+
-          '<span class="sr-body"><span class="sr-raw">'+escapeHtml(r.raw)+'</span>'+
-          '<span class="sr-problem">'+escapeHtml(r.problem)+'</span></span></div>';
-      }
-      const flag = r.status==='ready' ? 'ready' : 'known';
-      const ipa = ipaText(r.form);
-      return '<div class="scratch-row '+r.status+'">'+
-        '<span class="sr-flag">'+flag+'</span>'+
-        '<span class="sr-form">'+escapeHtml(r.form)+'</span>'+
-        (ipa?'<span class="sr-ipa">'+escapeHtml(ipa)+'</span>':'')+
-        '<span class="sr-mean">'+escapeHtml(r.meaning)+'</span>'+
-        '<span class="sr-pos">'+escapeHtml(r.posLabel)+'</span>'+
-      '</div>';
-    }).join('');
-  }
-
-  const btn=$('scratchAdd');
-  if(btn){
-    btn.disabled = ready.length===0;
-    btn.textContent = ready.length ? ('Add '+ready.length+' word'+(ready.length===1?'':'s')) : 'Add ready words';
-  }
-  const cnt=$('scratchCount');
-  if(cnt){
-    cnt.textContent = ready.length ? (ready.length+' ready') : '';
-    cnt.classList.toggle('hidden', ready.length===0);
-  }
-  const st=$('scratchStatus');
-  if(st){ st.textContent = storageOK ? '' : 'This browser blocked saving; the bench will clear when you leave.'; st.className = storageOK?'status':'status warn'; st.style.textAlign='left'; }
-}
-function scratchMsg(t){ const m=$('scratchMsg'); if(!m) return; m.textContent=t; clearTimeout(scratchMsg._t); scratchMsg._t=setTimeout(()=>{ m.textContent=''; },2400); }
-
-if($('scratchText')){
-  $('scratchText').addEventListener('input',()=>{ saveScratch(); renderScratch(); });
-}
-if($('scratchAdd')){
-  $('scratchAdd').addEventListener('click',()=>{
-    const ready=parseScratch($('scratchText').value).filter(r=>r.type==='word'&&r.status==='ready');
-    if(!ready.length){ scratchMsg('No ready words to add.'); return; }
-    ready.forEach(r=>customWords.push({v:r.form,en:r.meaning,pos:r.pos}));
-    saveCustom(); renderAll();           /* renderAll re-renders the bench too */
-    if($('inText')&&$('inText').value.trim()) renderTranslate();
-    scratchMsg('Added '+ready.length+' word'+(ready.length===1?'':'s')+' to the lexicon.');
-  });
-}
-if($('scratchClear')){
-  $('scratchClear').addEventListener('click',()=>{
-    if(!$('scratchText').value.trim()) return;
-    if(confirm('Clear everything on the scratchpad? Words already added to the lexicon are kept.')){
-      $('scratchText').value=''; saveScratch(); renderScratch(); scratchMsg('Bench cleared.');
-    }
-  });
-}
-
-if($('scratchToggle')){
-  $('scratchToggle').addEventListener('click',()=>{
-    const collapsed=$('scratchDock').classList.contains('collapsed');
-    setDockOpen(collapsed);
-  });
-}
-
 /* ====================== INIT ====================== */
 function renderAll(){
   rebuildMaps();
   renderDict(); buildNumTable(); renderNumber(); renderPrButtons(); renderPronoun(); updateLexStatus();
   buildVerbList(); buildRootList(); updateWantsBadge(); renderWants();
-  renderScratch();
 }
 /* Boot immediately on built-in + saved words so nothing blocks on the network. */
-loadCustom(); loadWants(); loadScratch(); loadDockState(); renderAll();
+loadCustom(); loadWants(); renderAll();
 /* Then pull lexicon.json (GitHub Pages / any web host) and fold its words in. */
 loadFetchedLexicon().then(()=>{ renderAll(); if($('inText')&&$('inText').value.trim()) renderTranslate(); });
 </script>
