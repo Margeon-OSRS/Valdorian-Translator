@@ -1070,7 +1070,7 @@ function renderTranslate(){
       const disp = applyCase(form, surface);
       romanParts.push((t.pre||'')+escapeHtml(disp)+(t.post||''));
       plainParts.push((t.pre||'')+disp+(t.post||''));
-      scriptParts.push((t.pre||'')+escapeHtml(form)+(t.post||''));   // conscript stays lowercase
+      scriptParts.push((t.pre||'')+escapeHtml(disp)+(t.post||''));   // conscript mirrors source capitalization
       glossHtml+='<div class="tok"><span class="t-v">'+escapeHtml(t.v)+'</span><span class="t-en">'+escapeHtml(t.en)+'</span>'+(t.note?'<span class="t-note">'+escapeHtml(t.note)+'</span>':'')+'</div>';
     } else {
       romanParts.push((t.pre||'')+'<span class="miss">'+escapeHtml(surface)+'</span>'+(t.post||''));
@@ -1086,7 +1086,7 @@ function renderTranslate(){
   out.classList.toggle('show-ipa',$('ipaToggle').checked && dir==='en2val');
   if($('pngBtn')) $('pngBtn').style.display = (dir==='en2val') ? '' : 'none';
   out.dataset.plain=plain;
-  out.dataset.script=plain.toLowerCase();
+  out.dataset.script=plain;
   gloss.innerHTML=glossHtml;
 }
 $('inText').addEventListener('input',renderTranslate);
