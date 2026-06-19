@@ -4537,6 +4537,691 @@
       "v": "auril",
       "en": "light (radiance)",
       "pos": "n"
+    },
+    {
+      "v": "vis",
+      "en": "as/like",
+      "pos": "conj",
+      "note": "manner & comparison particle"
+    },
+    {
+      "v": "inta",
+      "en": "into",
+      "pos": "prep",
+      "note": "in + ta (to): motion-into"
+    },
+    {
+      "v": "senai",
+      "en": "these",
+      "pos": "det",
+      "note": "count plural of sen (this)"
+    },
+    {
+      "v": "sanai",
+      "en": "those",
+      "pos": "det",
+      "note": "count plural of san (that)"
+    },
+    {
+      "v": "melae",
+      "en": "any",
+      "pos": "det",
+      "note": "from mel (some)"
+    },
+    {
+      "v": "molen",
+      "en": "many",
+      "pos": "det",
+      "note": "from molor (thousand)"
+    },
+    {
+      "v": "arael",
+      "en": "other/another",
+      "pos": "det"
+    },
+    {
+      "v": "tafen",
+      "en": "until",
+      "pos": "prep",
+      "note": "ta (to) + fen (after/end, cf fenir): up to the end of"
+    },
+    {
+      "v": "arvas",
+      "en": "still/yet",
+      "pos": "adv"
+    },
+    {
+      "v": "navmel",
+      "en": "neither/nor",
+      "pos": "conj",
+      "note": "nav (not) + mel (some): none of the two (nav+ven would collapse to naven = empty)"
+    },
+    {
+      "v": "rothas",
+      "en": "most",
+      "pos": "det",
+      "note": "the greater part; from roth (great)"
+    },
+    {
+      "v": "nebas",
+      "en": "forward/ahead",
+      "pos": "adv",
+      "note": "from neb (before/front)"
+    },
+    {
+      "v": "auras",
+      "en": "plainly/clearly/openly",
+      "pos": "adv",
+      "note": "from aur (light): in the light, openly"
+    },
+    {
+      "v": "navfenas",
+      "en": "forever/endlessly",
+      "pos": "adv",
+      "note": "nav (not) + fen (end, cf fenir) + -as: un-endingly"
+    },
+    {
+      "v": "lhavir",
+      "en": "to let/allow/permit",
+      "pos": "v"
+    },
+    {
+      "v": "sorvir",
+      "en": "to set/place/lay",
+      "pos": "v",
+      "note": "from sor (on): to put-on"
+    },
+    {
+      "v": "lirvir",
+      "en": "to draw/sketch",
+      "pos": "v",
+      "note": "from lir- (art: ilra, liren)"
+    },
+    {
+      "v": "veshvir",
+      "en": "to witness/attest",
+      "pos": "v",
+      "note": "from vesh- (perceive/attest, cf veshir 'to know')"
+    },
+    {
+      "v": "valdvir",
+      "en": "to govern/administer",
+      "pos": "v",
+      "note": "vald (land) + -vir: to manage the land"
+    },
+    {
+      "v": "faethir",
+      "en": "to become",
+      "pos": "v",
+      "note": "fae- (come) + -thir (be): to come-to-be"
+    },
+    {
+      "v": "aevir",
+      "en": "to try/attempt/strive",
+      "pos": "v"
+    },
+    {
+      "v": "kalvir",
+      "en": "to raise/lift/elevate",
+      "pos": "v",
+      "note": "from kal (over/above)"
+    },
+    {
+      "v": "vethadhir",
+      "en": "to promise/pledge",
+      "pos": "v",
+      "note": "verb of vethadh (vow/pledge)"
+    },
+    {
+      "v": "soldir",
+      "en": "to ensure/secure/guarantee",
+      "pos": "v",
+      "note": "from sol- (pact/firm, cf soluth)"
+    },
+    {
+      "v": "kaelthir",
+      "en": "to earn/gain",
+      "pos": "v",
+      "note": "from kael (trade): to gain by labour"
+    },
+    {
+      "v": "arsir",
+      "en": "to stand",
+      "pos": "v",
+      "note": "from ar- (upright/ready, cf arven 'ready')"
+    },
+    {
+      "v": "dorsir",
+      "en": "to sit/be seated",
+      "pos": "v",
+      "note": "from dorr (ground): to take ground/seat"
+    },
+    {
+      "v": "nebir",
+      "en": "to precede/come before",
+      "pos": "v",
+      "note": "from neb (before)"
+    },
+    {
+      "v": "kalsir",
+      "en": "to outrank/surpass/take precedence",
+      "pos": "v",
+      "note": "kal (above) + -sir: to stand over"
+    },
+    {
+      "v": "kelthir",
+      "en": "to seize/grasp (by force)",
+      "pos": "v",
+      "note": "from kelv- (grasp, cf kelvir 'to hold'), forceful: to seize"
+    },
+    {
+      "v": "gurir",
+      "en": "to weigh",
+      "pos": "v",
+      "note": "from gur- (heavy, cf guren 'heavy')"
+    },
+    {
+      "v": "navsolvir",
+      "en": "to conspire/plot",
+      "pos": "v",
+      "note": "nav + sol (pact): to form a counter-pact"
+    },
+    {
+      "v": "navelthir",
+      "en": "to erase/strike out",
+      "pos": "v",
+      "note": "na- (not, before v) + velth ('to write') + -ir: to un-write, strike from the record"
+    },
+    {
+      "v": "navthelvir",
+      "en": "to unstitch/unravel/undo",
+      "pos": "v",
+      "note": "nav + thelvir (to weave): to un-weave"
+    },
+    {
+      "v": "navkaeldir",
+      "en": "to default (fail to pay)",
+      "pos": "v",
+      "note": "nav + kaeldir (to pay): non-payment"
+    },
+    {
+      "v": "durdorir",
+      "en": "to manufacture/produce",
+      "pos": "v",
+      "note": "dur (metal/forge) + dorir (to make/build): to forge, produce"
+    },
+    {
+      "v": "olenir",
+      "en": "to perfect/complete",
+      "pos": "v",
+      "note": "from olen (whole/complete)"
+    },
+    {
+      "v": "arkethir",
+      "en": "to reclaim/recover/take back",
+      "pos": "v",
+      "note": "arel- (again) + kethir (to take)"
+    },
+    {
+      "v": "vaesir",
+      "en": "to represent/speak for",
+      "pos": "v",
+      "note": "from vaesar (envoy, standing-for)"
+    },
+    {
+      "v": "thaevdir",
+      "en": "to breed/rear/raise",
+      "pos": "v",
+      "note": "from thaevir (to grow): to make grow"
+    },
+    {
+      "v": "risvir",
+      "en": "to creep/crawl/sneak",
+      "pos": "v"
+    },
+    {
+      "v": "dharun",
+      "en": "breach/violation/rupture",
+      "pos": "n",
+      "note": "dhar- (break, cf dharvir) + -un: an incurred break"
+    },
+    {
+      "v": "vethaun",
+      "en": "announcement/proclamation",
+      "pos": "n",
+      "note": "veth (speech) + -un: a publicly issued speech"
+    },
+    {
+      "v": "gorthil",
+      "en": "column/pillar",
+      "pos": "n",
+      "note": "gorth (stone) + -il"
+    },
+    {
+      "v": "velsis",
+      "en": "mark/sign/token",
+      "pos": "n",
+      "note": "vels- (inscribe, cf velsir) + -is"
+    },
+    {
+      "v": "veshan",
+      "en": "witness (one who attests)",
+      "pos": "title",
+      "note": "vesh- (attest) + -an (doer)"
+    },
+    {
+      "v": "vrethun",
+      "en": "quarrel/dispute",
+      "pos": "n",
+      "note": "vraeth (war/strife) + -un: an instance of strife"
+    },
+    {
+      "v": "kethin",
+      "en": "keeper/warden",
+      "pos": "title",
+      "note": "keth- (keep/take, cf kethel 'to keep') + -in (agent)"
+    },
+    {
+      "v": "navlaseth",
+      "en": "idleness",
+      "pos": "n",
+      "note": "nav + las (do/act, cf lasir) + -eth: not-doing-ness"
+    },
+    {
+      "v": "lirin",
+      "en": "line/stroke",
+      "pos": "n",
+      "note": "from lir- (art); a drawn line"
+    },
+    {
+      "v": "selvun",
+      "en": "service",
+      "pos": "n",
+      "note": "sel- (tend/serve) + -un: an act of service"
+    },
+    {
+      "v": "kalis",
+      "en": "face",
+      "pos": "n",
+      "note": "kal- (fore/upper, cf kaln 'head') + -is: the fore of the head"
+    },
+    {
+      "v": "morvath",
+      "en": "body (physical frame)",
+      "pos": "n",
+      "note": "mor- (mortal frame) + -vath: the living frame"
+    },
+    {
+      "v": "durkael",
+      "en": "industry",
+      "pos": "n",
+      "note": "dur (metal/forge) + kael (trade): the forge-trades"
+    },
+    {
+      "v": "venel",
+      "en": "direction/bearing",
+      "pos": "n",
+      "note": "from -ven (cardinal point: korven, ulven) + -el"
+    },
+    {
+      "v": "uran",
+      "en": "generation",
+      "pos": "n",
+      "note": "ur (age) + -an: an age-cohort, those of one age"
+    },
+    {
+      "v": "arvun",
+      "en": "foundation/founding",
+      "pos": "n",
+      "note": "arv- (begin, cf arvir) + -un"
+    },
+    {
+      "v": "lasun",
+      "en": "task/charge/duty",
+      "pos": "n",
+      "note": "las (do, cf lasir) + -un: a thing-to-be-done"
+    },
+    {
+      "v": "dhethath",
+      "en": "constitution/founding law",
+      "pos": "n",
+      "note": "dheth (law) + -ath (great institution)"
+    },
+    {
+      "v": "daelun",
+      "en": "contribution",
+      "pos": "n",
+      "note": "dael (to give) + -un: a thing given in"
+    },
+    {
+      "v": "vethis",
+      "en": "tongue (organ); language",
+      "pos": "n",
+      "note": "veth (speech) + -is"
+    },
+    {
+      "v": "morvethil",
+      "en": "ghost/shade",
+      "pos": "n",
+      "note": "mor- (death) + vethil (spirit)"
+    },
+    {
+      "v": "ivelan",
+      "en": "creature/beast/living thing",
+      "pos": "n",
+      "note": "iv- (live) + -an: a bearer of life"
+    },
+    {
+      "v": "soldeth",
+      "en": "stability/steadfastness",
+      "pos": "n",
+      "note": "sol- (firm/pact) + -eth (quality)"
+    },
+    {
+      "v": "veshil",
+      "en": "tenet/principle/article (of belief)",
+      "pos": "n",
+      "note": "vesh (belief, cf veshael) + -il: a held principle"
+    },
+    {
+      "v": "durvath",
+      "en": "vault/strongroom",
+      "pos": "n",
+      "note": "dur (metal) + -vath (chamber): a metal strongroom"
+    },
+    {
+      "v": "morvun",
+      "en": "rot/decay/corruption",
+      "pos": "n",
+      "note": "morv- (decay) + -un"
+    },
+    {
+      "v": "orvun",
+      "en": "insurrection/uprising/revolt",
+      "pos": "n",
+      "note": "orv- (rise, cf orvir) + -un: a rising-up"
+    },
+    {
+      "v": "navsoluth",
+      "en": "conspiracy/plot",
+      "pos": "n",
+      "note": "nav + soluth (pact): a secret counter-pact"
+    },
+    {
+      "v": "navselir",
+      "en": "unrest",
+      "pos": "n",
+      "note": "nav + selir (peace): non-peace"
+    },
+    {
+      "v": "velvaelan",
+      "en": "hoarder/amasser",
+      "pos": "title",
+      "note": "velvael (gather) + -an: e.g. giletvelvaelan, silver-hoarder"
+    },
+    {
+      "v": "kelvan",
+      "en": "holder/bearer",
+      "pos": "title",
+      "note": "kelv- (hold, cf kelvir) + -an"
+    },
+    {
+      "v": "dairnan",
+      "en": "barbarian/outlander",
+      "pos": "n",
+      "note": "dair (far/foreign) + -nan (people, cf dharnan)"
+    },
+    {
+      "v": "aevun",
+      "en": "attempt",
+      "pos": "n",
+      "note": "ae- (try, cf aevir) + -un"
+    },
+    {
+      "v": "valdvesh",
+      "en": "geography/lore of the land",
+      "pos": "n",
+      "note": "vald (land) + vesh (knowledge)"
+    },
+    {
+      "v": "vaesun",
+      "en": "representation",
+      "pos": "n",
+      "note": "vae- (standing-for, cf vaesar) + -un"
+    },
+    {
+      "v": "golethaur",
+      "en": "gilded/gilt (gold-overlaid)",
+      "pos": "adj",
+      "note": "goleth (gold) + aur (light): gold-bright, gold-laid"
+    },
+    {
+      "v": "rothar",
+      "en": "grand",
+      "pos": "adj",
+      "note": "roth (great) + -ar (grand seed)"
+    },
+    {
+      "v": "navfenen",
+      "en": "eternal/endless/unending",
+      "pos": "adj",
+      "note": "nav + fen (end, cf fenir) + -en: not-ending"
+    },
+    {
+      "v": "fenen",
+      "en": "last/final",
+      "pos": "adj",
+      "note": "from fen (end, cf fenir): of the end"
+    },
+    {
+      "v": "kaelduren",
+      "en": "due/owed/payable",
+      "pos": "adj",
+      "note": "kaeldur (debt) + -en"
+    },
+    {
+      "v": "vaeren",
+      "en": "august/venerable/exalted",
+      "pos": "adj",
+      "note": "vae- (noble/exalted, cf vaelorn 'lord') + -en"
+    },
+    {
+      "v": "saelen",
+      "en": "civilized/settled/urbane",
+      "pos": "adj",
+      "note": "sael (city) + -en: of the city"
+    },
+    {
+      "v": "velvalen",
+      "en": "public/common/communal",
+      "pos": "adj",
+      "note": "vel- (collective) + val- (people, cf valan/velvalan) + -en: of the people"
+    },
+    {
+      "v": "dorren",
+      "en": "flat/level",
+      "pos": "adj",
+      "note": "dorr (ground) + -en: ground-level"
+    },
+    {
+      "v": "valdselen",
+      "en": "regional/provincial",
+      "pos": "adj",
+      "note": "valdsel (province) + -en"
+    },
+    {
+      "v": "velven",
+      "en": "bound/tight/taut",
+      "pos": "adj",
+      "note": "vel- (gathered/bound, collective) + -en: held together, taut"
+    },
+    {
+      "v": "navmorven",
+      "en": "incorruptible/unrotting",
+      "pos": "adj",
+      "note": "nav + morv (rot) + -en"
+    },
+    {
+      "v": "navelven",
+      "en": "unchecked/unrestrained",
+      "pos": "adj",
+      "note": "na- (not, before v) + velven (bound): not held in check"
+    },
+    {
+      "v": "navelsen",
+      "en": "unrecorded/unwritten",
+      "pos": "adj",
+      "note": "na- (not, before v) + vels- (record, cf velsir) + -en: not entered in the record"
+    },
+    {
+      "v": "solutharen",
+      "en": "confederal/federal",
+      "pos": "adj",
+      "note": "soluthar (confederation) + -en"
+    },
+    {
+      "v": "valdorien",
+      "en": "Valdorian/of Valdoria",
+      "pos": "adj",
+      "note": "Valdoria + -en (the language's own name is Vethrin)"
+    },
+    {
+      "v": "kaleth",
+      "en": "supreme/highest",
+      "pos": "adj",
+      "note": "kal (over/above) + -eth (degree): topmost"
+    },
+    {
+      "v": "niraeth",
+      "en": "latest/newest/most recent",
+      "pos": "adj",
+      "note": "nirae (new) + -eth (degree)"
+    },
+    {
+      "v": "dureth",
+      "en": "hardest",
+      "pos": "adj",
+      "note": "regular superlative of duren (hard)"
+    },
+    {
+      "v": "daileth",
+      "en": "longest",
+      "pos": "adj",
+      "note": "regular superlative of dailen (long)"
+    },
+    {
+      "v": "velveth",
+      "en": "tighter/tightest",
+      "pos": "adj",
+      "note": "regular degree form of velven (tight)"
+    },
+    {
+      "v": "giletvel",
+      "en": "Silverclasp",
+      "pos": "n",
+      "note": "proper name: gilet- (silver, cf gileth) + vel (clasp/bond)"
+    },
+    {
+      "v": "thaelothath",
+      "en": "Frumentariate",
+      "pos": "n",
+      "note": "proper name: thaeloth (grain/harvest) + -ath (office/institution)"
+    },
+    {
+      "v": "tholas",
+      "en": "so/thus/therefore",
+      "pos": "adv",
+      "note": "consequence connective"
+    },
+    {
+      "v": "vethrir",
+      "en": "to tell/recount/inform",
+      "pos": "v",
+      "note": "from veth (word/speech)"
+    },
+    {
+      "v": "arsolvir",
+      "en": "to reconcile/make peace",
+      "pos": "v",
+      "note": "arel- (again) + sol- (pact, cf solvir \"to ally\"): to re-form a bond"
+    },
+    {
+      "v": "faelsir",
+      "en": "to move/shift",
+      "pos": "v",
+      "note": "from fael (to go)"
+    },
+    {
+      "v": "lhaelsir",
+      "en": "to show/display/reveal",
+      "pos": "v",
+      "note": "causative of lhael (to see): to make-see"
+    },
+    {
+      "v": "morvelir",
+      "en": "to rot/decay/corrupt",
+      "pos": "v",
+      "note": "from morv- (decay); distinct from morvir \"to die\""
+    },
+    {
+      "v": "gornir",
+      "en": "to grind/mill",
+      "pos": "v",
+      "note": "from gorn (rock): to crush to grit"
+    },
+    {
+      "v": "velthaun",
+      "en": "declaration",
+      "pos": "n",
+      "note": "velth (to write) + -aun: a written proclamation"
+    },
+    {
+      "v": "arsolvun",
+      "en": "reconciliation",
+      "pos": "n",
+      "note": "noun of arsolvir: a re-formed bond"
+    },
+    {
+      "v": "lhaelsil",
+      "en": "example/instance/sample",
+      "pos": "n",
+      "note": "lhael (to show) + -sil: a thing shown"
+    },
+    {
+      "v": "kaelvun",
+      "en": "worth/value",
+      "pos": "n",
+      "note": "kael (trade) + -eth (degree/abstract)"
+    },
+    {
+      "v": "morrensun",
+      "en": "session/sitting",
+      "pos": "n",
+      "note": "morren (council) + -sun: a sitting of council"
+    },
+    {
+      "v": "vorthael",
+      "en": "shelter/refuge",
+      "pos": "n",
+      "note": "vorth (shield) + -sel (place): a shielded place"
+    },
+    {
+      "v": "dharan",
+      "en": "breaker (one who breaks/violates)",
+      "pos": "title",
+      "note": "dhar- (break) + -in (agent): e.g. an oath-breaker"
+    },
+    {
+      "v": "aenil",
+      "en": "single/sole/lone",
+      "pos": "adj",
+      "note": "from aen (one)"
+    },
+    {
+      "v": "solruthen",
+      "en": "secure/safe/assured",
+      "pos": "adj",
+      "note": "sol- (pact/firm, cf soluth) + -en: firmly assured"
     }
   ]
 }
