@@ -1085,21 +1085,6 @@
       "pos": "n"
     },
     {
-      "v": "nael",
-      "en": "I/me",
-      "pos": "pron"
-    },
-    {
-      "v": "naen",
-      "en": "we/us",
-      "pos": "pron"
-    },
-    {
-      "v": "thael",
-      "en": "you (singular)",
-      "pos": "pron"
-    },
-    {
       "v": "thaen",
       "en": "you (plural)",
       "pos": "pron"
@@ -1115,26 +1100,6 @@
       "pos": "pron"
     },
     {
-      "v": "sen",
-      "en": "this",
-      "pos": "det"
-    },
-    {
-      "v": "son",
-      "en": "that",
-      "pos": "det"
-    },
-    {
-      "v": "senrae",
-      "en": "here",
-      "pos": "adv"
-    },
-    {
-      "v": "sonrae",
-      "en": "there",
-      "pos": "adv"
-    },
-    {
       "v": "anken",
       "en": "who",
       "pos": "pron"
@@ -1143,71 +1108,6 @@
       "v": "ulken",
       "en": "what",
       "pos": "pron"
-    },
-    {
-      "v": "vaelan",
-      "en": "self/one's own",
-      "pos": "pron"
-    },
-    {
-      "v": "aen",
-      "en": "one",
-      "pos": "num"
-    },
-    {
-      "v": "daer",
-      "en": "two",
-      "pos": "num"
-    },
-    {
-      "v": "tir",
-      "en": "three",
-      "pos": "num"
-    },
-    {
-      "v": "karn",
-      "en": "four",
-      "pos": "num"
-    },
-    {
-      "v": "nel",
-      "en": "five",
-      "pos": "num"
-    },
-    {
-      "v": "sirn",
-      "en": "six",
-      "pos": "num"
-    },
-    {
-      "v": "velk",
-      "en": "seven",
-      "pos": "num"
-    },
-    {
-      "v": "dorn",
-      "en": "eight",
-      "pos": "num"
-    },
-    {
-      "v": "gael",
-      "en": "nine",
-      "pos": "num"
-    },
-    {
-      "v": "daeth",
-      "en": "ten",
-      "pos": "num"
-    },
-    {
-      "v": "oren",
-      "en": "hundred",
-      "pos": "num"
-    },
-    {
-      "v": "orethon",
-      "en": "thousand",
-      "pos": "num"
     },
     {
       "v": "navel",
@@ -1220,26 +1120,6 @@
       "pos": "num"
     },
     {
-      "v": "aenen",
-      "en": "first",
-      "pos": "ord"
-    },
-    {
-      "v": "daeren",
-      "en": "second",
-      "pos": "ord"
-    },
-    {
-      "v": "olen",
-      "en": "many",
-      "pos": "quant"
-    },
-    {
-      "v": "minel",
-      "en": "few",
-      "pos": "quant"
-    },
-    {
       "v": "olael",
       "en": "all",
       "pos": "quant"
@@ -1248,21 +1128,6 @@
       "v": "naveth",
       "en": "none/nothing",
       "pos": "quant"
-    },
-    {
-      "v": "velthael",
-      "en": "number/count",
-      "pos": "n"
-    },
-    {
-      "v": "urael",
-      "en": "time",
-      "pos": "n"
-    },
-    {
-      "v": "aurin",
-      "en": "day",
-      "pos": "n"
     },
     {
       "v": "nalin",
@@ -1280,20 +1145,10 @@
       "pos": "n"
     },
     {
-      "v": "uren",
-      "en": "year",
-      "pos": "n"
-    },
-    {
       "v": "nalrael",
       "en": "month",
       "pos": "n",
       "note": "lunar cycle"
-    },
-    {
-      "v": "urin",
-      "en": "hour",
-      "pos": "n"
     },
     {
       "v": "uris",
@@ -1301,23 +1156,8 @@
       "pos": "n"
     },
     {
-      "v": "senur",
-      "en": "now",
-      "pos": "adv"
-    },
-    {
       "v": "sonur",
       "en": "then",
-      "pos": "adv"
-    },
-    {
-      "v": "olur",
-      "en": "always",
-      "pos": "adv"
-    },
-    {
-      "v": "navur",
-      "en": "never",
       "pos": "adv"
     },
     {
@@ -1331,83 +1171,13 @@
       "pos": "n"
     },
     {
-      "v": "faenaurin",
-      "en": "tomorrow",
-      "pos": "n"
-    },
-    {
-      "v": "felaurin",
-      "en": "yesterday",
-      "pos": "n"
-    },
-    {
-      "v": "aurel",
-      "en": "sun",
-      "pos": "n"
-    },
-    {
-      "v": "irel",
-      "en": "moon",
-      "pos": "n"
-    },
-    {
-      "v": "aursin",
-      "en": "star",
-      "pos": "n"
-    },
-    {
       "v": "aurvael",
       "en": "sky/heavens",
       "pos": "n"
     },
     {
-      "v": "thelas",
-      "en": "fire",
-      "pos": "n"
-    },
-    {
       "v": "theldae",
       "en": "flame",
-      "pos": "n"
-    },
-    {
-      "v": "mirel",
-      "en": "water",
-      "pos": "n"
-    },
-    {
-      "v": "mirroth",
-      "en": "river",
-      "pos": "n"
-    },
-    {
-      "v": "mirael",
-      "en": "sea/ocean",
-      "pos": "n"
-    },
-    {
-      "v": "mirdil",
-      "en": "rain",
-      "pos": "n"
-    },
-    {
-      "v": "ailel",
-      "en": "snow",
-      "pos": "n"
-    },
-    {
-      "v": "ailun",
-      "en": "ice",
-      "pos": "n"
-    },
-    {
-      "v": "rhovel",
-      "en": "wind",
-      "pos": "n"
-    },
-    {
-      "v": "vraevel",
-      "en": "storm",
       "pos": "n"
     },
     {
@@ -1421,28 +1191,13 @@
       "pos": "n"
     },
     {
-      "v": "gorvael",
-      "en": "mountain",
-      "pos": "n"
-    },
-    {
       "v": "thaelvel",
       "en": "forest/wood",
       "pos": "n"
     },
     {
-      "v": "thaelorn",
-      "en": "tree",
-      "pos": "n"
-    },
-    {
       "v": "aurvis",
       "en": "flower/bloom",
-      "pos": "n"
-    },
-    {
-      "v": "durmael",
-      "en": "metal",
       "pos": "n"
     },
     {
@@ -1456,58 +1211,13 @@
       "pos": "n"
     },
     {
-      "v": "maelan",
-      "en": "person",
-      "pos": "n"
-    },
-    {
       "v": "maelnal",
       "en": "people/folk",
       "pos": "n"
     },
     {
-      "v": "daurin",
-      "en": "man",
-      "pos": "n"
-    },
-    {
-      "v": "thaerin",
-      "en": "woman",
-      "pos": "n"
-    },
-    {
-      "v": "minin",
-      "en": "child",
-      "pos": "n"
-    },
-    {
-      "v": "thaeran",
-      "en": "mother",
-      "pos": "n"
-    },
-    {
-      "v": "dauran",
-      "en": "father",
-      "pos": "n"
-    },
-    {
-      "v": "minan",
-      "en": "son",
-      "pos": "n"
-    },
-    {
       "v": "minael",
       "en": "daughter",
-      "pos": "n"
-    },
-    {
-      "v": "daurel",
-      "en": "brother",
-      "pos": "n"
-    },
-    {
-      "v": "thaerel",
-      "en": "sister",
       "pos": "n"
     },
     {
@@ -1519,11 +1229,6 @@
       "v": "dharin",
       "en": "stranger/foreigner",
       "pos": "n"
-    },
-    {
-      "v": "noran",
-      "en": "elder",
-      "pos": "title"
     },
     {
       "v": "ornan",
@@ -1539,22 +1244,6 @@
       "v": "selvin",
       "en": "servant",
       "pos": "title"
-    },
-    {
-      "v": "ornin",
-      "en": "master",
-      "pos": "title"
-    },
-    {
-      "v": "velthan",
-      "en": "citizen",
-      "pos": "title",
-      "note": "ledger-bearer; one entered in the public record"
-    },
-    {
-      "v": "morvan",
-      "en": "beast/animal",
-      "pos": "n"
     },
     {
       "v": "lhirael",
@@ -1602,31 +1291,6 @@
       "pos": "n"
     },
     {
-      "v": "silen",
-      "en": "white",
-      "pos": "adj"
-    },
-    {
-      "v": "nalen",
-      "en": "black",
-      "pos": "adj"
-    },
-    {
-      "v": "vraeden",
-      "en": "red",
-      "pos": "adj"
-    },
-    {
-      "v": "thaesen",
-      "en": "green",
-      "pos": "adj"
-    },
-    {
-      "v": "mirsen",
-      "en": "blue",
-      "pos": "adj"
-    },
-    {
       "v": "aursen",
       "en": "gold/yellow",
       "pos": "adj"
@@ -1647,73 +1311,8 @@
       "pos": "n"
     },
     {
-      "v": "falir",
-      "en": "to go",
-      "pos": "v"
-    },
-    {
-      "v": "faenir",
-      "en": "to come",
-      "pos": "v"
-    },
-    {
-      "v": "lhinir",
-      "en": "to see",
-      "pos": "v"
-    },
-    {
-      "v": "elavir",
-      "en": "to hear",
-      "pos": "v"
-    },
-    {
-      "v": "elavel",
-      "en": "to listen",
-      "pos": "v"
-    },
-    {
-      "v": "vethir",
-      "en": "to speak",
-      "pos": "v"
-    },
-    {
-      "v": "vethel",
-      "en": "to say/tell",
-      "pos": "v"
-    },
-    {
-      "v": "norir",
-      "en": "to know",
-      "pos": "v"
-    },
-    {
-      "v": "norvir",
-      "en": "to think",
-      "pos": "v"
-    },
-    {
       "v": "norvel",
       "en": "to learn",
-      "pos": "v"
-    },
-    {
-      "v": "durvel",
-      "en": "to make/build",
-      "pos": "v"
-    },
-    {
-      "v": "kelir",
-      "en": "to take",
-      "pos": "v"
-    },
-    {
-      "v": "faelir",
-      "en": "to give",
-      "pos": "v"
-    },
-    {
-      "v": "maelir",
-      "en": "to eat",
       "pos": "v"
     },
     {
@@ -1722,120 +1321,14 @@
       "pos": "v"
     },
     {
-      "v": "vaelvir",
-      "en": "to live",
-      "pos": "v"
-    },
-    {
-      "v": "morvir",
-      "en": "to die",
-      "pos": "v"
-    },
-    {
       "v": "thaenir",
       "en": "to be born",
-      "pos": "v"
-    },
-    {
-      "v": "selvir",
-      "en": "to sleep",
-      "pos": "v"
-    },
-    {
-      "v": "arvir",
-      "en": "to wake",
-      "pos": "v"
-    },
-    {
-      "v": "vorvir",
-      "en": "to stand",
-      "pos": "v"
-    },
-    {
-      "v": "selir",
-      "en": "to sit",
-      "pos": "v"
-    },
-    {
-      "v": "falvel",
-      "en": "to walk",
-      "pos": "v"
-    },
-    {
-      "v": "velfir",
-      "en": "to run",
-      "pos": "v"
-    },
-    {
-      "v": "dovir",
-      "en": "to fall",
-      "pos": "v"
-    },
-    {
-      "v": "aurvir",
-      "en": "to rise",
-      "pos": "v"
-    },
-    {
-      "v": "aelir",
-      "en": "to want/desire",
-      "pos": "v"
-    },
-    {
-      "v": "vaelael",
-      "en": "to love",
-      "pos": "v"
-    },
-    {
-      "v": "morvael",
-      "en": "to hate",
-      "pos": "v"
-    },
-    {
-      "v": "eskir",
-      "en": "to fear",
-      "pos": "v"
-    },
-    {
-      "v": "aenir",
-      "en": "to begin",
-      "pos": "v"
-    },
-    {
-      "v": "fenir",
-      "en": "to end/finish",
       "pos": "v"
     },
     {
       "v": "vorvael",
       "en": "to attack/make war",
       "pos": "v"
-    },
-    {
-      "v": "vorthir",
-      "en": "to defend/guard",
-      "pos": "v"
-    },
-    {
-      "v": "ornir",
-      "en": "to rule/govern",
-      "pos": "v"
-    },
-    {
-      "v": "solir",
-      "en": "to obey",
-      "pos": "v"
-    },
-    {
-      "v": "dhethir",
-      "en": "to judge",
-      "pos": "v"
-    },
-    {
-      "v": "velthir",
-      "en": "to claim/file a claim",
-      "pos": "v",
-      "note": "ledger sense"
     },
     {
       "v": "solael",
@@ -1845,16 +1338,6 @@
     {
       "v": "dharvel",
       "en": "to betray",
-      "pos": "v"
-    },
-    {
-      "v": "kaelir",
-      "en": "to buy",
-      "pos": "v"
-    },
-    {
-      "v": "kaelfir",
-      "en": "to sell",
       "pos": "v"
     },
     {
@@ -1868,16 +1351,6 @@
       "pos": "v"
     },
     {
-      "v": "solen",
-      "en": "good",
-      "pos": "adj"
-    },
-    {
-      "v": "dharen",
-      "en": "bad/evil",
-      "pos": "adj"
-    },
-    {
       "v": "traen",
       "en": "big/great",
       "pos": "adj"
@@ -1888,28 +1361,8 @@
       "pos": "adj"
     },
     {
-      "v": "aenven",
-      "en": "new",
-      "pos": "adj"
-    },
-    {
-      "v": "urven",
-      "en": "old",
-      "pos": "adj"
-    },
-    {
-      "v": "minuren",
-      "en": "young",
-      "pos": "adj"
-    },
-    {
       "v": "thelven",
       "en": "hot/warm",
-      "pos": "adj"
-    },
-    {
-      "v": "ailen",
-      "en": "cold",
       "pos": "adj"
     },
     {
@@ -1933,18 +1386,6 @@
       "pos": "adj"
     },
     {
-      "v": "velthen",
-      "en": "true",
-      "pos": "adj",
-      "note": "recorded; established in the record"
-    },
-    {
-      "v": "navelthen",
-      "en": "false",
-      "pos": "adj",
-      "note": "unrecorded; contrary to the record"
-    },
-    {
       "v": "olnen",
       "en": "whole/intact",
       "pos": "adj"
@@ -1955,65 +1396,14 @@
       "pos": "adj"
     },
     {
-      "v": "morren",
-      "en": "public/common",
-      "pos": "adj",
-      "note": "of the assembly or record"
-    },
-    {
       "v": "vaelen",
       "en": "private/own",
-      "pos": "adj"
-    },
-    {
-      "v": "lhasen",
-      "en": "free",
       "pos": "adj"
     },
     {
       "v": "durnen",
       "en": "indebted/owed",
       "pos": "adj"
-    },
-    {
-      "v": "durven",
-      "en": "strong",
-      "pos": "adj"
-    },
-    {
-      "v": "minduren",
-      "en": "weak",
-      "pos": "adj"
-    },
-    {
-      "v": "ae",
-      "en": "and",
-      "pos": "conj"
-    },
-    {
-      "v": "os",
-      "en": "or",
-      "pos": "conj"
-    },
-    {
-      "v": "na",
-      "en": "not/no",
-      "pos": "part"
-    },
-    {
-      "v": "sa",
-      "en": "yes",
-      "pos": "part"
-    },
-    {
-      "v": "as",
-      "en": "with",
-      "pos": "prep"
-    },
-    {
-      "v": "nas",
-      "en": "without",
-      "pos": "prep"
     },
     {
       "v": "is",
@@ -2041,11 +1431,6 @@
       "pos": "prep"
     },
     {
-      "v": "els",
-      "en": "from",
-      "pos": "prep"
-    },
-    {
       "v": "delfen",
       "en": "between",
       "pos": "prep"
@@ -2053,11 +1438,6 @@
     {
       "v": "osel",
       "en": "if",
-      "pos": "conj"
-    },
-    {
-      "v": "nasel",
-      "en": "but",
       "pos": "conj"
     },
     {
@@ -2070,16 +1450,6 @@
       "en": "temple/shrine",
       "pos": "n",
       "note": "place of Aurelion"
-    },
-    {
-      "v": "vaelun",
-      "en": "life",
-      "pos": "n"
-    },
-    {
-      "v": "morun",
-      "en": "death",
-      "pos": "n"
     },
     {
       "v": "vaeloth",
@@ -2110,11 +1480,6 @@
       "v": "delen",
       "en": "some",
       "pos": "quant"
-    },
-    {
-      "v": "elen",
-      "en": "other",
-      "pos": "adj"
     },
     {
       "v": "thraen",
@@ -2177,11 +1542,6 @@
       "pos": "n"
     },
     {
-      "v": "felir",
-      "en": "tail",
-      "pos": "n"
-    },
-    {
       "v": "lhiris",
       "en": "feather",
       "pos": "n"
@@ -2194,16 +1554,6 @@
     {
       "v": "rhovis",
       "en": "nose",
-      "pos": "n"
-    },
-    {
-      "v": "maelin",
-      "en": "tooth",
-      "pos": "n"
-    },
-    {
-      "v": "vethil",
-      "en": "tongue",
       "pos": "n"
     },
     {
@@ -2277,11 +1627,6 @@
       "pos": "v"
     },
     {
-      "v": "rhovir",
-      "en": "blow",
-      "pos": "v"
-    },
-    {
       "v": "rhovael",
       "en": "breathe",
       "pos": "v"
@@ -2312,11 +1657,6 @@
       "pos": "v"
     },
     {
-      "v": "drimir",
-      "en": "cut",
-      "pos": "v"
-    },
-    {
       "v": "drimkir",
       "en": "split",
       "pos": "v"
@@ -2334,11 +1674,6 @@
     {
       "v": "gorvir",
       "en": "dig",
-      "pos": "v"
-    },
-    {
-      "v": "mirvir",
-      "en": "swim",
       "pos": "v"
     },
     {
@@ -2377,11 +1712,6 @@
       "pos": "v"
     },
     {
-      "v": "keldir",
-      "en": "pull",
-      "pos": "v"
-    },
-    {
       "v": "fenfir",
       "en": "push",
       "pos": "v"
@@ -2397,18 +1727,8 @@
       "pos": "v"
     },
     {
-      "v": "vethael",
-      "en": "sing",
-      "pos": "v"
-    },
-    {
       "v": "sovael",
       "en": "play",
-      "pos": "v"
-    },
-    {
-      "v": "mirsael",
-      "en": "float",
       "pos": "v"
     },
     {
@@ -2420,21 +1740,6 @@
       "v": "ailvir",
       "en": "freeze",
       "pos": "v"
-    },
-    {
-      "v": "olvir",
-      "en": "swell",
-      "pos": "v"
-    },
-    {
-      "v": "mirvael",
-      "en": "lake",
-      "pos": "n"
-    },
-    {
-      "v": "goris",
-      "en": "sand",
-      "pos": "n"
     },
     {
       "v": "gordis",
@@ -2497,42 +1802,16 @@
       "pos": "prep"
     },
     {
-      "v": "dhesel",
-      "en": "because",
-      "pos": "conj"
-    },
-    {
-      "v": "vesin",
-      "en": "name",
-      "pos": "n"
-    },
-    {
       "v": "velthorn",
       "en": "Grand Ledger Keeper",
       "pos": "title",
       "note": "chief recorder of the Republic"
     },
     {
-      "v": "morrendan",
-      "en": "senator",
-      "pos": "title"
-    },
-    {
-      "v": "morrenael",
-      "en": "senate",
-      "pos": "n"
-    },
-    {
       "v": "dhethrael",
       "en": "republic",
       "pos": "n",
       "note": "the rule of the record"
-    },
-    {
-      "v": "veshorn",
-      "en": "censor",
-      "pos": "title",
-      "note": "keeper of testimony and records"
     },
     {
       "v": "dhethsel",
@@ -2586,21 +1865,9 @@
       "pos": "v"
     },
     {
-      "v": "valdorn",
-      "en": "governor",
-      "pos": "title",
-      "note": "of a domain"
-    },
-    {
       "v": "valdun",
       "en": "jurisdiction/dominion",
       "pos": "n"
-    },
-    {
-      "v": "saelorn",
-      "en": "founder",
-      "pos": "title",
-      "note": "charter-bearer"
     },
     {
       "v": "saelun",
@@ -2645,11 +1912,6 @@
       "en": "gold sovereign",
       "pos": "n",
       "note": "highest coin"
-    },
-    {
-      "v": "kaelis",
-      "en": "coin",
-      "pos": "n"
     },
     {
       "v": "goldmar",
@@ -2739,12 +2001,6 @@
       "v": "rudael",
       "en": "bronze",
       "pos": "n"
-    },
-    {
-      "v": "veldurael",
-      "en": "steel",
-      "pos": "n",
-      "note": "hardened iron"
     },
     {
       "v": "gormael",
@@ -2870,11 +2126,6 @@
       "pos": "n"
     },
     {
-      "v": "draelin",
-      "en": "soldier",
-      "pos": "title"
-    },
-    {
       "v": "vraedin",
       "en": "warrior",
       "pos": "title"
@@ -2883,22 +2134,6 @@
       "v": "vorthin",
       "en": "guardsman/sentry",
       "pos": "title"
-    },
-    {
-      "v": "vorsil",
-      "en": "shield",
-      "pos": "n"
-    },
-    {
-      "v": "drimael",
-      "en": "sword",
-      "pos": "n"
-    },
-    {
-      "v": "lhiraen",
-      "en": "bow",
-      "pos": "n",
-      "note": "weapon"
     },
     {
       "v": "kalvorth",
@@ -2967,16 +2202,6 @@
       "note": "military"
     },
     {
-      "v": "drimaril",
-      "en": "weapon",
-      "pos": "n"
-    },
-    {
-      "v": "vraefir",
-      "en": "to wound",
-      "pos": "v"
-    },
-    {
       "v": "vraesil",
       "en": "wound",
       "pos": "n"
@@ -2992,19 +2217,9 @@
       "pos": "n"
     },
     {
-      "v": "vethorn",
-      "en": "envoy/ambassador",
-      "pos": "title"
-    },
-    {
       "v": "vethsel",
       "en": "embassy",
       "pos": "n"
-    },
-    {
-      "v": "morrenan",
-      "en": "delegate/representative",
-      "pos": "title"
     },
     {
       "v": "morrenrae",
@@ -3200,39 +2415,14 @@
       "pos": "v"
     },
     {
-      "v": "saelvael",
-      "en": "city",
-      "pos": "n"
-    },
-    {
-      "v": "saelnael",
-      "en": "town",
-      "pos": "n"
-    },
-    {
-      "v": "saelmin",
-      "en": "village",
-      "pos": "n"
-    },
-    {
       "v": "ornsael",
       "en": "capital",
       "pos": "n",
       "note": "seat of power"
     },
     {
-      "v": "vorthun",
-      "en": "tower",
-      "pos": "n"
-    },
-    {
       "v": "vorthsael",
       "en": "keep/citadel",
-      "pos": "n"
-    },
-    {
-      "v": "rusel",
-      "en": "street/lane",
       "pos": "n"
     },
     {
@@ -3259,11 +2449,6 @@
     {
       "v": "mirfen",
       "en": "coast/shore",
-      "pos": "n"
-    },
-    {
-      "v": "mirdael",
-      "en": "island",
       "pos": "n"
     },
     {
@@ -3294,11 +2479,6 @@
     {
       "v": "mirfirun",
       "en": "current",
-      "pos": "n"
-    },
-    {
-      "v": "gordov",
-      "en": "valley",
       "pos": "n"
     },
     {
@@ -3387,11 +2567,6 @@
       "pos": "n"
     },
     {
-      "v": "solvun",
-      "en": "truth",
-      "pos": "n"
-    },
-    {
       "v": "navsol",
       "en": "lie/falsehood",
       "pos": "n"
@@ -3416,17 +2591,6 @@
       "en": "established order",
       "pos": "n",
       "note": "orderliness"
-    },
-    {
-      "v": "navorn",
-      "en": "chaos/disorder",
-      "pos": "n"
-    },
-    {
-      "v": "selvael",
-      "en": "peace",
-      "pos": "n",
-      "note": "cf. the Peace of the Scale"
     },
     {
       "v": "lhasael",
@@ -3509,23 +2673,8 @@
       "pos": "v"
     },
     {
-      "v": "veth",
-      "en": "word",
-      "pos": "n"
-    },
-    {
-      "v": "vethrael",
-      "en": "language",
-      "pos": "n"
-    },
-    {
       "v": "vethvelth",
       "en": "story/tale",
-      "pos": "n"
-    },
-    {
-      "v": "faelis",
-      "en": "gift",
       "pos": "n"
     },
     {
@@ -3724,11 +2873,6 @@
       "pos": "n"
     },
     {
-      "v": "auris",
-      "en": "glow/radiance",
-      "pos": "n"
-    },
-    {
       "v": "naluraur",
       "en": "eclipse",
       "pos": "n"
@@ -3914,33 +3058,8 @@
       "pos": "n"
     },
     {
-      "v": "felnorun",
-      "en": "memory",
-      "pos": "n"
-    },
-    {
-      "v": "felnorir",
-      "en": "to remember",
-      "pos": "v"
-    },
-    {
-      "v": "navnorir",
-      "en": "to forget",
-      "pos": "v"
-    },
-    {
-      "v": "veshir",
-      "en": "to believe",
-      "pos": "v"
-    },
-    {
       "v": "naveshir",
       "en": "to doubt",
-      "pos": "v"
-    },
-    {
-      "v": "nalnorir",
-      "en": "to dream",
       "pos": "v"
     },
     {
@@ -4074,11 +3193,6 @@
       "pos": "adj"
     },
     {
-      "v": "soverae",
-      "en": "music",
-      "pos": "n"
-    },
-    {
       "v": "duvis",
       "en": "drum",
       "pos": "n"
@@ -4091,11 +3205,6 @@
     {
       "v": "vorthdril",
       "en": "horn (signal/instrument)",
-      "pos": "n"
-    },
-    {
-      "v": "vethaelun",
-      "en": "song",
       "pos": "n"
     },
     {
@@ -4491,11 +3600,6 @@
     {
       "v": "mirmin",
       "en": "pond",
-      "pos": "n"
-    },
-    {
-      "v": "gormin",
-      "en": "hill",
       "pos": "n"
     },
     {
@@ -5198,12 +4302,6 @@
       "en": "session/sitting",
       "pos": "n",
       "note": "morren (council) + -sun: a sitting of council"
-    },
-    {
-      "v": "vorthael",
-      "en": "shelter/refuge",
-      "pos": "n",
-      "note": "vorth (shield) + -sel (place): a shielded place"
     },
     {
       "v": "dharan",
