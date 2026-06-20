@@ -44,7 +44,7 @@ body::before{
   content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:0.45;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
 }
-.wrap{position:relative;z-index:1;max-width:920px;margin:0 auto;padding:34px 16px 80px;}
+.wrap{position:relative;z-index:1;max-width:920px;margin:0 auto;padding:34px 16px 104px;}
 
 header{text-align:center;margin-bottom:6px;}
 .eyebrow{font-size:11px;letter-spacing:5px;text-transform:uppercase;color:var(--verd);margin-bottom:10px;}
@@ -117,6 +117,52 @@ textarea::placeholder,input.vin::placeholder{color:#566;font-style:italic;}
 .script-ctrls .sc-reset{margin-left:auto;background:none;border:1px solid var(--verd-dim);color:var(--verd);font-family:'Cinzel',serif;font-size:9px;letter-spacing:1.5px;text-transform:uppercase;padding:5px 11px;border-radius:7px;cursor:pointer;}
 .script-ctrls .sc-reset:hover{border-color:var(--verd);color:var(--ink);}
 .out .miss{color:var(--err);}
+
+/* scratchpad — docked drawer, present on every tab */
+.scratch-dock{position:fixed;left:0;right:0;bottom:0;z-index:60;display:flex;flex-direction:column;
+  align-items:center;pointer-events:none;}
+.scratch-dock > *{pointer-events:auto;width:100%;max-width:920px;}
+.scratch-handle{display:flex;align-items:center;gap:12px;background:linear-gradient(180deg,var(--panel),var(--slate));
+  border:1px solid var(--line);border-radius:10px 10px 0 0;padding:11px 18px;cursor:pointer;color:var(--bronze);
+  font-variant:small-caps;letter-spacing:2px;font-size:15px;box-shadow:0 -8px 30px rgba(0,0,0,.42);text-align:left;}
+.scratch-handle:hover{border-color:var(--verd-dim);}
+.scratch-handle .sh-count{font-variant:normal;font-size:11px;letter-spacing:1px;color:var(--verd);text-transform:none;}
+.scratch-handle .sh-chev{margin-left:auto;color:var(--verd);font-size:11px;transition:transform .25s ease;}
+.scratch-dock.open .scratch-handle{border-radius:0;border-top:none;}
+.scratch-dock.open .scratch-handle .sh-chev{transform:rotate(180deg);}
+.scratch-body{background:linear-gradient(180deg,var(--slate),var(--abyss));border:1px solid transparent;
+  border-radius:10px 10px 0 0;padding:0 18px;max-height:0;overflow:hidden;
+  box-shadow:0 -8px 30px rgba(0,0,0,.42);transition:max-height .28s ease,padding .28s ease;}
+.scratch-dock.open .scratch-body{border-color:var(--line);max-height:64vh;overflow-y:auto;padding:16px 18px 20px;
+  scrollbar-width:thin;scrollbar-color:var(--verd-dim) var(--abyss);}
+.scratch-dock.open .scratch-body::-webkit-scrollbar{width:10px;}
+.scratch-dock.open .scratch-body::-webkit-scrollbar-track{background:var(--abyss);}
+.scratch-dock.open .scratch-body::-webkit-scrollbar-thumb{background:var(--verd-dim);border-radius:5px;}
+.scratch-body textarea{width:100%;background:var(--abyss);border:1px solid var(--line);border-radius:4px;color:var(--ink);
+  resize:vertical;font-family:inherit;font-size:17px;line-height:1.6;min-height:120px;
+  outline:none;padding:11px 13px;}
+.scratch-body textarea::placeholder{color:#566;font-style:italic;}
+.scratch-body .scr-help{color:var(--ink-dim);font-size:13px;line-height:1.55;margin:0 0 12px;}
+.scratch-body .scr-help code{font-family:inherit;color:var(--bronze);font-style:italic;font-size:13px;}
+#scratchMsg{color:var(--verd);font-size:13px;}
+#scratchAdd:disabled{opacity:.4;cursor:default;}
+#scratchAdd:disabled:hover{background:var(--bronze-soft);border-color:var(--bronze-soft);color:var(--abyss);}
+.scratch-preview{margin-top:14px;}
+.scratch-preview:empty{display:none;}
+.scratch-preview .scr-sum{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--bronze-soft);margin-bottom:9px;}
+.scr-rows{border:1px solid var(--line);border-radius:3px;background:var(--abyss);display:flex;flex-direction:column;}
+.scr-row{display:flex;align-items:baseline;gap:9px;padding:7px 11px;border-bottom:1px solid var(--line);font-size:14px;}
+.scr-row:last-child{border-bottom:none;}
+.scr-row .scr-form{color:var(--bronze);font-variant:small-caps;letter-spacing:.5px;font-size:15px;overflow-wrap:anywhere;}
+.scr-row .scr-mean{color:var(--ink-dim);font-style:italic;overflow-wrap:anywhere;}
+.scr-row .scr-tag{color:var(--verd);font-size:10px;letter-spacing:1px;text-transform:uppercase;border:1px solid var(--verd-dim);border-radius:9px;padding:1px 7px;white-space:nowrap;}
+.scr-row .scr-stat{margin-left:auto;font-size:11px;letter-spacing:.5px;white-space:nowrap;}
+.scr-row.ok .scr-stat{color:var(--verd);}
+.scr-row.dup{opacity:.62;}
+.scr-row.dup .scr-stat{color:var(--ink-dim);}
+.scr-row.bad .scr-form{color:var(--err);}
+.scr-row.bad .scr-stat{color:var(--err);}
+.scr-row.bad .scr-raw{color:var(--err);font-family:inherit;font-size:14px;overflow-wrap:anywhere;}
 
 .gloss{margin-top:13px;display:flex;flex-wrap:wrap;gap:7px;}
 .tok{background:var(--panel2);border:1px solid var(--line);border-radius:3px;padding:5px 9px;font-size:13px;min-width:38px;text-align:center;}
@@ -298,7 +344,6 @@ footer b{color:var(--bronze);font-variant:small-caps;letter-spacing:1px;}
 <body>
 <div class="wrap">
   <header>
-    <div class="eyebrow">The Confederal Tongue of Valdoria</div>
     <h1>Valdorian</h1>
     <div class="sub">the spoken record &middot; autonym <b>Vethrin</b></div>
   </header>
@@ -706,9 +751,28 @@ footer b{color:var(--bronze);font-variant:small-caps;letter-spacing:1px;}
   </section>
 
   <footer>
-    Valdorian &middot; <b>Vethrin</b> tongue toolkit &middot; v1<br>
+    Valdorian &middot; <b>Vethrin</b> tongue toolkit &middot; v1.5<br>
     Built for the Confederation of Valdoria, Varn &amp; Charskin Isle &middot; one tongue, the spoken record
   </footer>
+</div>
+
+<!-- ============ SCRATCHPAD (docked, on every tab) ============ -->
+<div class="scratch-dock" id="scratchDock">
+  <div class="scratch-body" id="scratchBody">
+    <p class="scr-help">Paste words, preview them, add in bulk. One word per line, written <code>form &middot; meaning [kind]</code> &mdash; the same shape the Forge copies out. The kind is optional: a part of speech (<code>n</code>, <code>v</code>, <code>adj</code>&hellip;) or a plain label like <code>verb</code>. Blank lines and lines starting with <code>#</code> are skipped. What you type stays here between visits &mdash; a quiet bench to lay words on while you work; add the ready ones to your forged lexicon when you're satisfied.</p>
+    <textarea id="scratchIn" placeholder="varun &middot; river [n]&#10;dhethael &middot; statute [n]&#10;solu &middot; to bind together [verb]&#10;# a quiet note to yourself &mdash; this line is skipped"></textarea>
+    <div class="row" style="margin-top:12px;">
+      <button class="btn solid" id="scratchAdd">Add ready words</button>
+      <button class="btn" id="scratchClear">Clear the bench</button>
+      <span id="scratchMsg"></span>
+    </div>
+    <div class="scratch-preview" id="scratchPreview"></div>
+  </div>
+  <button class="scratch-handle" id="scratchHandle" aria-expanded="false" aria-controls="scratchBody">
+    <span class="sh-title">Scratchpad</span>
+    <span class="sh-count" id="scratchCount"></span>
+    <span class="sh-chev" aria-hidden="true">&#9650;</span>
+  </button>
 </div>
 
 <script>
@@ -1885,15 +1949,101 @@ function renderConj(){
 function gotoConjugate(form){ const tab=document.querySelector('.tab[data-v="conj"]'); if(tab) tab.click(); $('verbInput').value=form; renderConj(); $('verbInput').focus(); }
 $('verbInput').addEventListener('input',renderConj);
 
+/* ====================== SCRATCHPAD ====================== */
+const LS_SCRATCH='valdorian_scratch_v1';
+/* part-of-speech aliases: bare codes and plain labels both map to a stored pos */
+const SCR_KIND={
+  n:'n',v:'v',adj:'adj',adv:'adv',prep:'prep',conj:'conj',pron:'pron',det:'det',num:'num',ord:'ord',title:'title',intj:'intj',q:'q',
+  noun:'n',verb:'v',adjective:'adj',adverb:'adv',preposition:'prep',conjunction:'conj',pronoun:'pron',
+  determiner:'det',number:'num',numeral:'num',ordinal:'ord',title_:'title',interjection:'intj',question:'q'
+};
+const POS_NAME={n:'noun',v:'verb',adj:'adj',adv:'adv',prep:'prep',conj:'conj',pron:'pron',det:'det',num:'num',ord:'ord',title:'title',intj:'intj',q:'q'};
+
+function loadScratch(){ try{const r=localStorage.getItem(LS_SCRATCH); if(r!=null&&$('scratchIn')) $('scratchIn').value=r;}catch(e){} }
+function saveScratch(){ try{ if($('scratchIn')) localStorage.setItem(LS_SCRATCH,$('scratchIn').value);}catch(e){} }
+
+/* open / closed state of the docked drawer, remembered between visits */
+const LS_SCRATCH_OPEN='valdorian_scratch_open_v1';
+function applyScratchOpen(open){ const d=$('scratchDock'),h=$('scratchHandle'); if(!d) return; d.classList.toggle('open',!!open); if(h) h.setAttribute('aria-expanded',open?'true':'false'); }
+function loadScratchOpen(){ let open=false; try{ open=localStorage.getItem(LS_SCRATCH_OPEN)==='1'; }catch(e){} applyScratchOpen(open); }
+function toggleScratch(){ const d=$('scratchDock'); if(!d) return; const open=!d.classList.contains('open'); applyScratchOpen(open); try{ localStorage.setItem(LS_SCRATCH_OPEN,open?'1':'0'); }catch(e){} if(open&&$('scratchIn')) setTimeout(()=>$('scratchIn').focus(),60); }
+
+/* Parse the bench into rows. form \u00b7 meaning [kind]; blank / # lines skipped. */
+function parseScratch(){
+  const ta=$('scratchIn'); if(!ta) return [];
+  const known={}; lex().forEach(d=>{ if(d&&d.v) known[String(d.v).toLowerCase()]=1; });
+  const seen={}; const rows=[];
+  ta.value.split('\n').forEach(raw=>{
+    const line=raw.trim();
+    if(!line||line.charAt(0)==='#') return;                 // blank or comment: skipped
+    const dot=line.indexOf('\u00b7');
+    if(dot<0){ rows.push({state:'bad',raw:line,why:'needs a \u00b7 between form and meaning'}); return; }
+    const form=line.slice(0,dot).trim();
+    let rest=line.slice(dot+1).trim();
+    let pos='n', label='';
+    const m=rest.match(/\[([^\]]*)\]\s*$/);
+    if(m){ label=m[1].trim(); rest=rest.slice(0,m.index).trim(); }
+    const mean=rest;
+    if(!form||!mean){ rows.push({state:'bad',raw:line,why:'needs both a form and a meaning'}); return; }
+    if(label) pos=SCR_KIND[label.toLowerCase()]||'n';
+    const lc=form.toLowerCase();
+    if(known[lc]){ rows.push({state:'dup',form:form,mean:mean,pos:pos}); return; }          // already in lexicon
+    if(seen[lc]){ rows.push({state:'dup',form:form,mean:mean,pos:pos,inpad:true}); return; } // repeated within the pad
+    seen[lc]=1;
+    rows.push({state:'ok',form:form,mean:mean,pos:pos});
+  });
+  return rows;
+}
+
+function renderScratch(){
+  const box=$('scratchPreview'); if(!box) return;
+  const rows=parseScratch();
+  const ready=rows.filter(r=>r.state==='ok').length;
+  const dup=rows.filter(r=>r.state==='dup').length;
+  const bad=rows.filter(r=>r.state==='bad').length;
+  const cnt=$('scratchCount'); if(cnt) cnt.textContent=rows.length?(ready+' ready of '+rows.length+' read'):'';
+  const ab=$('scratchAdd'); if(ab) ab.disabled=ready===0;
+  if(!rows.length){ box.innerHTML=''; return; }
+  let html='<div class="scr-sum">'+ready+' ready &middot; '+dup+' already known &middot; '+bad+' need a fix</div><div class="scr-rows">';
+  rows.forEach(r=>{
+    if(r.state==='bad'){
+      html+='<div class="scr-row bad"><span class="scr-raw">'+escapeHtml(r.raw)+'</span><span class="scr-stat">'+escapeHtml(r.why)+'</span></div>';
+    }else{
+      const stat=r.state==='ok'?'ready':(r.inpad?'repeated above':'already in lexicon');
+      html+='<div class="scr-row '+r.state+'"><span class="scr-form">'+escapeHtml(r.form)+'</span><span class="scr-mean">'+escapeHtml(r.mean)+'</span><span class="scr-tag">'+escapeHtml(POS_NAME[r.pos]||r.pos)+'</span><span class="scr-stat">'+stat+'</span></div>';
+    }
+  });
+  html+='</div>';
+  box.innerHTML=html;
+}
+
+$('scratchHandle').addEventListener('click',toggleScratch);
+$('scratchIn').addEventListener('input',()=>{ saveScratch(); renderScratch(); });
+$('scratchAdd').addEventListener('click',()=>{
+  const rows=parseScratch().filter(r=>r.state==='ok');
+  if(!rows.length){ $('scratchMsg').textContent='No ready words to add.'; setTimeout(()=>$('scratchMsg').textContent='',1800); return; }
+  rows.forEach(r=>customWords.push({v:r.form,en:r.mean,pos:r.pos}));
+  saveCustom(); rebuildMaps(); renderDict(); buildNumTable(); buildVerbList(); updateWantsBadge(); renderWants(); renderTranslate(); renderRuralDict();
+  $('scratchMsg').textContent='Added '+rows.length+' word'+(rows.length===1?'':'s')+' to your lexicon.';
+  setTimeout(()=>$('scratchMsg').textContent='',2600);
+  renderScratch();
+});
+$('scratchClear').addEventListener('click',()=>{
+  if(!$('scratchIn').value.trim()) return;
+  if(confirm('Clear the scratchpad? Words you have already added to the lexicon will stay.')){
+    $('scratchIn').value=''; saveScratch(); renderScratch();
+  }
+});
+
 /* ====================== INIT ====================== */
 function renderAll(){
   rebuildMaps();
   renderDict(); buildNumTable(); renderNumber(); renderPrButtons(); renderPronoun(); updateLexStatus();
   buildVerbList(); buildRootList(); updateWantsBadge(); renderWants();
-  renderRuralDict();
+  renderRuralDict(); renderScratch();
 }
 /* Boot immediately on built-in + saved words so nothing blocks on the network. */
-loadCustom(); loadWants(); loadScriptPrefs(); applyScriptPrefs(); renderAll();
+loadCustom(); loadWants(); loadScriptPrefs(); applyScriptPrefs(); loadScratch(); loadScratchOpen(); renderAll();
 /* Then pull lexicon.json (GitHub Pages / any web host) and fold its words in. */
 loadFetchedLexicon().then(()=>{ renderAll(); if($('inText')&&$('inText').value.trim()) renderTranslate(); });
 </script>
