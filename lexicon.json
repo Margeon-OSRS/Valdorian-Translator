@@ -5550,6 +5550,381 @@
       "v": "kalinel",
       "en": "collar",
       "pos": "n"
+    },
+    {
+      "v": "kalvalan",
+      "en": "noble",
+      "pos": "title"
+    },
+    {
+      "v": "ornvar",
+      "en": "sceptre",
+      "pos": "n"
+    },
+    {
+      "v": "ornvald",
+      "en": "realm",
+      "pos": "n"
+    },
+    {
+      "v": "orndin",
+      "en": "subject",
+      "pos": "title"
+    },
+    {
+      "v": "ornaor",
+      "en": "master",
+      "pos": "title"
+    },
+    {
+      "v": "navlhas",
+      "en": "slave",
+      "pos": "title"
+    },
+    {
+      "v": "saelinan",
+      "en": "mayor",
+      "pos": "title"
+    },
+    {
+      "v": "vethraen",
+      "en": "herald",
+      "pos": "title"
+    },
+    {
+      "v": "valdaran",
+      "en": "minister",
+      "pos": "title"
+    },
+    {
+      "v": "rhovalan",
+      "en": "steward",
+      "pos": "title"
+    },
+    {
+      "v": "navdheth",
+      "en": "crime",
+      "pos": "n"
+    },
+    {
+      "v": "kethun",
+      "en": "theft",
+      "pos": "n"
+    },
+    {
+      "v": "mornav",
+      "en": "murder",
+      "pos": "n"
+    },
+    {
+      "v": "dhaeven",
+      "en": "guilt",
+      "pos": "n"
+    },
+    {
+      "v": "dhaelhas",
+      "en": "innocent",
+      "pos": "adj"
+    },
+    {
+      "v": "dhaevir",
+      "en": "to punish",
+      "pos": "v"
+    },
+    {
+      "v": "dhethel",
+      "en": "trial",
+      "pos": "n"
+    },
+    {
+      "v": "dharvelan",
+      "en": "traitor",
+      "pos": "title"
+    },
+    {
+      "v": "daeleth",
+      "en": "reward",
+      "pos": "n"
+    },
+    {
+      "v": "dhaevun",
+      "en": "blame",
+      "pos": "n"
+    },
+    {
+      "v": "navlhasel",
+      "en": "slavery",
+      "pos": "n"
+    },
+    {
+      "v": "kethsael",
+      "en": "prison",
+      "pos": "n"
+    },
+    {
+      "v": "drimis",
+      "en": "dagger",
+      "pos": "n"
+    },
+    {
+      "v": "velfir",
+      "en": "to retreat",
+      "pos": "v"
+    },
+    {
+      "v": "kelornir",
+      "en": "to conquer",
+      "pos": "v"
+    },
+    {
+      "v": "aurornael",
+      "en": "goddess",
+      "pos": "n"
+    },
+    {
+      "v": "aurvath",
+      "en": "heaven",
+      "pos": "n"
+    },
+    {
+      "v": "dorvath",
+      "en": "hell",
+      "pos": "n"
+    },
+    {
+      "v": "aurvaelir",
+      "en": "to worship",
+      "pos": "v"
+    },
+    {
+      "v": "aurvethan",
+      "en": "prophet",
+      "pos": "title"
+    },
+    {
+      "v": "navaurin",
+      "en": "demon",
+      "pos": "n"
+    },
+    {
+      "v": "aurvaesar",
+      "en": "angel",
+      "pos": "n"
+    },
+    {
+      "v": "aurlas",
+      "en": "miracle",
+      "pos": "n"
+    },
+    {
+      "v": "morvaleth",
+      "en": "mourning",
+      "pos": "n"
+    },
+    {
+      "v": "morthrael",
+      "en": "funeral",
+      "pos": "n"
+    },
+    {
+      "v": "vesheth",
+      "en": "knowledge",
+      "pos": "n"
+    },
+    {
+      "v": "norsael",
+      "en": "school",
+      "pos": "n"
+    },
+    {
+      "v": "norvelin",
+      "en": "student",
+      "pos": "title"
+    },
+    {
+      "v": "norethan",
+      "en": "scholar",
+      "pos": "title"
+    },
+    {
+      "v": "asorvelth",
+      "en": "legend",
+      "pos": "n"
+    },
+    {
+      "v": "dureleth",
+      "en": "bell",
+      "pos": "n"
+    },
+    {
+      "v": "lirthel",
+      "en": "harp",
+      "pos": "n"
+    },
+    {
+      "v": "miraeth",
+      "en": "beauty",
+      "pos": "n"
+    },
+    {
+      "v": "ivaren",
+      "en": "birth",
+      "pos": "n"
+    },
+    {
+      "v": "veirun",
+      "en": "fortune",
+      "pos": "n"
+    },
+    {
+      "v": "veiren",
+      "en": "luck",
+      "pos": "n"
+    },
+    {
+      "v": "veiril",
+      "en": "chance",
+      "pos": "n"
+    },
+    {
+      "v": "eskael",
+      "en": "danger",
+      "pos": "n"
+    },
+    {
+      "v": "vortheth",
+      "en": "safety",
+      "pos": "n"
+    },
+    {
+      "v": "seltheth",
+      "en": "choice",
+      "pos": "n"
+    },
+    {
+      "v": "niraen",
+      "en": "change",
+      "pos": "n"
+    },
+    {
+      "v": "kanun",
+      "en": "number",
+      "pos": "n"
+    },
+    {
+      "v": "kanael",
+      "en": "amount",
+      "pos": "n"
+    },
+    {
+      "v": "kelveth",
+      "en": "depth",
+      "pos": "n"
+    },
+    {
+      "v": "aurneth",
+      "en": "height",
+      "pos": "n"
+    },
+    {
+      "v": "lirvel",
+      "en": "edge",
+      "pos": "n"
+    },
+    {
+      "v": "vaeleth",
+      "en": "centre",
+      "pos": "n"
+    },
+    {
+      "v": "felael",
+      "en": "surface",
+      "pos": "n"
+    },
+    {
+      "v": "doreth",
+      "en": "shape",
+      "pos": "n"
+    },
+    {
+      "v": "drimun",
+      "en": "point",
+      "pos": "n"
+    },
+    {
+      "v": "irveth",
+      "en": "circle",
+      "pos": "n"
+    },
+    {
+      "v": "dhaelan",
+      "en": "must",
+      "pos": "v"
+    },
+    {
+      "v": "soraen",
+      "en": "certain",
+      "pos": "adj"
+    },
+    {
+      "v": "maeven",
+      "en": "possible",
+      "pos": "adj"
+    },
+    {
+      "v": "navmaeven",
+      "en": "impossible",
+      "pos": "adj"
+    },
+    {
+      "v": "navaelen",
+      "en": "different",
+      "pos": "adj"
+    },
+    {
+      "v": "traelen",
+      "en": "opposite",
+      "pos": "adj"
+    },
+    {
+      "v": "naelen",
+      "en": "similar",
+      "pos": "adj"
+    },
+    {
+      "v": "orven",
+      "en": "respect",
+      "pos": "n"
+    },
+    {
+      "v": "aelveth",
+      "en": "greed",
+      "pos": "n"
+    },
+    {
+      "v": "asorval",
+      "en": "regret",
+      "pos": "n"
+    },
+    {
+      "v": "navaesel",
+      "en": "despair",
+      "pos": "n"
+    },
+    {
+      "v": "seleth",
+      "en": "comfort",
+      "pos": "n"
+    },
+    {
+      "v": "uraven",
+      "en": "patience",
+      "pos": "n"
+    },
+    {
+      "v": "veladhen",
+      "en": "loyalty",
+      "pos": "n"
     }
   ]
 }
