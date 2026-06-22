@@ -4320,6 +4320,1236 @@
       "en": "secure/safe/assured",
       "pos": "adj",
       "note": "sol- (pact/firm, cf soluth) + -en: firmly assured"
+    },
+    {
+      "v": "minur",
+      "en": "few",
+      "pos": "adj"
+    },
+    {
+      "v": "ivan",
+      "en": "animal",
+      "pos": "n"
+    },
+    {
+      "v": "fenvil",
+      "en": "tail",
+      "pos": "n"
+    },
+    {
+      "v": "drin",
+      "en": "tooth",
+      "pos": "n"
+    },
+    {
+      "v": "maesir",
+      "en": "to eat",
+      "pos": "v"
+    },
+    {
+      "v": "rhevir",
+      "en": "to blow",
+      "pos": "v"
+    },
+    {
+      "v": "drisir",
+      "en": "to cut",
+      "pos": "v"
+    },
+    {
+      "v": "rhethir",
+      "en": "to pull",
+      "pos": "v"
+    },
+    {
+      "v": "kanir",
+      "en": "to count",
+      "pos": "v"
+    },
+    {
+      "v": "lirir",
+      "en": "to sing",
+      "pos": "v"
+    },
+    {
+      "v": "mirsir",
+      "en": "to float",
+      "pos": "v"
+    },
+    {
+      "v": "rothir",
+      "en": "to swell",
+      "pos": "v"
+    },
+    {
+      "v": "mirval",
+      "en": "sea",
+      "pos": "n"
+    },
+    {
+      "v": "minir",
+      "en": "son",
+      "pos": "n"
+    },
+    {
+      "v": "thanaor",
+      "en": "uncle",
+      "pos": "n"
+    },
+    {
+      "v": "thanael",
+      "en": "aunt",
+      "pos": "n"
+    },
+    {
+      "v": "maoras",
+      "en": "grandfather",
+      "pos": "n"
+    },
+    {
+      "v": "maelas",
+      "en": "grandmother",
+      "pos": "n"
+    },
+    {
+      "v": "naelan",
+      "en": "neighbor",
+      "pos": "n"
+    },
+    {
+      "v": "vaesin",
+      "en": "guest",
+      "pos": "n"
+    },
+    {
+      "v": "velvar",
+      "en": "crowd",
+      "pos": "n"
+    },
+    {
+      "v": "faelarn",
+      "en": "leader",
+      "pos": "title"
+    },
+    {
+      "v": "vethkal",
+      "en": "lip",
+      "pos": "n"
+    },
+    {
+      "v": "kalsil",
+      "en": "cheek",
+      "pos": "n"
+    },
+    {
+      "v": "kalvin",
+      "en": "chin",
+      "pos": "n"
+    },
+    {
+      "v": "kalael",
+      "en": "throat",
+      "pos": "n"
+    },
+    {
+      "v": "draenin",
+      "en": "shoulder",
+      "pos": "n"
+    },
+    {
+      "v": "draevin",
+      "en": "elbow",
+      "pos": "n"
+    },
+    {
+      "v": "maenvin",
+      "en": "wrist",
+      "pos": "n"
+    },
+    {
+      "v": "maenil",
+      "en": "finger",
+      "pos": "n"
+    },
+    {
+      "v": "maenel",
+      "en": "thumb",
+      "pos": "n"
+    },
+    {
+      "v": "morvin",
+      "en": "waist",
+      "pos": "n"
+    },
+    {
+      "v": "falkal",
+      "en": "hip",
+      "pos": "n"
+    },
+    {
+      "v": "norsil",
+      "en": "brain",
+      "pos": "n"
+    },
+    {
+      "v": "rhovsil",
+      "en": "lung",
+      "pos": "n"
+    },
+    {
+      "v": "thaeskal",
+      "en": "beard",
+      "pos": "n"
+    },
+    {
+      "v": "kalgorn",
+      "en": "skull",
+      "pos": "n"
+    },
+    {
+      "v": "maelan",
+      "en": "hungry",
+      "pos": "adj"
+    },
+    {
+      "v": "ruvan",
+      "en": "thirsty",
+      "pos": "adj"
+    },
+    {
+      "v": "gorsilen",
+      "en": "salty",
+      "pos": "adj"
+    },
+    {
+      "v": "maelkal",
+      "en": "plate",
+      "pos": "n"
+    },
+    {
+      "v": "urin",
+      "en": "minute",
+      "pos": "n"
+    },
+    {
+      "v": "neben",
+      "en": "early",
+      "pos": "adj"
+    },
+    {
+      "v": "fenan",
+      "en": "late",
+      "pos": "adj"
+    },
+    {
+      "v": "aurur",
+      "en": "summer",
+      "pos": "n"
+    },
+    {
+      "v": "dovur",
+      "en": "autumn",
+      "pos": "n"
+    },
+    {
+      "v": "ailur",
+      "en": "winter",
+      "pos": "n"
+    },
+    {
+      "v": "orvath",
+      "en": "pride",
+      "pos": "n"
+    },
+    {
+      "v": "aeleth",
+      "en": "wish",
+      "pos": "n"
+    },
+    {
+      "v": "sorir",
+      "en": "to believe",
+      "pos": "v"
+    },
+    {
+      "v": "kaelgol",
+      "en": "money",
+      "pos": "n"
+    },
+    {
+      "v": "fendir",
+      "en": "to follow",
+      "pos": "v"
+    },
+    {
+      "v": "selthir",
+      "en": "to choose",
+      "pos": "v"
+    },
+    {
+      "v": "lasvir",
+      "en": "to use",
+      "pos": "v"
+    },
+    {
+      "v": "kelan",
+      "en": "shallow",
+      "pos": "adj"
+    },
+    {
+      "v": "lhasen",
+      "en": "easy",
+      "pos": "adj"
+    },
+    {
+      "v": "vaelal",
+      "en": "kind",
+      "pos": "adj"
+    },
+    {
+      "v": "dharvael",
+      "en": "cruel",
+      "pos": "adj"
+    },
+    {
+      "v": "melas",
+      "en": "maybe",
+      "pos": "adv"
+    },
+    {
+      "v": "aenas",
+      "en": "only",
+      "pos": "adv"
+    },
+    {
+      "v": "aras",
+      "en": "also",
+      "pos": "adv"
+    },
+    {
+      "v": "naelas",
+      "en": "almost",
+      "pos": "adv"
+    },
+    {
+      "v": "nebel",
+      "en": "front",
+      "pos": "n"
+    },
+    {
+      "v": "velneb",
+      "en": "since",
+      "pos": "prep"
+    },
+    {
+      "v": "runen",
+      "en": "around",
+      "pos": "prep"
+    },
+    {
+      "v": "belen",
+      "en": "about",
+      "pos": "prep"
+    },
+    {
+      "v": "velthas",
+      "en": "paper",
+      "pos": "n"
+    },
+    {
+      "v": "ilrael",
+      "en": "picture",
+      "pos": "n"
+    },
+    {
+      "v": "rhovil",
+      "en": "hut",
+      "pos": "n"
+    },
+    {
+      "v": "theldsel",
+      "en": "chimney",
+      "pos": "n"
+    },
+    {
+      "v": "kalvel",
+      "en": "stair",
+      "pos": "n"
+    },
+    {
+      "v": "kalsel",
+      "en": "ladder",
+      "pos": "n"
+    },
+    {
+      "v": "thaelvar",
+      "en": "beam",
+      "pos": "n"
+    },
+    {
+      "v": "thaelvil",
+      "en": "plank",
+      "pos": "n"
+    },
+    {
+      "v": "thaeldel",
+      "en": "shelf",
+      "pos": "n"
+    },
+    {
+      "v": "thelael",
+      "en": "basket",
+      "pos": "n"
+    },
+    {
+      "v": "thaelkel",
+      "en": "barrel",
+      "pos": "n"
+    },
+    {
+      "v": "gormkel",
+      "en": "jar",
+      "pos": "n"
+    },
+    {
+      "v": "durkel",
+      "en": "kettle",
+      "pos": "n"
+    },
+    {
+      "v": "durvel",
+      "en": "pan",
+      "pos": "n"
+    },
+    {
+      "v": "olsel",
+      "en": "pillow",
+      "pos": "n"
+    },
+    {
+      "v": "dovael",
+      "en": "mat",
+      "pos": "n"
+    },
+    {
+      "v": "lhaegoril",
+      "en": "mirror",
+      "pos": "n"
+    },
+    {
+      "v": "thaesel",
+      "en": "comb",
+      "pos": "n"
+    },
+    {
+      "v": "mirthel",
+      "en": "towel",
+      "pos": "n"
+    },
+    {
+      "v": "silmael",
+      "en": "soap",
+      "pos": "n"
+    },
+    {
+      "v": "gornan",
+      "en": "miller",
+      "pos": "title"
+    },
+    {
+      "v": "thelan",
+      "en": "weaver",
+      "pos": "title"
+    },
+    {
+      "v": "dorhan",
+      "en": "dyer",
+      "pos": "title"
+    },
+    {
+      "v": "thelirin",
+      "en": "tailor",
+      "pos": "title"
+    },
+    {
+      "v": "dornin",
+      "en": "miner",
+      "pos": "title"
+    },
+    {
+      "v": "drisan",
+      "en": "butcher",
+      "pos": "title"
+    },
+    {
+      "v": "vradel",
+      "en": "hammer",
+      "pos": "n"
+    },
+    {
+      "v": "thaelvrad",
+      "en": "mallet",
+      "pos": "n"
+    },
+    {
+      "v": "drimel",
+      "en": "axe",
+      "pos": "n"
+    },
+    {
+      "v": "drisel",
+      "en": "chisel",
+      "pos": "n"
+    },
+    {
+      "v": "gornel",
+      "en": "file",
+      "pos": "n"
+    },
+    {
+      "v": "trevel",
+      "en": "drill",
+      "pos": "n"
+    },
+    {
+      "v": "trevin",
+      "en": "awl",
+      "pos": "n"
+    },
+    {
+      "v": "thelin",
+      "en": "pin",
+      "pos": "n"
+    },
+    {
+      "v": "runel",
+      "en": "wheel",
+      "pos": "n"
+    },
+    {
+      "v": "dornel",
+      "en": "plough",
+      "pos": "n"
+    },
+    {
+      "v": "dornil",
+      "en": "hoe",
+      "pos": "n"
+    },
+    {
+      "v": "drinel",
+      "en": "rake",
+      "pos": "n"
+    },
+    {
+      "v": "dornvel",
+      "en": "spade",
+      "pos": "n"
+    },
+    {
+      "v": "dornkel",
+      "en": "shovel",
+      "pos": "n"
+    },
+    {
+      "v": "thaeldrim",
+      "en": "sickle",
+      "pos": "n"
+    },
+    {
+      "v": "thaeldrael",
+      "en": "scythe",
+      "pos": "n"
+    },
+    {
+      "v": "thelmir",
+      "en": "net",
+      "pos": "n"
+    },
+    {
+      "v": "kethil",
+      "en": "hook",
+      "pos": "n"
+    },
+    {
+      "v": "kethrael",
+      "en": "trap",
+      "pos": "n"
+    },
+    {
+      "v": "mirkael",
+      "en": "bucket",
+      "pos": "n"
+    },
+    {
+      "v": "rhevel",
+      "en": "bellows",
+      "pos": "n"
+    },
+    {
+      "v": "durmaen",
+      "en": "tongs",
+      "pos": "n"
+    },
+    {
+      "v": "kalvar",
+      "en": "lever",
+      "pos": "n"
+    },
+    {
+      "v": "kalrunel",
+      "en": "pulley",
+      "pos": "n"
+    },
+    {
+      "v": "drisvel",
+      "en": "wedge",
+      "pos": "n"
+    },
+    {
+      "v": "rudaur",
+      "en": "brass",
+      "pos": "n"
+    },
+    {
+      "v": "durgor",
+      "en": "ore",
+      "pos": "n"
+    },
+    {
+      "v": "theldas",
+      "en": "charcoal",
+      "pos": "n"
+    },
+    {
+      "v": "gormel",
+      "en": "brick",
+      "pos": "n"
+    },
+    {
+      "v": "gormir",
+      "en": "mortar",
+      "pos": "n"
+    },
+    {
+      "v": "ailgor",
+      "en": "lime",
+      "pos": "n"
+    },
+    {
+      "v": "thaesvel",
+      "en": "fur",
+      "pos": "n"
+    },
+    {
+      "v": "thaelthel",
+      "en": "cotton",
+      "pos": "n"
+    },
+    {
+      "v": "thaelthil",
+      "en": "linen",
+      "pos": "n"
+    },
+    {
+      "v": "thelorin",
+      "en": "twine",
+      "pos": "n"
+    },
+    {
+      "v": "aurvel",
+      "en": "wax",
+      "pos": "n"
+    },
+    {
+      "v": "dorvael",
+      "en": "tar",
+      "pos": "n"
+    },
+    {
+      "v": "thaelmir",
+      "en": "resin",
+      "pos": "n"
+    },
+    {
+      "v": "vaelmael",
+      "en": "glue",
+      "pos": "n"
+    },
+    {
+      "v": "velthsael",
+      "en": "parchment",
+      "pos": "n"
+    },
+    {
+      "v": "silgoril",
+      "en": "marble",
+      "pos": "n"
+    },
+    {
+      "v": "aurgil",
+      "en": "gem",
+      "pos": "n"
+    },
+    {
+      "v": "golgil",
+      "en": "jewel",
+      "pos": "n"
+    },
+    {
+      "v": "mirgil",
+      "en": "pearl",
+      "pos": "n"
+    },
+    {
+      "v": "silaur",
+      "en": "crystal",
+      "pos": "n"
+    },
+    {
+      "v": "mirorel",
+      "en": "fountain",
+      "pos": "n"
+    },
+    {
+      "v": "theldsael",
+      "en": "kiln",
+      "pos": "n"
+    },
+    {
+      "v": "durtheld",
+      "en": "furnace",
+      "pos": "n"
+    },
+    {
+      "v": "gornsael",
+      "en": "barn",
+      "pos": "n"
+    },
+    {
+      "v": "falsael",
+      "en": "stable",
+      "pos": "n"
+    },
+    {
+      "v": "kelsael",
+      "en": "cellar",
+      "pos": "n"
+    },
+    {
+      "v": "kelsel",
+      "en": "dungeon",
+      "pos": "n"
+    },
+    {
+      "v": "vorthrae",
+      "en": "courtyard",
+      "pos": "n"
+    },
+    {
+      "v": "thaelvath",
+      "en": "orchard",
+      "pos": "n"
+    },
+    {
+      "v": "ruvdrae",
+      "en": "vineyard",
+      "pos": "n"
+    },
+    {
+      "v": "kelmir",
+      "en": "ditch",
+      "pos": "n"
+    },
+    {
+      "v": "mirgorth",
+      "en": "dam",
+      "pos": "n"
+    },
+    {
+      "v": "mirdorr",
+      "en": "pier",
+      "pos": "n"
+    },
+    {
+      "v": "rusin",
+      "en": "lane",
+      "pos": "n"
+    },
+    {
+      "v": "gordun",
+      "en": "quarry",
+      "pos": "n"
+    },
+    {
+      "v": "dornun",
+      "en": "pit",
+      "pos": "n"
+    },
+    {
+      "v": "gurvae",
+      "en": "cow",
+      "pos": "n"
+    },
+    {
+      "v": "gurvorn",
+      "en": "bull",
+      "pos": "n"
+    },
+    {
+      "v": "norvin",
+      "en": "lamb",
+      "pos": "n"
+    },
+    {
+      "v": "karvan",
+      "en": "goat",
+      "pos": "n"
+    },
+    {
+      "v": "lhirvae",
+      "en": "hen",
+      "pos": "n"
+    },
+    {
+      "v": "lhirvorn",
+      "en": "cock",
+      "pos": "n"
+    },
+    {
+      "v": "mirlhir",
+      "en": "duck",
+      "pos": "n"
+    },
+    {
+      "v": "mirlhirae",
+      "en": "goose",
+      "pos": "n"
+    },
+    {
+      "v": "falvorn",
+      "en": "donkey",
+      "pos": "n"
+    },
+    {
+      "v": "falvoren",
+      "en": "mule",
+      "pos": "n"
+    },
+    {
+      "v": "aurvan",
+      "en": "bee",
+      "pos": "n"
+    },
+    {
+      "v": "aurkel",
+      "en": "hive",
+      "pos": "n"
+    },
+    {
+      "v": "velgur",
+      "en": "herd",
+      "pos": "n"
+    },
+    {
+      "v": "velnor",
+      "en": "flock",
+      "pos": "n"
+    },
+    {
+      "v": "vorvin",
+      "en": "fox",
+      "pos": "n"
+    },
+    {
+      "v": "thaevan",
+      "en": "deer",
+      "pos": "n"
+    },
+    {
+      "v": "falvan",
+      "en": "hare",
+      "pos": "n"
+    },
+    {
+      "v": "dornvin",
+      "en": "rabbit",
+      "pos": "n"
+    },
+    {
+      "v": "minvan",
+      "en": "mouse",
+      "pos": "n"
+    },
+    {
+      "v": "lhaevan",
+      "en": "cat",
+      "pos": "n"
+    },
+    {
+      "v": "mirvan",
+      "en": "frog",
+      "pos": "n"
+    },
+    {
+      "v": "thelvan",
+      "en": "spider",
+      "pos": "n"
+    },
+    {
+      "v": "silvan",
+      "en": "ant",
+      "pos": "n"
+    },
+    {
+      "v": "gorvan",
+      "en": "beetle",
+      "pos": "n"
+    },
+    {
+      "v": "lhaevin",
+      "en": "lizard",
+      "pos": "n"
+    },
+    {
+      "v": "dorlhir",
+      "en": "owl",
+      "pos": "n"
+    },
+    {
+      "v": "kallhir",
+      "en": "eagle",
+      "pos": "n"
+    },
+    {
+      "v": "vradlhir",
+      "en": "hawk",
+      "pos": "n"
+    },
+    {
+      "v": "morlhir",
+      "en": "crow",
+      "pos": "n"
+    },
+    {
+      "v": "sellhir",
+      "en": "dove",
+      "pos": "n"
+    },
+    {
+      "v": "minlhir",
+      "en": "sparrow",
+      "pos": "n"
+    },
+    {
+      "v": "dorhov",
+      "en": "bat",
+      "pos": "n"
+    },
+    {
+      "v": "gornis",
+      "en": "grain",
+      "pos": "n"
+    },
+    {
+      "v": "gornael",
+      "en": "wheat",
+      "pos": "n"
+    },
+    {
+      "v": "gornvis",
+      "en": "barley",
+      "pos": "n"
+    },
+    {
+      "v": "gornas",
+      "en": "oat",
+      "pos": "n"
+    },
+    {
+      "v": "gornes",
+      "en": "rye",
+      "pos": "n"
+    },
+    {
+      "v": "mirgornis",
+      "en": "rice",
+      "pos": "n"
+    },
+    {
+      "v": "thaelvos",
+      "en": "bean",
+      "pos": "n"
+    },
+    {
+      "v": "thaelvin",
+      "en": "pea",
+      "pos": "n"
+    },
+    {
+      "v": "minthael",
+      "en": "lentil",
+      "pos": "n"
+    },
+    {
+      "v": "thaelkal",
+      "en": "cabbage",
+      "pos": "n"
+    },
+    {
+      "v": "thaeldun",
+      "en": "onion",
+      "pos": "n"
+    },
+    {
+      "v": "thaeldin",
+      "en": "garlic",
+      "pos": "n"
+    },
+    {
+      "v": "thaeldoris",
+      "en": "carrot",
+      "pos": "n"
+    },
+    {
+      "v": "gorthael",
+      "en": "turnip",
+      "pos": "n"
+    },
+    {
+      "v": "golthael",
+      "en": "pumpkin",
+      "pos": "n"
+    },
+    {
+      "v": "theldos",
+      "en": "apple",
+      "pos": "n"
+    },
+    {
+      "v": "thelos",
+      "en": "pear",
+      "pos": "n"
+    },
+    {
+      "v": "ruvos",
+      "en": "grape",
+      "pos": "n"
+    },
+    {
+      "v": "dorvos",
+      "en": "fig",
+      "pos": "n"
+    },
+    {
+      "v": "mirelos",
+      "en": "plum",
+      "pos": "n"
+    },
+    {
+      "v": "theldvos",
+      "en": "cherry",
+      "pos": "n"
+    },
+    {
+      "v": "golvos",
+      "en": "lemon",
+      "pos": "n"
+    },
+    {
+      "v": "minos",
+      "en": "berry",
+      "pos": "n"
+    },
+    {
+      "v": "goros",
+      "en": "nut",
+      "pos": "n"
+    },
+    {
+      "v": "thaelil",
+      "en": "herb",
+      "pos": "n"
+    },
+    {
+      "v": "theldoril",
+      "en": "ginger",
+      "pos": "n"
+    },
+    {
+      "v": "theldvil",
+      "en": "pepper",
+      "pos": "n"
+    },
+    {
+      "v": "vaelis",
+      "en": "sugar",
+      "pos": "n"
+    },
+    {
+      "v": "vaelmir",
+      "en": "cream",
+      "pos": "n"
+    },
+    {
+      "v": "maelgorn",
+      "en": "porridge",
+      "pos": "n"
+    },
+    {
+      "v": "maeldis",
+      "en": "cake",
+      "pos": "n"
+    },
+    {
+      "v": "maeldun",
+      "en": "pie",
+      "pos": "n"
+    },
+    {
+      "v": "vaelos",
+      "en": "jam",
+      "pos": "n"
+    },
+    {
+      "v": "gornruv",
+      "en": "beer",
+      "pos": "n"
+    },
+    {
+      "v": "gorvael",
+      "en": "ale",
+      "pos": "n"
+    },
+    {
+      "v": "theldruv",
+      "en": "cider",
+      "pos": "n"
+    },
+    {
+      "v": "aurruv",
+      "en": "mead",
+      "pos": "n"
+    },
+    {
+      "v": "ruvil",
+      "en": "vinegar",
+      "pos": "n"
+    },
+    {
+      "v": "kalthel",
+      "en": "shirt",
+      "pos": "n"
+    },
+    {
+      "v": "felthel",
+      "en": "coat",
+      "pos": "n"
+    },
+    {
+      "v": "olthel",
+      "en": "gown",
+      "pos": "n"
+    },
+    {
+      "v": "minthel",
+      "en": "tunic",
+      "pos": "n"
+    },
+    {
+      "v": "falthel",
+      "en": "trousers",
+      "pos": "n"
+    },
+    {
+      "v": "morvel",
+      "en": "belt",
+      "pos": "n"
+    },
+    {
+      "v": "falkel",
+      "en": "boot",
+      "pos": "n"
+    },
+    {
+      "v": "falsel",
+      "en": "shoe",
+      "pos": "n"
+    },
+    {
+      "v": "falvel",
+      "en": "sandal",
+      "pos": "n"
+    },
+    {
+      "v": "maenkel",
+      "en": "glove",
+      "pos": "n"
+    },
+    {
+      "v": "kalkel",
+      "en": "hat",
+      "pos": "n"
+    },
+    {
+      "v": "kalil",
+      "en": "cap",
+      "pos": "n"
+    },
+    {
+      "v": "kalsur",
+      "en": "hood",
+      "pos": "n"
+    },
+    {
+      "v": "kalthil",
+      "en": "veil",
+      "pos": "n"
+    },
+    {
+      "v": "kalithel",
+      "en": "scarf",
+      "pos": "n"
+    },
+    {
+      "v": "maenrun",
+      "en": "ring",
+      "pos": "n"
+    },
+    {
+      "v": "kalingil",
+      "en": "necklace",
+      "pos": "n"
+    },
+    {
+      "v": "draengil",
+      "en": "bracelet",
+      "pos": "n"
+    },
+    {
+      "v": "thelgil",
+      "en": "brooch",
+      "pos": "n"
+    },
+    {
+      "v": "thelvin",
+      "en": "button",
+      "pos": "n"
+    },
+    {
+      "v": "durvin",
+      "en": "buckle",
+      "pos": "n"
+    },
+    {
+      "v": "draenthel",
+      "en": "sleeve",
+      "pos": "n"
+    },
+    {
+      "v": "kalinel",
+      "en": "collar",
+      "pos": "n"
     }
   ]
 }
