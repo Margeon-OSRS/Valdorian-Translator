@@ -999,13 +999,14 @@ function resolveEng(w,opts){
   w=w.toLowerCase();
   if(enToV[w]) return applyMorph(enToV[w][0],null,opts);
   if(IRREG_EN[w]){ const[lemma,kind]=IRREG_EN[w]; if(enToV[lemma]) return applyMorph(enToV[lemma][0],kind,opts); }
+  const dd=s=>s.replace(/([^aeiou])\1$/,'$1');   // collapse a doubled final consonant: runn->run
   const tries=[];
   if(w.length>4&&w.endsWith('ies')) tries.push([w.slice(0,-3)+'y','s']);
   if(w.length>3&&w.endsWith('es'))  tries.push([w.slice(0,-2),'s']);
   if(w.length>2&&w.endsWith('s')&&!w.endsWith('ss')) tries.push([w.slice(0,-1),'s']);
   if(w.length>4&&w.endsWith('ied')) tries.push([w.slice(0,-3)+'y','ed']);
-  if(w.length>3&&w.endsWith('ed')){ tries.push([w.slice(0,-2),'ed']); tries.push([w.slice(0,-1),'ed']); }
-  if(w.length>4&&w.endsWith('ing')){ tries.push([w.slice(0,-3),'ing']); tries.push([w.slice(0,-3)+'e','ing']); }
+  if(w.length>3&&w.endsWith('ed')){ const s2=w.slice(0,-2); tries.push([s2,'ed']); tries.push([w.slice(0,-1),'ed']); if(dd(s2)!==s2) tries.push([dd(s2),'ed']); }
+  if(w.length>4&&w.endsWith('ing')){ const s3=w.slice(0,-3); tries.push([s3,'ing']); tries.push([s3+'e','ing']); if(dd(s3)!==s3) tries.push([dd(s3),'ing']); }
   for(const[stem,suf]of tries){
     if(enToV[stem]){
       const rec=enToV[stem][0];
@@ -1172,8 +1173,8 @@ function translateEnToVal(text){
        comes from the -ing form itself); otherwise it is a true copula -> eth,
        carrying negation as naveth. */
     if(pendCop){
-      const isProg = lc.length>4 && /ing$/.test(lc) &&
-        [lc.slice(0,-3), lc.slice(0,-3)+'e'].some(st=>enToV[st]&&enToV[st][0].pos==='v');
+      const pr = /ing$/.test(lc) ? resolveEng(lc) : null;
+      const isProg = !!pr && pr.pos==='v' && pr.note==='cont.';
       if(!isProg){
         let cv='eth', cn='cop.';
         if(pendNeg){ cv=negPrefix(cv); cn='cop. \u00b7 not'; pendNeg=false; }
