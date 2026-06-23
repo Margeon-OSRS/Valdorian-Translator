@@ -983,11 +983,6 @@ const IRREG_EN={
 };
 function isVowel(c){ return 'aeiou'.indexOf(c)>=0; }
 function pluralForm(v){ return isVowel(v.slice(-1)) ? v+'i' : v+'ai'; }
-function tenseSuffix(v,kind){
-  if(kind==='past')   return {v:v+'or',note:'past'};
-  if(kind==='cont')   return {v:v+'ael',note:'cont.'};
-  return {v:v,note:kind==='present'?null:null};
-}
 function applyMorph(rec,kind,opts){
   const v=rec.v,pos=rec.pos,en=rec.full;
   if(kind==='plural'){
@@ -1028,7 +1023,6 @@ function resolveEng(w,opts){
   }
   return null;
 }
-const STOP_DROP={ }; // English articles map onto sa/ti via lexicon already
 function splitWords(text){
   return (text||'').split(/\s+/).filter(Boolean).map(chunk=>{
     const m=chunk.match(/^([^\wÀ-ÿ']*)([\wÀ-ÿ']+?)([^\wÀ-ÿ']*)$/);
@@ -1068,31 +1062,6 @@ function adjDegree(w){
   if(w.length>3&&w.endsWith('er')){  for(const b of variants(w.slice(0,-2))) if(enToV[b]&&enToV[b][0].pos==='adj') return {rec:enToV[b][0],deg:'comp'}; }
   return null;
 }
-/* derivation: agent noun (verb -> -in) and quality noun (adjective -> -eth) */
-function agentForm(v){ if(/ir$/.test(v)) return v.replace(/ir$/,'in'); if(/ar$/.test(v)) return v.replace(/ar$/,'an'); if(/r$/.test(v)) return v.slice(0,-1)+'n'; return v+'in'; }
-function abstractForm(v){ if(/eth$/.test(v)) return v; if(/en$/.test(v)) return v.replace(/en$/,'eth'); return /[aeiou]$/.test(v)? v+'th' : v+'eth'; }
-function derive(w){
-  w=w.toLowerCase();
-  const dedouble=b=>b.replace(/([^aeiou])\1$/,'$1');
-  // agent: verb + -er/-or  ->  root + -in / -an
-  if(w.length>3 && (w.endsWith('er')||w.endsWith('or'))){
-    const base=w.slice(0,-2);
-    for(const b of [base, dedouble(base), base+'e']){
-      if(enToV[b] && enToV[b][0].pos==='v'){ const f=agentForm(enToV[b][0].v); if(!vToEn[f] || vToEn[f].pos==='title') return {v:f,pos:'title',note:'agent'}; }
-    }
-  }
-  // quality noun: adjective + -ness/-ity/-ty  ->  root with -eth
-  let cut=0;
-  if(w.endsWith('ness')) cut=4; else if(w.endsWith('ity')) cut=3; else if(w.length>4&&w.endsWith('ty')) cut=2;
-  if(cut){
-    const base=w.slice(0,-cut);
-    for(const b of [base, dedouble(base), base+'e', base+'y']){
-      if(enToV[b] && enToV[b][0].pos==='adj'){ const f=abstractForm(enToV[b][0].v); if(!vToEn[f] || vToEn[f].pos==='n') return {v:f,pos:'n',note:'abstr.'}; }
-    }
-  }
-  return null;
-}
-
 /* lemma resolver: the bare root record for an English word, ignoring inflection */
 function resolveRoot(w){
   w=(w||'').toLowerCase();
@@ -1134,7 +1103,16 @@ function translateEnToVal(text){
   let pendComp=false, pendSuper=false, pendImper=false;
   let subjSeen=false, verbSeen=false, prevPos=null;
 
-  function endSent(){ subjSeen=false; verbSeen=false; prevPos=null; }
+  // A pending tense flag attaches to the next verb. If no verb claims it (the
+  // verb is missing from the lexicon, or the clause/input ends), emit the free
+  // auxiliary word instead of dropping it silently. uth = will, dhaen = would;
+  // do-support "did" has no free word, so a stranded past is correctly silent.
+  function flushTense(){
+    if(pendFut){    out.push({v:'uth',  en:'will', note:'aux',pos:'v',pre:'',post:'',miss:false}); pendFut=false; }
+    if(pendFarPast){out.push({v:'dhaen',en:'would',note:'aux',pos:'v',pre:'',post:'',miss:false}); pendFarPast=false; }
+    pendPast=false;
+  }
+  function endSent(){ flushTense(); subjSeen=false; verbSeen=false; prevPos=null; }
   function settle(tk){ if(tk && /[.!?]/.test(tk.post||'')) endSent(); }
   function flushAll(){ if(pendColl){ const r=resolveEng('all'); if(r) out.push({v:r.v,en:'all',note:null,pos:r.pos,pre:'',post:'',miss:false}); pendColl=false; } }
   function flushUsed(){ if(usedPending){ const r=resolveEng('used'); out.push(r?{v:r.v,en:'used',note:r.note,pos:r.pos,pre:'',post:'',miss:false}:{v:null,en:'used',pos:null,pre:'',post:'',miss:true}); usedPending=false; } }
@@ -1191,7 +1169,6 @@ function translateEnToVal(text){
     let deg=null;
     if(!rr){ const dg=adjDegree(core); if(dg){ rr={v:dg.rec.v,en:dg.rec.full,pos:'adj',note:null}; deg=dg.deg; } }
     if(!rr){ const dv=derive(core); if(dv){ rr={v:dv.v,en:core,pos:dv.pos,note:dv.note}; } }
-    if(!rr){ const dv=derive(core); if(dv) rr=dv; }
 
     if(rr){
       let v=rr.v, note=rr.note;
@@ -1224,12 +1201,13 @@ function translateEnToVal(text){
       if(rr.pos==='conj' && COORD.has(lc)) verbSeen=false;
       prevPos=rr.pos;
     } else {
+      flushTense();
       out.push({v:null,en:tk.core,pos:null,pre:tk.pre,post:tk.post,miss:true});
       prevNum=false; prevPos=null;
     }
     settle(tk);
   }
-  flushAll(); flushUsed();
+  flushTense(); flushAll(); flushUsed();
   return out;
 }
 /* move attributive adjectives to follow their noun (Valdorian order) */
@@ -2053,7 +2031,6 @@ function wireRootBoxes(){
   });
 }
 wireRootBoxes();
-function negate(v){ return v.charAt(0)==='v' ? 'na'+v : 'nav'+v; }
 function renderConj(){
   const raw=$('verbInput').value.trim(); const body=$('conjBody'); body.innerHTML='';
   if(!raw) return;
@@ -2067,7 +2044,7 @@ function renderConj(){
     const form=v+suf;
     rows+='<tr><td class="conj-tense">'+name+'</td><td><span class="conj-form">'+escapeHtml(form)+'</span></td><td class="conj-gloss">'+escapeHtml(pre+meaning)+'</td></tr>';
   });
-  rows+='<tr><td class="conj-tense">Negated</td><td><span class="conj-form">'+escapeHtml(negate(v))+'</span></td><td class="conj-gloss">'+escapeHtml('to not '+meaning)+'</td></tr>';
+  rows+='<tr><td class="conj-tense">Negated</td><td><span class="conj-form">'+escapeHtml(negPrefix(v))+'</span></td><td class="conj-gloss">'+escapeHtml('to not '+meaning)+'</td></tr>';
   rows+='<tr><td class="conj-tense">Imperative</td><td><span class="conj-form">'+escapeHtml(v+'ath')+'</span></td><td class="conj-gloss">'+escapeHtml(meaning+'! (command)')+'</td></tr>';
   body.innerHTML=rows;
 }
