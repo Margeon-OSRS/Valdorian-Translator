@@ -979,7 +979,8 @@ const IRREG_EN={
   began:['begin','past'],won:['win','past'],lost:['lose','past'],sold:['sell','past'],flew:['fly','past'],grew:['grow','past'],
   gone:['go','past'],done:['do','past'],has:['have','present'],
   swore:['swear','past'],sworn:['swear','past'],
-  children:['child','plural'],men:['man','plural'],women:['woman','plural'],people:['person','plural'],lives:['life','plural']
+  children:['child','plural'],men:['man','plural'],women:['woman','plural'],people:['person','plural'],lives:['life','plural'],
+  was:['is','past'],were:['is','past']
 };
 function isVowel(c){ return 'aeiou'.indexOf(c)>=0; }
 function pluralForm(v){ return isVowel(v.slice(-1)) ? v+'i' : v+'ai'; }
@@ -1039,6 +1040,7 @@ const DROP_AUX = new Set(["do","does"]);                 // do-support: silent
 const GEN_PREP = new Set(["of"]);                        // next noun -> -en (genitive)
 const FARPAST  = new Set(["would"]);                     // -> -oren (far past / conditional)
 const ART_AFTER_ALL = new Set(["the","sa"]);             // swallowed inside "all the N"
+const COPULA_PRES = new Set(["am","is","are"]);          // present 'to be': copula, or dropped before a participle (progressive)
 
 function vowelStart(s){ return !!s && 'aeiou'.indexOf(s[0].toLowerCase())>=0; }
 function negPrefix(v){ return v.charAt(0)==='v' ? 'na'+v : 'nav'+v; }
@@ -1099,20 +1101,24 @@ function derive(w){
 function translateEnToVal(text){
   const out=[]; let prevNum=false;
   let pendNeg=false, pendFut=false, pendPast=false, pendFarPast=false, pendGen=false;
-  let pendColl=false, usedPending=false;
+  let pendColl=false, usedPending=false, pendCop=false;
   let pendComp=false, pendSuper=false, pendImper=false;
   let subjSeen=false, verbSeen=false, prevPos=null;
 
-  // A pending tense flag attaches to the next verb. If no verb claims it (the
-  // verb is missing from the lexicon, or the clause/input ends), emit the free
-  // auxiliary word instead of dropping it silently. uth = will, dhaen = would;
-  // do-support "did" has no free word, so a stranded past is correctly silent.
-  function flushTense(){
-    if(pendFut){    out.push({v:'uth',  en:'will', note:'aux',pos:'v',pre:'',post:'',miss:false}); pendFut=false; }
-    if(pendFarPast){out.push({v:'dhaen',en:'would',note:'aux',pos:'v',pre:'',post:'',miss:false}); pendFarPast=false; }
+  // A pending grammar flag attaches to the next eligible word. If nothing claims
+  // it (the target is missing from the lexicon, or the clause/input ends), emit
+  // the free word instead of dropping it silently. uth = will, dhaen = would,
+  // nav = not, vel = of, eth = is/are. Do-support "did" has no free word, so a
+  // stranded past is correctly silent.
+  function flushPend(){
+    if(pendFut){    out.push({v:'uth',  en:'will', note:'aux',pos:'v',  pre:'',post:'',miss:false}); pendFut=false; }
+    if(pendFarPast){out.push({v:'dhaen',en:'would',note:'aux',pos:'v',  pre:'',post:'',miss:false}); pendFarPast=false; }
     pendPast=false;
+    if(pendCop){    out.push({v:'eth',  en:'is',   note:'cop.',pos:'v', pre:'',post:'',miss:false}); pendCop=false; }
+    if(pendNeg){    out.push({v:'nav',  en:'not',  note:'not',pos:'conj',pre:'',post:'',miss:false}); pendNeg=false; }
+    if(pendGen){    out.push({v:'vel',  en:'of',   note:'of', pos:'prep',pre:'',post:'',miss:false}); pendGen=false; }
   }
-  function endSent(){ flushTense(); subjSeen=false; verbSeen=false; prevPos=null; }
+  function endSent(){ flushPend(); subjSeen=false; verbSeen=false; prevPos=null; }
   function settle(tk){ if(tk && /[.!?]/.test(tk.post||'')) endSent(); }
   function flushAll(){ if(pendColl){ const r=resolveEng('all'); if(r) out.push({v:r.v,en:'all',note:null,pos:r.pos,pre:'',post:'',miss:false}); pendColl=false; } }
   function flushUsed(){ if(usedPending){ const r=resolveEng('used'); out.push(r?{v:r.v,en:'used',note:r.note,pos:r.pos,pre:'',post:'',miss:false}:{v:null,en:'used',pos:null,pre:'',post:'',miss:true}); usedPending=false; } }
@@ -1140,6 +1146,7 @@ function translateEnToVal(text){
     if(HORTATIVE.has(lc)){flushAll(); pendImper=true; prevNum=false; continue; }
     if(lc==='all'){       flushAll(); pendColl=true; prevNum=false; continue; }
     if(lc==='used'){      flushAll(); usedPending=true; prevNum=false; continue; }
+    if(COPULA_PRES.has(lc)){ flushAll(); pendCop=true; prevNum=false; continue; }
 
     /* relativizers after a noun -> head-first relative particle 'sae' */
     if((RELZR.has(lc)||lc==='that'||lc==='whose') && (prevPos==='n'||prevPos==='title')){
@@ -1159,6 +1166,21 @@ function translateEnToVal(text){
         pendColl=false; prevNum=false; subjSeen=true; prevPos=root.pos; settle(tk); continue;
       }
       flushAll(); /* "all" wasn't a collective trigger -> emit as determiner, then process word */
+    }
+
+    /* present copula: "be" + V-ing collapses to the synthetic continuous (-ael
+       comes from the -ing form itself); otherwise it is a true copula -> eth,
+       carrying negation as naveth. */
+    if(pendCop){
+      const isProg = lc.length>4 && /ing$/.test(lc) &&
+        [lc.slice(0,-3), lc.slice(0,-3)+'e'].some(st=>enToV[st]&&enToV[st][0].pos==='v');
+      if(!isProg){
+        let cv='eth', cn='cop.';
+        if(pendNeg){ cv=negPrefix(cv); cn='cop. \u00b7 not'; pendNeg=false; }
+        out.push({v:cv,en:'is',note:cn,pos:'v',pre:'',post:'',miss:false});
+        verbSeen=true; prevPos='v';
+      }
+      pendCop=false; /* fall through to process the current word */
     }
 
     /* possessive 's -> genitive on this noun */
@@ -1201,13 +1223,13 @@ function translateEnToVal(text){
       if(rr.pos==='conj' && COORD.has(lc)) verbSeen=false;
       prevPos=rr.pos;
     } else {
-      flushTense();
+      flushPend();
       out.push({v:null,en:tk.core,pos:null,pre:tk.pre,post:tk.post,miss:true});
       prevNum=false; prevPos=null;
     }
     settle(tk);
   }
-  flushTense(); flushAll(); flushUsed();
+  flushPend(); flushAll(); flushUsed();
   return out;
 }
 /* move attributive adjectives to follow their noun (Valdorian order) */
