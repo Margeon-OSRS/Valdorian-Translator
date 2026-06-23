@@ -1757,7 +1757,7 @@
       "pos": "adj"
     },
     {
-      "v": "ornen",
+      "v": "rethen",
       "en": "straight",
       "pos": "adj"
     },
@@ -5925,6 +5925,21 @@
       "v": "veladhen",
       "en": "loyalty",
       "pos": "n"
+    },
+    {
+      "v": "kavir",
+      "en": "to get/obtain/acquire",
+      "pos": "v"
+    },
+    {
+      "v": "kesir",
+      "en": "to stop/halt/cease",
+      "pos": "v"
+    },
+    {
+      "v": "norvir",
+      "en": "to plan/devise",
+      "pos": "v"
     }
   ]
 }
