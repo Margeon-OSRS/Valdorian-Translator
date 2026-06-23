@@ -980,7 +980,7 @@ const IRREG_EN={
   gone:['go','past'],done:['do','past'],has:['have','present'],
   swore:['swear','past'],sworn:['swear','past'],
   children:['child','plural'],men:['man','plural'],women:['woman','plural'],people:['person','plural'],lives:['life','plural'],
-  was:['is','past'],were:['is','past']
+  was:['is','past'],were:['is','past'],got:['get','past'],gotten:['get','past']
 };
 function isVowel(c){ return 'aeiou'.indexOf(c)>=0; }
 function pluralForm(v){ return isVowel(v.slice(-1)) ? v+'i' : v+'ai'; }
@@ -1258,59 +1258,94 @@ function reorderValToEn(toks){
 /* ====================== Valdorian -> English ====================== */
 const TENSE_SUF=[['ithen','far future'],['ith','future'],['oren','far past'],['or','past'],['ael','continuous']];
 function stripAffixes(word){
-  let w=word, notes=[], reg=null, neg=false, coll=false;
-  // register prefix
-  if(/^vae[a-z]/.test(w) && vToEn[w.slice(3)]&&vToEn[w.slice(3)].pos==='pron'){ reg='exalted'; w=w.slice(3); }
-  else if(/^lo[a-z]/.test(w) && vToEn[w.slice(2)]&&vToEn[w.slice(2)].pos==='pron'){ reg='familiar'; w=w.slice(2); }
-  // negation
-  if(w.startsWith('nav')&&vToEn[w.slice(3)]){ neg=true; w=w.slice(3); }
-  else if(w.startsWith('na')&&w[2]==='v'&&vToEn[w.slice(2)]){ neg=true; w=w.slice(2); }
-  // collective
-  if(w.startsWith('vel')&&vToEn[w.slice(3)]){ coll=true; w=w.slice(3); }
-  // imperative (verb + ath)
-  if(!vToEn[w] && w.endsWith('ath') && vToEn[w.slice(0,-3)] && vToEn[w.slice(0,-3)].pos==='v'){ w=w.slice(0,-3); notes.push('imper.'); }
-  // tense (only if remainder is a known verb)
-  for(const[suf,label]of TENSE_SUF){
-    if(w.length>suf.length+1 && w.endsWith(suf)){
-      const base=w.slice(0,-suf.length);
-      if(vToEn[base]&&vToEn[base].pos==='v'){ w=base; notes.push(label); break; }
+  /* reduce trailing inflection on a (prefix-free) body to its root + notes */
+  function reduce(w){
+    const notes=[];
+    if(!vToEn[w] && w.endsWith('ath') && vToEn[w.slice(0,-3)] && vToEn[w.slice(0,-3)].pos==='v'){ w=w.slice(0,-3); notes.push('imper.'); }
+    for(const[suf,label]of TENSE_SUF){
+      if(w.length>suf.length+1 && w.endsWith(suf)){
+        const base=w.slice(0,-suf.length);
+        if(vToEn[base]&&vToEn[base].pos==='v'){ w=base; notes.push(label); break; }
+      }
     }
+    if(!vToEn[w] && w.endsWith('asar') && vToEn[w.slice(0,-4)] && vToEn[w.slice(0,-4)].pos==='adj'){ w=w.slice(0,-4); notes.push('superl.'); }
+    else if(!vToEn[w] && w.endsWith('as') && vToEn[w.slice(0,-2)] && vToEn[w.slice(0,-2)].pos==='adj'){ w=w.slice(0,-2); notes.push('compar.'); }
+    if(!vToEn[w] && w.endsWith('en') && vToEn[w.slice(0,-2)]){ w=w.slice(0,-2); notes.push('of/-en'); }
+    if(!vToEn[w]){
+      if(w.endsWith('ai')&&vToEn[w.slice(0,-2)]&&['n','title'].includes(vToEn[w.slice(0,-2)].pos)){ w=w.slice(0,-2); notes.push('pl.'); }
+      else if(w.endsWith('i')&&vToEn[w.slice(0,-1)]&&['n','title'].includes(vToEn[w.slice(0,-1)].pos)){ w=w.slice(0,-1); notes.push('pl.'); }
+    }
+    if(!vToEn[w] && w.endsWith('eth') && vToEn[w.slice(0,-3)+'en'] && vToEn[w.slice(0,-3)+'en'].pos==='adj'){ w=w.slice(0,-3)+'en'; notes.push('abstr.'); }
+    else if(!vToEn[w] && w.endsWith('eth') && vToEn[w.slice(0,-3)] && vToEn[w.slice(0,-3)].pos==='adj'){ w=w.slice(0,-3); notes.push('abstr.'); }
+    else if(!vToEn[w] && w.endsWith('in') && vToEn[w.slice(0,-2)+'ir'] && vToEn[w.slice(0,-2)+'ir'].pos==='v'){ w=w.slice(0,-2)+'ir'; notes.push('agent'); }
+    else if(!vToEn[w] && w.endsWith('an') && vToEn[w.slice(0,-2)+'ar'] && vToEn[w.slice(0,-2)+'ar'].pos==='v'){ w=w.slice(0,-2)+'ar'; notes.push('agent'); }
+    return {root:w,notes};
   }
-  // superlative / comparative (adj)
-  if(!vToEn[w] && w.endsWith('asar') && vToEn[w.slice(0,-4)] && vToEn[w.slice(0,-4)].pos==='adj'){ w=w.slice(0,-4); notes.push('superl.'); }
-  else if(!vToEn[w] && w.endsWith('as') && vToEn[w.slice(0,-2)] && vToEn[w.slice(0,-2)].pos==='adj'){ w=w.slice(0,-2); notes.push('compar.'); }
-  // genitive
-  if(!vToEn[w] && w.endsWith('en') && vToEn[w.slice(0,-2)]){ w=w.slice(0,-2); notes.push('of/-en'); }
-  // count plural
-  if(!vToEn[w]){
-    if(w.endsWith('ai')&&vToEn[w.slice(0,-2)]&&['n','title'].includes(vToEn[w.slice(0,-2)].pos)){ w=w.slice(0,-2); notes.push('pl.'); }
-    else if(w.endsWith('i')&&vToEn[w.slice(0,-1)]&&['n','title'].includes(vToEn[w.slice(0,-1)].pos)){ w=w.slice(0,-1); notes.push('pl.'); }
+  /* prefix interpretations, least-stripped first so a directly-known word wins */
+  const cands=[{reg:null,neg:false,coll:false,body:word}];
+  if(word.startsWith('navvel'))                      cands.push({reg:null,neg:true,coll:true, body:word.slice(6)});
+  if(word.startsWith('nav'))                         cands.push({reg:null,neg:true,coll:false,body:word.slice(3)});
+  else if(word.startsWith('na')&&word[2]==='v')      cands.push({reg:null,neg:true,coll:false,body:word.slice(2)});
+  if(word.startsWith('vel'))                         cands.push({reg:null,neg:false,coll:true,body:word.slice(3)});
+  if(/^vae[a-z]/.test(word))                         cands.push({reg:'exalted', neg:false,coll:false,body:word.slice(3)});
+  if(/^lo[a-z]/.test(word))                          cands.push({reg:'familiar',neg:false,coll:false,body:word.slice(2)});
+  for(const c of cands){ const r=reduce(c.body); if(vToEn[r.root]) return {root:r.root,notes:r.notes,reg:c.reg,neg:c.neg,coll:c.coll}; }
+  const r=reduce(word);
+  return {root:r.root,notes:r.notes,reg:null,neg:false,coll:false};
+}
+/* ---- English surface forms for the reverse direction (inflect, don't tag) ---- */
+const ENG_IRREG={past:{},plural:{}};
+(function(){ for(const f in IRREG_EN){ const a=IRREG_EN[f], lemma=a[0], kind=a[1];
+  if(kind==='past'   && !ENG_IRREG.past[lemma])   ENG_IRREG.past[lemma]=f;
+  if(kind==='plural' && !ENG_IRREG.plural[lemma]) ENG_IRREG.plural[lemma]=f;
+} })();
+function firstGloss(g){ return (g||'').split(/[\/,]/)[0].replace(/\([^)]*\)/g,'').trim(); }  // one alternative, no parenthetical
+const DBL=b=>/[^aeiou][aeiou][bdglmnprt]$/.test(b);   // crude CVC test -> double final consonant
+function engPast(b){ if(ENG_IRREG.past[b])return ENG_IRREG.past[b]; if(/e$/.test(b))return b+'d'; if(/[^aeiou]y$/.test(b))return b.slice(0,-1)+'ied'; if(DBL(b))return b+b.slice(-1)+'ed'; return b+'ed'; }
+function engIng(b){ if(/[^aeiou]e$/.test(b))return b.slice(0,-1)+'ing'; if(DBL(b))return b+b.slice(-1)+'ing'; return b+'ing'; }
+function engPlural(b){ if(ENG_IRREG.plural[b])return ENG_IRREG.plural[b]; if(/(s|sh|ch|x|z)$/.test(b))return b+'es'; if(/[^aeiou]y$/.test(b))return b.slice(0,-1)+'ies'; return b+'s'; }
+/* assemble a readable English phrase from the root record + the stripped-affix notes */
+function vEnglish(rec,s){
+  const pos=rec.pos, notes=s.notes||[], has=x=>notes.indexOf(x)>=0;
+  const base=firstGloss(rec.en).replace(/^to /,'');
+  if(pos==='v'){
+    let aux='', verb=base;
+    if(has('future')||has('far future')) aux='will';
+    else if(has('far past'))             aux='would';
+    else if(has('past'))                 verb=engPast(verb);
+    else if(has('continuous'))           verb=engIng(verb);
+    if(s.neg && has('past') && !aux){ aux='did'; verb=base; }   // do-support -> "did not go"
+    const parts=[];
+    if(aux) parts.push(aux);
+    if(s.neg) parts.push('not');
+    parts.push(verb);
+    return parts.join(' ');
   }
-  // derivation (only if still unknown): quality noun -eth from adjective, agent noun -in/-an from verb
-  if(!vToEn[w] && w.endsWith('eth') && vToEn[w.slice(0,-3)+'en'] && vToEn[w.slice(0,-3)+'en'].pos==='adj'){ w=w.slice(0,-3)+'en'; notes.push('abstr.'); }
-  else if(!vToEn[w] && w.endsWith('eth') && vToEn[w.slice(0,-3)] && vToEn[w.slice(0,-3)].pos==='adj'){ w=w.slice(0,-3); notes.push('abstr.'); }
-  else if(!vToEn[w] && w.endsWith('in') && vToEn[w.slice(0,-2)+'ir'] && vToEn[w.slice(0,-2)+'ir'].pos==='v'){ w=w.slice(0,-2)+'ir'; notes.push('agent'); }
-  else if(!vToEn[w] && w.endsWith('an') && vToEn[w.slice(0,-2)+'ar'] && vToEn[w.slice(0,-2)+'ar'].pos==='v'){ w=w.slice(0,-2)+'ar'; notes.push('agent'); }
-  return {root:w,notes,reg,neg,coll};
+  let r=base;
+  if(has('pl.'))     r=engPlural(r);
+  if(has('compar.')) r='more '+base;
+  if(has('superl.')) r='most '+base;
+  if(has('abstr.'))  r=base+'ness';
+  if(has('agent'))   r=(/e$/.test(base)?base+'r':base+'er');
+  if(has('of/-en'))  r=(/s$/.test(r)?r+"'":r+"'s");            // king -> king's
+  if(s.neg)  r='not '+r;
+  if(s.coll) r='the '+r;
+  return r;
 }
 function translateValToEn(text){
   const out=[];
   for(const tk of splitWords(text)){
     if(tk.raw){ out.push({en:tk.core,v:tk.core,pos:null,pre:'',post:'',miss:false}); continue; }
     const lc=tk.core.toLowerCase();
-    if(vToEn[lc]){ out.push({en:vToEn[lc].en,v:tk.core,pos:vToEn[lc].pos,pre:tk.pre,post:tk.post,miss:false}); continue; }
+    if(vToEn[lc]){ out.push({en:vEnglish(vToEn[lc],{notes:[]}),v:tk.core,note:null,pos:vToEn[lc].pos,pre:tk.pre,post:tk.post,miss:false}); continue; }
     const s=stripAffixes(lc);
     if(vToEn[s.root]){
-      let gloss=vToEn[s.root].en;
       const tags=[];
       if(s.reg) tags.push(s.reg);
       if(s.coll) tags.push('collective');
       if(s.neg) tags.push('negated');
       s.notes.forEach(n=>tags.push(n));
-      let read=gloss.replace(/^to /,'');
-      if(s.neg) read='not '+read;
-      if(s.coll) read='the '+read;
-      out.push({en:read,v:tk.core,note:tags.join(' \u00b7 ')||null,pos:vToEn[s.root].pos,pre:tk.pre,post:tk.post,miss:false});
+      out.push({en:vEnglish(vToEn[s.root],s),v:tk.core,note:tags.join(' \u00b7 ')||null,pos:vToEn[s.root].pos,pre:tk.pre,post:tk.post,miss:false});
     } else {
       out.push({en:null,v:tk.core,pos:null,pre:tk.pre,post:tk.post,miss:true});
     }
