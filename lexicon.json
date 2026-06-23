@@ -165,7 +165,7 @@
     },
     {
       "v": "kaeldael",
-      "en": "wage/pay",
+      "en": "wage",
       "pos": "n"
     },
     {
@@ -625,7 +625,7 @@
     },
     {
       "v": "orveth",
-      "en": "honor",
+      "en": "honor/honour",
       "pos": "n"
     },
     {
@@ -971,7 +971,7 @@
     },
     {
       "v": "velen",
-      "en": "swift/fast",
+      "en": "swift/fast/quick",
       "pos": "adj"
     },
     {
@@ -1076,7 +1076,7 @@
     },
     {
       "v": "vorthil",
-      "en": "armor",
+      "en": "armor/armour",
       "pos": "n"
     },
     {
@@ -3999,7 +3999,7 @@
     },
     {
       "v": "vethis",
-      "en": "tongue (organ); language",
+      "en": "tongue (organ)/language",
       "pos": "n",
       "note": "veth (speech) + -is"
     },

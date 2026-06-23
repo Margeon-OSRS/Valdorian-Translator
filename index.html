@@ -139,11 +139,11 @@ textarea::placeholder,input.vin::placeholder{color:#566;font-style:italic;}
 .scratch-dock.open .scratch-body::-webkit-scrollbar-track{background:var(--abyss);}
 .scratch-dock.open .scratch-body::-webkit-scrollbar-thumb{background:var(--verd-dim);border-radius:5px;}
 .scratch-body textarea{width:100%;background:var(--abyss);border:1px solid var(--line);border-radius:4px;color:var(--ink);
-  resize:vertical;font-family:inherit;font-size:17px;line-height:1.6;min-height:120px;
+  resize:vertical;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:16px;line-height:1.55;min-height:120px;
   outline:none;padding:11px 13px;}
 .scratch-body textarea::placeholder{color:#566;font-style:italic;}
-.scratch-body .scr-help{color:var(--ink-dim);font-size:13px;line-height:1.55;margin:0 0 12px;}
-.scratch-body .scr-help code{font-family:inherit;color:var(--bronze);font-style:italic;font-size:13px;}
+.scratch-body .scr-help{color:var(--ink-dim);font-size:15px;line-height:1.55;margin:0 0 12px;}
+.scratch-body .scr-help code{font-family:ui-monospace,Menlo,Consolas,monospace;color:var(--bronze);font-size:12px;}
 #scratchMsg{color:var(--verd);font-size:13px;}
 #scratchAdd:disabled{opacity:.4;cursor:default;}
 #scratchAdd:disabled:hover{background:var(--bronze-soft);border-color:var(--bronze-soft);color:var(--abyss);}
@@ -162,7 +162,7 @@ textarea::placeholder,input.vin::placeholder{color:#566;font-style:italic;}
 .scr-row.dup .scr-stat{color:var(--ink-dim);}
 .scr-row.bad .scr-form{color:var(--err);}
 .scr-row.bad .scr-stat{color:var(--err);}
-.scr-row.bad .scr-raw{color:var(--err);font-family:inherit;font-size:14px;overflow-wrap:anywhere;}
+.scr-row.bad .scr-raw{color:var(--err);font-family:ui-monospace,Menlo,Consolas,monospace;font-size:13px;overflow-wrap:anywhere;}
 
 .gloss{margin-top:13px;display:flex;flex-wrap:wrap;gap:7px;}
 .tok{background:var(--panel2);border:1px solid var(--line);border-radius:3px;padding:5px 9px;font-size:13px;min-width:38px;text-align:center;}
@@ -344,6 +344,7 @@ footer b{color:var(--bronze);font-variant:small-caps;letter-spacing:1px;}
 <body>
 <div class="wrap">
   <header>
+    <div class="eyebrow">The Confederal Tongue of Valdoria</div>
     <h1>Valdorian</h1>
     <div class="sub">the spoken record &middot; autonym <b>Vethrin</b></div>
   </header>
@@ -402,7 +403,7 @@ footer b{color:var(--bronze);font-variant:small-caps;letter-spacing:1px;}
         <button class="sc-reset" id="scReset" title="Restore defaults">Reset</button>
       </div>
     </div>
-    <div class="note"><b>How it reads.</b> Word for word from the lexicon, then set in Valdorian order: adjectives and the genitive fall after the noun they touch, while tense suffixes, plurals (<i>-ai</i>), the collective (<i>vel-</i>), and negation (<i>nav-</i>) attach to their words. Pronouns can carry a register prefix; build them under <b>Pronouns</b>. Words not yet in the lexicon are marked in red; coin them under <b>Forge</b>.</div>
+    <div class="note"><b>How it reads.</b> Word for word from the lexicon, then set in Valdorian order: adjectives and the genitive fall after the noun they touch, while tense suffixes, plurals (<i>-ai</i>), the collective (<i>vel-</i>), and negation (<i>nav-</i>) attach to their words. Degree shows as <i>-as</i> (comparative) and <i>-asar</i> (superlative) on the adjective, with <i>thas</i> for "than"; a command takes <i>-ath</i> on a leading subjectless verb (or after <i>let</i>); a relative clause is joined by the particle <i>sae</i> after its noun. New agent nouns (<i>-in</i>, from a verb) and quality nouns (<i>-eth</i>, from an adjective) are coined on the fly when not already in the lexicon. Derivations are coined on the fly when absent from the lexicon: a doer takes <i>-an</i> (agent), a quality takes <i>-eth</i>, and <i>-ly</i> adverbs reuse the bare adjective. Pronouns can carry a register prefix; build them under <b>Pronouns</b>. Words not yet in the lexicon are marked in red; coin them under <b>Forge</b>.</div>
   </section>
 
   <!-- ============ FORGE ============ -->
@@ -751,7 +752,7 @@ footer b{color:var(--bronze);font-variant:small-caps;letter-spacing:1px;}
   </section>
 
   <footer>
-    Valdorian &middot; <b>Vethrin</b> tongue toolkit &middot; v1.5<br>
+    Valdorian &middot; <b>Vethrin</b> tongue toolkit &middot; v1<br>
     Built for the Confederation of Valdoria, Varn &amp; Charskin Isle &middot; one tongue, the spoken record
   </footer>
 </div>
@@ -860,6 +861,7 @@ const DATA = [
 /* conjunctions */
 {v:"ar",en:"and",pos:"conj"},{v:"ven",en:"or",pos:"conj"},{v:"tha",en:"but",pos:"conj"},{v:"bel",en:"because",pos:"conj"},
 {v:"bael",en:"for",pos:"conj"},{v:"vesir",en:"rather",pos:"conj"},{v:"nav",en:"not",pos:"conj"},
+{v:"thas",en:"than",pos:"conj"},{v:"sae",en:"who/which/that (rel.)",pos:"rel"},
 /* adverbs */
 {v:"nelas",en:"now",pos:"adv"},{v:"fenas",en:"later",pos:"adv"},{v:"olur",en:"always",pos:"adv"},{v:"navur",en:"never",pos:"adv"},
 {v:"arel",en:"again",pos:"adv"},{v:"ural",en:"ever",pos:"adv"},{v:"kaldir",en:"up",pos:"adv"},{v:"keldir",en:"down",pos:"adv"},
@@ -976,6 +978,7 @@ const IRREG_EN={
   understood:['understand','past'],rose:['rise','past'],fell:['fall','past'],slept:['sleep','past'],found:['find','past'],
   began:['begin','past'],won:['win','past'],lost:['lose','past'],sold:['sell','past'],flew:['fly','past'],grew:['grow','past'],
   gone:['go','past'],done:['do','past'],has:['have','present'],
+  swore:['swear','past'],sworn:['swear','past'],
   children:['child','plural'],men:['man','plural'],women:['woman','plural'],people:['person','plural'],lives:['life','plural']
 };
 function isVowel(c){ return 'aeiou'.indexOf(c)>=0; }
@@ -1015,6 +1018,14 @@ function resolveEng(w,opts){
       if(suf==='ing') return applyMorph(rec,'cont',opts);
     }
   }
+  /* -ly adverb: realise as the bare adjective root, used adverbially (zero-marked) */
+  if(w.length>3 && w.endsWith('ly')){
+    const stems=[];
+    if(w.endsWith('ily')) stems.push(w.slice(0,-3)+'y');      // happily -> happy
+    stems.push(w.slice(0,-2));                                 // swiftly -> swift
+    stems.push(w.slice(0,-3)+'le');                            // gently  -> gentle
+    for(const st of stems){ if(enToV[st]&&enToV[st][0].pos==='adj'){ const r=enToV[st][0]; return {v:r.v,en:r.full,pos:'adv',note:'adv.'}; } }
+  }
   return null;
 }
 const STOP_DROP={ }; // English articles map onto sa/ti via lexicon already
@@ -1041,6 +1052,47 @@ function genSuffix(v){ return /en$/.test(v) ? v : v+'en'; }
 function futSuffix(v){ return v+'ith'; }
 function farPastSuffix(v){ return v+'oren'; }
 
+/* ===== degree, mood, relative ===== */
+const COMPAR=new Set(["more"]);
+const SUPERL=new Set(["most"]);
+const HORTATIVE=new Set(["let","may"]);
+const RELZR=new Set(["who","whom","which"]);
+const COORD=new Set(["and","or","but"]);
+function comparSuffix(v){ return /as$/.test(v)? v : v+'as'; }
+function superlSuffix(v){ return v.replace(/as$/,'')+'asar'; }
+function imperForm(v){ return v+'ath'; }
+function adjDegree(w){
+  w=w.toLowerCase();
+  const variants=b=>[b, b.replace(/([^aeiou])\1$/,'$1'), b+'e'];
+  if(w.length>4&&w.endsWith('est')){ for(const b of variants(w.slice(0,-3))) if(enToV[b]&&enToV[b][0].pos==='adj') return {rec:enToV[b][0],deg:'super'}; }
+  if(w.length>3&&w.endsWith('er')){  for(const b of variants(w.slice(0,-2))) if(enToV[b]&&enToV[b][0].pos==='adj') return {rec:enToV[b][0],deg:'comp'}; }
+  return null;
+}
+/* derivation: agent noun (verb -> -in) and quality noun (adjective -> -eth) */
+function agentForm(v){ if(/ir$/.test(v)) return v.replace(/ir$/,'in'); if(/ar$/.test(v)) return v.replace(/ar$/,'an'); if(/r$/.test(v)) return v.slice(0,-1)+'n'; return v+'in'; }
+function abstractForm(v){ if(/eth$/.test(v)) return v; if(/en$/.test(v)) return v.replace(/en$/,'eth'); return /[aeiou]$/.test(v)? v+'th' : v+'eth'; }
+function derive(w){
+  w=w.toLowerCase();
+  const dedouble=b=>b.replace(/([^aeiou])\1$/,'$1');
+  // agent: verb + -er/-or  ->  root + -in / -an
+  if(w.length>3 && (w.endsWith('er')||w.endsWith('or'))){
+    const base=w.slice(0,-2);
+    for(const b of [base, dedouble(base), base+'e']){
+      if(enToV[b] && enToV[b][0].pos==='v'){ const f=agentForm(enToV[b][0].v); if(!vToEn[f] || vToEn[f].pos==='title') return {v:f,pos:'title',note:'agent'}; }
+    }
+  }
+  // quality noun: adjective + -ness/-ity/-ty  ->  root with -eth
+  let cut=0;
+  if(w.endsWith('ness')) cut=4; else if(w.endsWith('ity')) cut=3; else if(w.length>4&&w.endsWith('ty')) cut=2;
+  if(cut){
+    const base=w.slice(0,-cut);
+    for(const b of [base, dedouble(base), base+'e', base+'y']){
+      if(enToV[b] && enToV[b][0].pos==='adj'){ const f=abstractForm(enToV[b][0].v); if(!vToEn[f] || vToEn[f].pos==='n') return {v:f,pos:'n',note:'abstr.'}; }
+    }
+  }
+  return null;
+}
+
 /* lemma resolver: the bare root record for an English word, ignoring inflection */
 function resolveRoot(w){
   w=(w||'').toLowerCase();
@@ -1054,16 +1106,41 @@ function resolveRoot(w){
   return null;
 }
 
+/* derivation: agent (-er/-or on a verb), quality (-ness/-ity on an adj),
+   act/result (-ion/-ment on a verb). Coins a native-shaped word when the
+   English derivative isn't itself in the lexicon. Agent -er is told apart
+   from the comparative -er purely by base POS (verb vs adjective). */
+function derive(w){
+  w=w.toLowerCase();
+  const vrec=p=>enToV[p]&&enToV[p][0].pos==='v'?enToV[p][0]:null;
+  const arec=p=>enToV[p]&&enToV[p][0].pos==='adj'?enToV[p][0]:null;
+  const agentStem=v=> v.endsWith('ir')?v.slice(0,-2):(v.length>3&&v.endsWith('r')?v.slice(0,-1):v);
+  const qual=v=>{ const b=v.replace(/en$/,''); return /eth$/.test(b)?b:b+'eth'; };
+  const act=v=>agentStem(v)+'un';
+  if(w.length>4 && (w.endsWith('er')||w.endsWith('or'))){
+    for(const b of [w.slice(0,-2), w.slice(0,-2)+'e']){ const r=vrec(b); if(r) return {v:agentStem(r.v)+'an',en:w,pos:'n',note:'agent'}; }
+  }
+  if(w.length>4 && w.endsWith('ness')){ const r=arec(w.slice(0,-4)); if(r) return {v:qual(r.v),en:w,pos:'n',note:'quality'}; }
+  if(w.length>4 && (w.endsWith('ity')||w.endsWith('ety'))){ for(const b of [w.slice(0,-3),w.slice(0,-3)+'e',w.slice(0,-4)+'e']){ const r=arec(b); if(r) return {v:qual(r.v),en:w,pos:'n',note:'quality'}; } }
+  if(w.length>5 && (w.endsWith('tion')||w.endsWith('sion')||w.endsWith('ion'))){ for(const b of [w.slice(0,-3),w.slice(0,-3)+'e',w.slice(0,-4)+'e',w.slice(0,-4)]){ const r=vrec(b); if(r) return {v:act(r.v),en:w,pos:'n',note:'act'}; } }
+  if(w.length>5 && w.endsWith('ment')){ const r=vrec(w.slice(0,-4)); if(r) return {v:act(r.v),en:w,pos:'n',note:'act'}; }
+  return null;
+}
+
 function translateEnToVal(text){
   const out=[]; let prevNum=false;
   let pendNeg=false, pendFut=false, pendPast=false, pendFarPast=false, pendGen=false;
   let pendColl=false, usedPending=false;
+  let pendComp=false, pendSuper=false, pendImper=false;
+  let subjSeen=false, verbSeen=false, prevPos=null;
 
+  function endSent(){ subjSeen=false; verbSeen=false; prevPos=null; }
+  function settle(tk){ if(tk && /[.!?]/.test(tk.post||'')) endSent(); }
   function flushAll(){ if(pendColl){ const r=resolveEng('all'); if(r) out.push({v:r.v,en:'all',note:null,pos:r.pos,pre:'',post:'',miss:false}); pendColl=false; } }
   function flushUsed(){ if(usedPending){ const r=resolveEng('used'); out.push(r?{v:r.v,en:'used',note:r.note,pos:r.pos,pre:'',post:'',miss:false}:{v:null,en:'used',pos:null,pre:'',post:'',miss:true}); usedPending=false; } }
 
   for(const tk of splitWords(text)){
-    if(tk.raw){ flushAll(); flushUsed(); out.push({v:tk.core,en:tk.core,pos:null,pre:'',post:'',miss:false}); continue; }
+    if(tk.raw){ flushAll(); flushUsed(); out.push({v:tk.core,en:tk.core,pos:null,pre:'',post:'',miss:false}); settle(tk); continue; }
     const lc=tk.core.toLowerCase();
 
     /* continue an open "all ..." or "used ..." cluster */
@@ -1080,8 +1157,18 @@ function translateEnToVal(text){
     if(PAST_AUX.has(lc)){ flushAll(); pendPast=true; prevNum=false; continue; }
     if(DROP_AUX.has(lc)){ flushAll(); prevNum=false; continue; }
     if(GEN_PREP.has(lc)){ flushAll(); pendGen=true; prevNum=false; continue; }
+    if(COMPAR.has(lc)){   flushAll(); pendComp=true; prevNum=false; continue; }
+    if(SUPERL.has(lc)){   flushAll(); pendSuper=true; prevNum=false; continue; }
+    if(HORTATIVE.has(lc)){flushAll(); pendImper=true; prevNum=false; continue; }
     if(lc==='all'){       flushAll(); pendColl=true; prevNum=false; continue; }
     if(lc==='used'){      flushAll(); usedPending=true; prevNum=false; continue; }
+
+    /* relativizers after a noun -> head-first relative particle 'sae' */
+    if((RELZR.has(lc)||lc==='that'||lc==='whose') && (prevPos==='n'||prevPos==='title')){
+      out.push({v:'sae',en:tk.core,note:'rel.',pos:'rel',pre:tk.pre,post:tk.post,miss:false});
+      if(lc==='whose') pendGen=true;
+      prevPos='rel'; verbSeen=false; settle(tk); continue;
+    }
 
     /* collective: "all (the) N" -> vel- on the root noun, no count plural */
     if(pendColl){
@@ -1091,7 +1178,7 @@ function translateEnToVal(text){
         if(pendGen){ v=genSuffix(v); note+=' · of'; pendGen=false; }
         if(pendNeg){ v=negPrefix(v); note+=' · not'; pendNeg=false; }
         out.push({v,en:tk.core,note,pos:root.pos,pre:tk.pre,post:tk.post,miss:false});
-        pendColl=false; prevNum=false; continue;
+        pendColl=false; prevNum=false; subjSeen=true; prevPos=root.pos; settle(tk); continue;
       }
       flushAll(); /* "all" wasn't a collective trigger -> emit as determiner, then process word */
     }
@@ -1100,20 +1187,47 @@ function translateEnToVal(text){
     let posGen=false, core=tk.core;
     if(/['']s$/i.test(lc) && !enToV[lc]){ posGen=true; core=tk.core.replace(/['']s$/i,''); }
 
-    const rr=resolveEng(core,{afterNumber:prevNum});
+    let rr=resolveEng(core,{afterNumber:prevNum});
+    let deg=null;
+    if(!rr){ const dg=adjDegree(core); if(dg){ rr={v:dg.rec.v,en:dg.rec.full,pos:'adj',note:null}; deg=dg.deg; } }
+    if(!rr){ const dv=derive(core); if(dv){ rr={v:dv.v,en:core,pos:dv.pos,note:dv.note}; } }
+    if(!rr){ const dv=derive(core); if(dv) rr=dv; }
+
     if(rr){
       let v=rr.v, note=rr.note;
-      if(pendFarPast && rr.pos==='v'){ v=farPastSuffix(rr.v); note='far past'; pendFarPast=false; }
-      else if(pendFut && rr.pos==='v'){ v=futSuffix(rr.v); note='future'; pendFut=false; }
-      else if(pendPast && rr.pos==='v'){ v=rr.v+'or'; note='past'; pendPast=false; }
+      if(rr.pos==='v'){
+        const present=!pendFut&&!pendPast&&!pendFarPast;
+        if(pendImper || (present && !subjSeen && !verbSeen)){
+          v=imperForm(rr.v); note='imper.'; pendImper=false;
+        }
+        else if(pendFarPast){ v=farPastSuffix(rr.v); note='far past'; pendFarPast=false; }
+        else if(pendFut){ v=futSuffix(rr.v); note='future'; pendFut=false; }
+        else if(pendPast){ v=rr.v+'or'; note='past'; pendPast=false; }
+        verbSeen=true;
+      }
+      let degWord=null;
+      if(rr.pos==='adj'){
+        const want = (deg==='super'||pendSuper)?'super':((deg==='comp'||pendComp)?'comp':null);
+        if(want){
+          const suf = want==='super'?superlSuffix(v):comparSuffix(v);
+          if(vToEn[suf] && vToEn[suf].v!==v){ degWord = want==='super'?'rothas':'olas'; }  // collision -> analytic
+          else { v=suf; note = want==='super'?'superl.':'compar.'; }
+          pendSuper=false; pendComp=false;
+        }
+      } else { pendComp=false; pendSuper=false; }
       if((pendGen||posGen) && (rr.pos==='n'||rr.pos==='title')){ v=genSuffix(v); note=note?note+' · of':'of/-en'; pendGen=false; }
       if(pendNeg && ['v','n','adj','pron','title'].includes(rr.pos)){ v=negPrefix(v); note=note?note+' · not':'not'; pendNeg=false; }
       out.push({v,en:tk.core,note,pos:rr.pos,pre:tk.pre,post:tk.post,miss:false});
       prevNum=(rr.pos==='num');
+      if(degWord){ out.push({v:degWord,en:(degWord==='rothas'?'most':'more'),note:'deg.',pos:'adj',pre:'',post:tk.post,miss:false}); }
+      if(['n','title','pron'].includes(rr.pos)) subjSeen=true;
+      if(rr.pos==='conj' && COORD.has(lc)) verbSeen=false;
+      prevPos=rr.pos;
     } else {
       out.push({v:null,en:tk.core,pos:null,pre:tk.pre,post:tk.post,miss:true});
-      prevNum=false;
+      prevNum=false; prevPos=null;
     }
+    settle(tk);
   }
   flushAll(); flushUsed();
   return out;
@@ -1152,6 +1266,8 @@ function stripAffixes(word){
   else if(w.startsWith('na')&&w[2]==='v'&&vToEn[w.slice(2)]){ neg=true; w=w.slice(2); }
   // collective
   if(w.startsWith('vel')&&vToEn[w.slice(3)]){ coll=true; w=w.slice(3); }
+  // imperative (verb + ath)
+  if(!vToEn[w] && w.endsWith('ath') && vToEn[w.slice(0,-3)] && vToEn[w.slice(0,-3)].pos==='v'){ w=w.slice(0,-3); notes.push('imper.'); }
   // tense (only if remainder is a known verb)
   for(const[suf,label]of TENSE_SUF){
     if(w.length>suf.length+1 && w.endsWith(suf)){
@@ -1159,6 +1275,9 @@ function stripAffixes(word){
       if(vToEn[base]&&vToEn[base].pos==='v'){ w=base; notes.push(label); break; }
     }
   }
+  // superlative / comparative (adj)
+  if(!vToEn[w] && w.endsWith('asar') && vToEn[w.slice(0,-4)] && vToEn[w.slice(0,-4)].pos==='adj'){ w=w.slice(0,-4); notes.push('superl.'); }
+  else if(!vToEn[w] && w.endsWith('as') && vToEn[w.slice(0,-2)] && vToEn[w.slice(0,-2)].pos==='adj'){ w=w.slice(0,-2); notes.push('compar.'); }
   // genitive
   if(!vToEn[w] && w.endsWith('en') && vToEn[w.slice(0,-2)]){ w=w.slice(0,-2); notes.push('of/-en'); }
   // count plural
@@ -1166,6 +1285,11 @@ function stripAffixes(word){
     if(w.endsWith('ai')&&vToEn[w.slice(0,-2)]&&['n','title'].includes(vToEn[w.slice(0,-2)].pos)){ w=w.slice(0,-2); notes.push('pl.'); }
     else if(w.endsWith('i')&&vToEn[w.slice(0,-1)]&&['n','title'].includes(vToEn[w.slice(0,-1)].pos)){ w=w.slice(0,-1); notes.push('pl.'); }
   }
+  // derivation (only if still unknown): quality noun -eth from adjective, agent noun -in/-an from verb
+  if(!vToEn[w] && w.endsWith('eth') && vToEn[w.slice(0,-3)+'en'] && vToEn[w.slice(0,-3)+'en'].pos==='adj'){ w=w.slice(0,-3)+'en'; notes.push('abstr.'); }
+  else if(!vToEn[w] && w.endsWith('eth') && vToEn[w.slice(0,-3)] && vToEn[w.slice(0,-3)].pos==='adj'){ w=w.slice(0,-3); notes.push('abstr.'); }
+  else if(!vToEn[w] && w.endsWith('in') && vToEn[w.slice(0,-2)+'ir'] && vToEn[w.slice(0,-2)+'ir'].pos==='v'){ w=w.slice(0,-2)+'ir'; notes.push('agent'); }
+  else if(!vToEn[w] && w.endsWith('an') && vToEn[w.slice(0,-2)+'ar'] && vToEn[w.slice(0,-2)+'ar'].pos==='v'){ w=w.slice(0,-2)+'ar'; notes.push('agent'); }
   return {root:w,notes,reg,neg,coll};
 }
 function translateValToEn(text){
@@ -1944,6 +2068,7 @@ function renderConj(){
     rows+='<tr><td class="conj-tense">'+name+'</td><td><span class="conj-form">'+escapeHtml(form)+'</span></td><td class="conj-gloss">'+escapeHtml(pre+meaning)+'</td></tr>';
   });
   rows+='<tr><td class="conj-tense">Negated</td><td><span class="conj-form">'+escapeHtml(negate(v))+'</span></td><td class="conj-gloss">'+escapeHtml('to not '+meaning)+'</td></tr>';
+  rows+='<tr><td class="conj-tense">Imperative</td><td><span class="conj-form">'+escapeHtml(v+'ath')+'</span></td><td class="conj-gloss">'+escapeHtml(meaning+'! (command)')+'</td></tr>';
   body.innerHTML=rows;
 }
 function gotoConjugate(form){ const tab=document.querySelector('.tab[data-v="conj"]'); if(tab) tab.click(); $('verbInput').value=form; renderConj(); $('verbInput').focus(); }
