@@ -371,15 +371,15 @@ footer b{color:var(--bronze);font-variant:small-caps;letter-spacing:1px;}
     <div class="dirbar">
       <span class="dirlabel on" id="dlLeft">English</span>
       <button class="swap" id="swapBtn" title="Swap direction">&#8646;</button>
-      <span class="dirlabel" id="dlRight">Valdorian</span>
+      <span class="dirlabel" id="dlRight">Vethrin</span>
     </div>
     <div class="field">
       <div class="lbl"><span id="inLbl">English</span></div>
-      <textarea id="inText" placeholder="Type a phrase to render into Valdorian&hellip;"></textarea>
+      <textarea id="inText" placeholder="Type a phrase to render into Vethrin&hellip;"></textarea>
     </div>
     <div class="field">
       <div class="lbl">
-        <span id="outLbl">Valdorian</span>
+        <span id="outLbl">Vethrin</span>
         <label class="toggle"><input type="checkbox" id="ipaToggle"> show voice (IPA)</label>
       </div>
       <div class="out" id="outBox"><div class="placeholder">The translation will appear here.</div></div>
@@ -402,12 +402,12 @@ footer b{color:var(--bronze);font-variant:small-caps;letter-spacing:1px;}
         <button class="sc-reset" id="scReset" title="Restore defaults">Reset</button>
       </div>
     </div>
-    <div class="note"><b>How it reads.</b> Word for word from the lexicon, then set in Valdorian order: adjectives and the genitive fall after the noun they touch, while tense suffixes, plurals (<i>-ai</i>), the collective (<i>vel-</i>), and negation (<i>nav-</i>) attach to their words. Degree shows as <i>-as</i> (comparative) and <i>-asar</i> (superlative) on the adjective, with <i>thas</i> for "than"; a command takes <i>-ath</i> on a leading subjectless verb (or after <i>let</i>); a relative clause is joined by the particle <i>sae</i> after its noun. New agent nouns (<i>-in</i>, from a verb) and quality nouns (<i>-eth</i>, from an adjective) are coined on the fly when not already in the lexicon. Derivations are coined on the fly when absent from the lexicon: a doer takes <i>-an</i> (agent), a quality takes <i>-eth</i>, and <i>-ly</i> adverbs reuse the bare adjective. Pronouns can carry a register prefix; build them under <b>Pronouns</b>. Words not yet in the lexicon are marked in red; coin them under <b>Forge</b>.</div>
+    <div class="note"><b>How it reads.</b> Word for word from the lexicon, then set in Vethrin order: adjectives and the genitive fall after the noun they touch, while tense suffixes, plurals (<i>-ai</i>), the collective (<i>vel-</i>), and negation (<i>nav-</i>) attach to their words. Degree shows as <i>-as</i> (comparative) and <i>-asar</i> (superlative) on the adjective, with <i>thas</i> for "than"; a command takes <i>-ath</i> on a leading subjectless verb (or after <i>let</i>); a relative clause is joined by the particle <i>sae</i> after its noun. New agent nouns (<i>-in</i>, from a verb) and quality nouns (<i>-eth</i>, from an adjective) are coined on the fly when not already in the lexicon. Derivations are coined on the fly when absent from the lexicon: a doer takes <i>-an</i> (agent), a quality takes <i>-eth</i>, and <i>-ly</i> adverbs reuse the bare adjective. Pronouns can carry a register prefix; build them under <b>Pronouns</b>. Words not yet in the lexicon are marked in red; coin them under <b>Forge</b>.</div>
   </section>
 
   <!-- ============ FORGE ============ -->
   <section class="view" id="v-forge">
-    <p class="body" style="text-align:center;margin:0 auto 18px;max-width:560px;">The forge is where the tongue grows. Join roots, take a word apart, bring a foreign name into Valdorian sound, coin new names, or add an entry to the shared lexicon.</p>
+    <p class="body" style="text-align:center;margin:0 auto 18px;max-width:560px;">The forge is where the tongue grows. Join roots, take a word apart, bring a foreign name into Vethrin sound, coin new names, or add an entry to the shared lexicon.</p>
 
     <datalist id="rootList"></datalist>
 
@@ -422,7 +422,7 @@ footer b{color:var(--bronze);font-variant:small-caps;letter-spacing:1px;}
     <!-- Compound -->
     <div class="forge-panel active" id="fp-compound">
       <h2>Compound</h2>
-      <p class="body">Valdorian builds meaning by joining roots. Stack two and read the seam. Click a field to pick from the lexicon, or type freely.</p>
+      <p class="body">Vethrin builds meaning by joining roots. Stack two and read the seam. Click a field to pick from the lexicon, or type freely.</p>
       <div class="field">
         <div class="row">
           <input class="vin" id="cmpA" list="rootList" placeholder="first root or word" style="flex:1;min-width:120px;">
@@ -448,7 +448,7 @@ footer b{color:var(--bronze);font-variant:small-caps;letter-spacing:1px;}
     <!-- Unforge -->
     <div class="forge-panel" id="fp-unforge">
       <h2>Unforge</h2>
-      <p class="body">Peel a Valdorian word back into its affixes and roots. Click the field to pick a known word, or type one in.</p>
+      <p class="body">Peel a Vethrin word back into its affixes and roots. Click the field to pick a known word, or type one in.</p>
       <div class="field">
         <input class="vin" id="segIn" list="rootList" placeholder="e.g. velvaelanai, navsoren, miravald">
         <div class="row" style="margin-top:12px;"><button class="btn solid" id="segBtn">Unforge</button></div>
@@ -467,7 +467,7 @@ footer b{color:var(--bronze);font-variant:small-caps;letter-spacing:1px;}
     <!-- Nativize -->
     <div class="forge-panel" id="fp-nativize">
       <h2>Nativize a name</h2>
-      <p class="body">Map a foreign name or word into Valdorian sound and spelling.</p>
+      <p class="body">Map a foreign name or word into Vethrin sound and spelling.</p>
       <div class="field">
         <input class="vin" id="natIn" placeholder="e.g. Christopher, Brooklyn, espresso">
         <div class="row" style="margin-top:12px;"><button class="btn solid" id="natBtn">Nativize</button></div>
@@ -478,7 +478,7 @@ footer b{color:var(--bronze);font-variant:small-caps;letter-spacing:1px;}
     <!-- Generate -->
     <div class="forge-panel" id="fp-generate">
       <h2>Generate a name</h2>
-      <p class="body">Coin new people, settlements, and ships in Valdorian sound. Place names can be drawn from real roots, so they carry a meaning.</p>
+      <p class="body">Coin new people, settlements, and ships in Vethrin sound. Place names can be drawn from real roots, so they carry a meaning.</p>
       <div class="field">
         <div class="row">
           <select id="genKind">
@@ -500,7 +500,7 @@ footer b{color:var(--bronze);font-variant:small-caps;letter-spacing:1px;}
       <p class="body">New entries are saved in this browser and used by every tool in the forge.</p>
       <div class="field">
         <div class="row">
-          <input class="vin" id="newV" placeholder="Valdorian form" style="flex:1;min-width:120px;">
+          <input class="vin" id="newV" placeholder="Vethrin form" style="flex:1;min-width:120px;">
           <input class="vin" id="newEn" placeholder="meaning" style="flex:1;min-width:120px;">
           <select id="newPos">
             <option value="n">noun</option><option value="v">verb</option><option value="adj">adjective</option>
@@ -530,7 +530,7 @@ footer b{color:var(--bronze);font-variant:small-caps;letter-spacing:1px;}
   <section class="view" id="v-dict">
     <h2>Lexicon</h2>
     <div class="controls">
-      <input type="search" id="dictSearch" placeholder="Search Valdorian or English&hellip;">
+      <input type="search" id="dictSearch" placeholder="Search Vethrin or English&hellip;">
       <select id="dictPos">
         <option value="">all parts</option>
         <option value="n">nouns</option><option value="v">verbs</option><option value="adj">adjectives</option>
@@ -585,7 +585,7 @@ footer b{color:var(--bronze);font-variant:small-caps;letter-spacing:1px;}
   <!-- ============ CONJUGATE ============ -->
   <section class="view" id="v-conj">
     <h2>Conjugate</h2>
-    <p class="body">Enter any verb, in Valdorian or English, to see it across all six tenses and the negated form. Tense is a suffix on the verb's tail; negation is the prefix <b>nav-</b>.</p>
+    <p class="body">Enter any verb, in Vethrin or English, to see it across all six tenses and the negated form. Tense is a suffix on the verb's tail; negation is the prefix <b>nav-</b>.</p>
     <div class="field">
       <input class="vin" id="verbInput" list="verbList" placeholder="e.g. vethir, vaelan, or &ldquo;to love&rdquo;">
       <datalist id="verbList"></datalist>
@@ -594,7 +594,7 @@ footer b{color:var(--bronze);font-variant:small-caps;letter-spacing:1px;}
   </section>
   <section class="view" id="v-numbers">
     <h2>Numbers</h2>
-    <p class="body">Valdorian counts to the thousand. Enter a number to render it; ordinals take <i>-veth</i>.</p>
+    <p class="body">Vethrin counts to the thousand. Enter a number to render it; ordinals take <i>-veth</i>.</p>
     <div class="field">
       <input class="vin" id="numIn" type="number" min="0" max="9999" placeholder="0 &ndash; 9999" value="247">
       <div class="bigform" style="margin:14px 0 0;">
@@ -610,7 +610,7 @@ footer b{color:var(--bronze);font-variant:small-caps;letter-spacing:1px;}
   <!-- ============ PRONOUNS ============ -->
   <section class="view" id="v-pronouns">
     <h2>Pronoun builder</h2>
-    <p class="body">Valdorian marks <b>register</b>, how the speaker stands to the one addressed, with a prefix on the pronoun. Neutral takes none.</p>
+    <p class="body">Vethrin marks <b>register</b>, how the speaker stands to the one addressed, with a prefix on the pronoun. Neutral takes none.</p>
 
     <h3>Person</h3>
     <div class="pgrid" id="prPerson"></div>
@@ -632,7 +632,6 @@ footer b{color:var(--bronze);font-variant:small-caps;letter-spacing:1px;}
   <!-- ============ GRAMMAR ============ -->
   <section class="view" id="v-grammar">
     <h2>Rules</h2>
-    <p class="body">Valdorian (<b>Vethrin</b>, "the spoken") is the lingua franca of the Confederation, carried across Valdoria, Varn, and Charskin Isle. It is built to be transparent: roots join at the seam, and every grammatical change is a single, visible affix.</p>
 
     <h3>Sound</h3>
     <p class="body">The tongue favours liquids and soft fricatives. Its signatures are the digraphs <b>th</b> /&theta;/, <b>dh</b> /&eth;/, <b>lh</b> /&#x29;/ (a palatal l), and <b>rh</b> /&#x281;/, with clustered onsets like <b>vr-</b>, <b>thr-</b>, <b>dr-</b>, and <b>mir-</b>. It has no <b>c, q, x, j</b>, nor the sounds <i>sh, zh, ts</i>. Vowels are <b>a e i o u</b>; the diphthongs <b>ae</b> /&aelig;/, <b>ai</b>, <b>ei</b>, <b>oi</b>.</p>
@@ -1467,11 +1466,11 @@ $('ipaToggle').addEventListener('change',renderTranslate);
 $('swapBtn').addEventListener('click',()=>{
   dir = dir==='en2val' ? 'val2en' : 'en2val';
   const en2v = dir==='en2val';
-  $('dlLeft').textContent = en2v?'English':'Valdorian'; $('dlLeft').classList.toggle('on',true);
-  $('dlRight').textContent = en2v?'Valdorian':'English';
-  $('inLbl').textContent = en2v?'English':'Valdorian';
-  $('outLbl').textContent = en2v?'Valdorian':'English';
-  $('inText').placeholder = en2v?'Type a phrase to render into Valdorian\u2026':'Type Valdorian to read it back\u2026';
+  $('dlLeft').textContent = en2v?'English':'Vethrin'; $('dlLeft').classList.toggle('on',true);
+  $('dlRight').textContent = en2v?'Vethrin':'English';
+  $('inLbl').textContent = en2v?'English':'Vethrin';
+  $('outLbl').textContent = en2v?'Vethrin':'English';
+  $('inText').placeholder = en2v?'Type a phrase to render into Vethrin\u2026':'Type Vethrin to read it back\u2026';
   renderTranslate();
 });
 function exportScriptPng(){
@@ -1691,7 +1690,7 @@ $('cmpBtn').addEventListener('click',()=>{
 /* forge: unforge */
 $('segBtn').addEventListener('click',()=>{
   const w=$('segIn').value.trim().toLowerCase();
-  if(!w){ $('segOut').innerHTML='<span class="placeholder">Enter a Valdorian word.</span>'; return; }
+  if(!w){ $('segOut').innerHTML='<span class="placeholder">Enter a Vethrin word.</span>'; return; }
   if(vToEn[w]){ $('segOut').innerHTML='<div class="roman">'+escapeHtml(w)+'</div><div class="t-en" style="color:var(--ink-dim);font-style:italic">root: '+escapeHtml(vToEn[w].en)+'</div>'; return; }
   const s=stripAffixes(w);
   let html='';
