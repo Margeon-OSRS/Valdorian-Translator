@@ -1432,29 +1432,40 @@ function renderTranslate(){
   const text=$('inText').value;
   const out=$('outBox'), gloss=$('glossBox');
   if(!text.trim()){ out.innerHTML='<div class="placeholder">The translation will appear here.</div>'; gloss.innerHTML=''; if($('pngBtn')) $('pngBtn').style.display='none'; return; }
-  let toks = dir==='en2val' ? translateEnToVal(text) : translateValToEn(text);
-  toks = dir==='en2val' ? reorderEnToVal(toks) : reorderValToEn(toks);
-  let romanParts=[], scriptParts=[], glossHtml='', plainParts=[];
-  toks.forEach(t=>{
-    const form = dir==='en2val' ? t.v : t.en;
-    const surface = dir==='en2val' ? t.en : t.v;
-    if(!t.miss && form!=null){
-      const disp = applyCase(form, surface);
-      romanParts.push((t.pre||'')+escapeHtml(disp)+(t.post||''));
-      plainParts.push((t.pre||'')+disp+(t.post||''));
-      scriptParts.push((t.pre||'')+escapeHtml(disp)+(t.post||''));   // conscript mirrors source capitalization
-      glossHtml+='<div class="tok"><span class="t-v">'+escapeHtml(t.v)+'</span><span class="t-en">'+escapeHtml(t.en)+'</span>'+(t.note?'<span class="t-note">'+escapeHtml(t.note)+'</span>':'')+'</div>';
-    } else {
-      romanParts.push((t.pre||'')+'<span class="miss">'+escapeHtml(surface)+'</span>'+(t.post||''));
-      plainParts.push((t.pre||'')+surface+(t.post||''));
-      scriptParts.push((t.pre||'')+'<span class="miss">'+escapeHtml(surface)+'</span>'+(t.post||''));
-      glossHtml+='<div class="tok bad"><span class="t-v">'+escapeHtml(surface)+'</span><span class="t-en">'+(dir==='en2val'?'not in lexicon':'unknown')+'</span></div>';
-    }
+  // Translate line by line so the output mirrors the input's line structure;
+  // each line is its own clause context (capitalization, tense state reset).
+  let romanLines=[], scriptLines=[], plainLines=[], glossHtml='';
+  const tidy=/\s+([.,;:!?])/g;
+  text.replace(/\r\n?/g,'\n').split('\n').forEach(line=>{
+    if(!line.trim()){ romanLines.push(''); scriptLines.push(''); plainLines.push(''); return; }
+    let toks = dir==='en2val' ? translateEnToVal(line) : translateValToEn(line);
+    toks = dir==='en2val' ? reorderEnToVal(toks) : reorderValToEn(toks);
+    let romanParts=[], scriptParts=[], plainParts=[];
+    toks.forEach(t=>{
+      const form = dir==='en2val' ? t.v : t.en;
+      const surface = dir==='en2val' ? t.en : t.v;
+      if(!t.miss && form!=null){
+        const disp = applyCase(form, surface);
+        romanParts.push((t.pre||'')+escapeHtml(disp)+(t.post||''));
+        plainParts.push((t.pre||'')+disp+(t.post||''));
+        scriptParts.push((t.pre||'')+escapeHtml(disp)+(t.post||''));   // conscript mirrors source capitalization
+        glossHtml+='<div class="tok"><span class="t-v">'+escapeHtml(t.v)+'</span><span class="t-en">'+escapeHtml(t.en)+'</span>'+(t.note?'<span class="t-note">'+escapeHtml(t.note)+'</span>':'')+'</div>';
+      } else {
+        romanParts.push((t.pre||'')+'<span class="miss">'+escapeHtml(surface)+'</span>'+(t.post||''));
+        plainParts.push((t.pre||'')+surface+(t.post||''));
+        scriptParts.push((t.pre||'')+'<span class="miss">'+escapeHtml(surface)+'</span>'+(t.post||''));
+        glossHtml+='<div class="tok bad"><span class="t-v">'+escapeHtml(surface)+'</span><span class="t-en">'+(dir==='en2val'?'not in lexicon':'unknown')+'</span></div>';
+      }
+    });
+    romanLines.push(romanParts.join(' ').replace(tidy,'$1'));
+    scriptLines.push(scriptParts.join(' ').replace(tidy,'$1'));
+    plainLines.push(plainParts.join(' ').replace(tidy,'$1'));
   });
-  const roman=romanParts.join(' ').replace(/\s+([.,;:!?])/g,'$1');
-  const script=scriptParts.join(' ').replace(/\s+([.,;:!?])/g,'$1');
-  const plain=plainParts.join(' ').replace(/\s+([.,;:!?])/g,'$1');
-  out.innerHTML='<div class="roman">'+roman+'</div>'+(dir==='en2val'?'<div class="script">'+script+'</div>':'')+(dir==='en2val'?'<div class="ipa">'+escapeHtml(ipaText(plain))+'</div>':'');
+  const roman=romanLines.join('<br>');
+  const script=scriptLines.join('<br>');
+  const plain=plainLines.join('\n');
+  const ipaHtml = plainLines.map(l=> l ? escapeHtml(ipaText(l)) : '').join('<br>');
+  out.innerHTML='<div class="roman">'+roman+'</div>'+(dir==='en2val'?'<div class="script">'+script+'</div>':'')+(dir==='en2val'?'<div class="ipa">'+ipaHtml+'</div>':'');
   out.classList.toggle('show-ipa',$('ipaToggle').checked && dir==='en2val');
   if($('pngBtn')) $('pngBtn').style.display = (dir==='en2val') ? '' : 'none';
   out.dataset.plain=plain;
@@ -1506,9 +1517,13 @@ function drawConscriptPng(text){
   const draw=()=>{
     const c=document.createElement('canvas'), x=c.getContext('2d');
     x.font=fontPx+"px 'Vethrin'";
-    const words=text.split(/\s+/); const lines=[]; let cur='';
-    words.forEach(w=>{ const t=cur?cur+' '+w:w; if(x.measureText(t).width>maxW && cur){lines.push(cur);cur=w;} else {cur=t;} });
-    if(cur) lines.push(cur);
+    const lines=[];
+    (text.split('\n')).forEach(seg=>{
+      if(!seg.trim()){ lines.push(''); return; }
+      const words=seg.trim().split(/\s+/); let cur='';
+      words.forEach(w=>{ const t=cur?cur+' '+w:w; if(x.measureText(t).width>maxW && cur){lines.push(cur);cur=w;} else {cur=t;} });
+      if(cur) lines.push(cur);
+    });
     const lineH=fontPx*scriptPrefs.lh;
     let w=0; lines.forEach(l=>{ w=Math.max(w,x.measureText(l).width); });
     const W=Math.ceil(w)+pad*2, H=Math.ceil(lineH*lines.length)+pad*2;
