@@ -6472,328 +6472,58 @@
       "pos": "n"
     },
     {
-      "v": "Aurfelveth",
-      "en": "the Going-Out (the founding deliverance)",
+      "v": "sulvar",
+      "en": "west",
       "pos": "n"
     },
     {
-      "v": "kaldrin",
-      "en": "jaw",
+      "v": "aurvar",
+      "en": "east",
       "pos": "n"
     },
     {
-      "v": "maensil",
-      "en": "nail",
+      "v": "velhar",
+      "en": "north",
       "pos": "n"
     },
     {
-      "v": "maelvun",
-      "en": "stomach",
+      "v": "dhunhar",
+      "en": "south",
       "pos": "n"
     },
     {
-      "v": "felgorn",
-      "en": "spine",
-      "pos": "n"
-    },
-    {
-      "v": "falnil",
-      "en": "toe",
-      "pos": "n"
-    },
-    {
-      "v": "morsil",
-      "en": "muscle",
-      "pos": "n"
-    },
-    {
-      "v": "vraevil",
-      "en": "vein",
-      "pos": "n"
-    },
-    {
-      "v": "kethgorn",
-      "en": "rib",
-      "pos": "n"
-    },
-    {
-      "v": "vraedun",
-      "en": "pulse",
-      "pos": "n"
-    },
-    {
-      "v": "vethvil",
-      "en": "gum",
-      "pos": "n"
-    },
-    {
-      "v": "maensel",
-      "en": "palm",
-      "pos": "n"
-    },
-    {
-      "v": "falven",
-      "en": "ankle",
-      "pos": "n"
-    },
-    {
-      "v": "falsil",
-      "en": "heel",
-      "pos": "n"
-    },
-    {
-      "v": "kalvil",
-      "en": "brow",
-      "pos": "n"
-    },
-    {
-      "v": "lhinsil",
-      "en": "eyelash",
-      "pos": "n"
-    },
-    {
-      "v": "rhovkal",
-      "en": "nostril",
-      "pos": "n"
-    },
-    {
-      "v": "maengorn",
-      "en": "knuckle",
-      "pos": "n"
-    },
-    {
-      "v": "morvis",
-      "en": "tendon",
-      "pos": "n"
-    },
-    {
-      "v": "gornvil",
-      "en": "marrow",
-      "pos": "n"
-    },
-    {
-      "v": "maeldin",
-      "en": "womb",
-      "pos": "n"
-    },
-    {
-      "v": "vaelsil",
-      "en": "kidney",
-      "pos": "n"
-    },
-    {
-      "v": "mirvil",
-      "en": "bladder",
-      "pos": "n"
-    },
-    {
-      "v": "morsael",
-      "en": "sinew",
-      "pos": "n"
-    },
-    {
-      "v": "maeldril",
-      "en": "gut/entrails",
-      "pos": "n"
-    },
-    {
-      "v": "minaor",
-      "en": "parent",
-      "pos": "n"
-    },
-    {
-      "v": "minras",
-      "en": "grandchild",
-      "pos": "n"
-    },
-    {
-      "v": "thandin",
-      "en": "cousin",
-      "pos": "n"
-    },
-    {
-      "v": "thanmin",
-      "en": "nephew",
-      "pos": "n"
-    },
-    {
-      "v": "thanmael",
-      "en": "niece",
-      "pos": "n"
-    },
-    {
-      "v": "solden",
-      "en": "spouse",
-      "pos": "n"
-    },
-    {
-      "v": "maordin",
-      "en": "elder (kin)",
-      "pos": "n"
-    },
-    {
-      "v": "minsil",
-      "en": "infant",
-      "pos": "n"
-    },
-    {
-      "v": "solmin",
-      "en": "twin",
-      "pos": "n"
-    },
-    {
-      "v": "solvaeldin",
-      "en": "in-law",
-      "pos": "n"
-    },
-    {
-      "v": "mindin",
-      "en": "offspring",
-      "pos": "n"
-    },
-    {
-      "v": "vraedael",
-      "en": "bloodline",
-      "pos": "n"
-    },
-    {
-      "v": "aenmin",
-      "en": "firstborn",
-      "pos": "n"
-    },
-    {
-      "v": "urvel",
-      "en": "era",
-      "pos": "n"
-    },
-    {
-      "v": "urvath",
-      "en": "epoch",
-      "pos": "n"
-    },
-    {
-      "v": "urael",
-      "en": "the present",
-      "pos": "n"
-    },
-    {
-      "v": "urveth",
-      "en": "eternity",
-      "pos": "n"
-    },
-    {
-      "v": "urvaen",
-      "en": "decade",
-      "pos": "n"
-    },
-    {
-      "v": "urvreth",
-      "en": "century",
-      "pos": "n"
-    },
-    {
-      "v": "urvun",
-      "en": "cycle",
-      "pos": "n"
-    },
-    {
-      "v": "ursel",
-      "en": "interval",
-      "pos": "n"
-    },
-    {
-      "v": "ursil",
-      "en": "duration/span",
-      "pos": "n"
-    },
-    {
-      "v": "vaelur",
-      "en": "lifetime",
-      "pos": "n"
-    },
-    {
-      "v": "lhinis",
-      "en": "sight",
-      "pos": "n"
-    },
-    {
-      "v": "maenis",
-      "en": "touch (sense)",
-      "pos": "n"
-    },
-    {
-      "v": "nalven",
-      "en": "dim",
+      "v": "sulen",
+      "en": "western",
       "pos": "adj"
     },
     {
-      "v": "rhovmen",
-      "en": "fragrant",
+      "v": "aurvaren",
+      "en": "eastern",
       "pos": "adj"
     },
     {
-      "v": "dharhovis",
-      "en": "stench/reek",
+      "v": "velharen",
+      "en": "northern",
+      "pos": "adj"
+    },
+    {
+      "v": "dhunharen",
+      "en": "southern",
+      "pos": "adj"
+    },
+    {
+      "v": "sulvarin",
+      "en": "westerner (derog.)",
       "pos": "n"
     },
     {
-      "v": "aurnil",
-      "en": "glow",
+      "v": "navsenin",
+      "en": "lawless one, barbarian (derog.)",
       "pos": "n"
     },
     {
-      "v": "aurdril",
-      "en": "glare",
-      "pos": "n"
-    },
-    {
-      "v": "nallhin",
-      "en": "blur",
-      "pos": "n"
-    },
-    {
-      "v": "aursun",
-      "en": "flicker",
-      "pos": "n"
-    },
-    {
-      "v": "aurmis",
-      "en": "shimmer",
-      "pos": "n"
-    },
-    {
-      "v": "selelar",
-      "en": "rustle",
-      "pos": "n"
-    },
-    {
-      "v": "elarun",
-      "en": "hum",
-      "pos": "n"
-    },
-    {
-      "v": "rhoveth",
-      "en": "aroma",
-      "pos": "n"
-    },
-    {
-      "v": "lhinun",
-      "en": "glimpse",
-      "pos": "n"
-    },
-    {
-      "v": "lhinveth",
-      "en": "gaze",
-      "pos": "n"
-    },
-    {
-      "v": "maenveth",
-      "en": "texture",
-      "pos": "n"
-    },
-    {
-      "v": "maeldrim",
-      "en": "tang",
+      "v": "velnavin",
+      "en": "outcast, one the spoken won't touch (derog.)",
       "pos": "n"
     }
   ]
