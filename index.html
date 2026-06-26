@@ -777,6 +777,9 @@ footer b{color:var(--bronze);font-variant:small-caps;letter-spacing:1px;}
 <script>
 /* ====================== LEXICON ====================== */
 const DATA = [
+/* === session additions: inner-life (wants/mind/speech/qualities) + body/kinship/time/sensory + Aurfelveth === */
+{v:"aelun",en:"desire",pos:"n"},{v:"aelmir",en:"to yearn/long for",pos:"v"},{v:"aelvrir",en:"to crave",pos:"v"},{v:"eskreth",en:"dread",pos:"n"},{v:"morvrael",en:"rage/fury",pos:"n"},{v:"soveleth",en:"contentment",pos:"n"},{v:"eskorveth",en:"cowardice",pos:"n"},{v:"eskorin",en:"coward",pos:"title"},{v:"sovrael",en:"delight",pos:"n"},{v:"sovraelir",en:"to delight",pos:"v"},{v:"noreskun",en:"worry/anxiety",pos:"n"},{v:"noreskir",en:"to worry",pos:"v"},{v:"naveskun",en:"relief",pos:"n"},{v:"lhaeren",en:"lonely/solitary",pos:"adj"},{v:"lhaereth",en:"loneliness/solitude",pos:"n"},{v:"navnoren",en:"reluctant",pos:"adj"},{v:"noraelen",en:"willing",pos:"adj"},{v:"aelvaeleth",en:"lust",pos:"n"},{v:"dharvaeleth",en:"cruelty",pos:"n"},{v:"moreskun",en:"distress",pos:"n"},{v:"moraelir",en:"to resent",pos:"v"},{v:"morvelun",en:"spite/grudge",pos:"n"},{v:"selvaelen",en:"tender/gentle-hearted",pos:"adj"},{v:"sovreth",en:"bliss",pos:"n"},{v:"morvreth",en:"misery",pos:"n"},{v:"navnoreth",en:"folly",pos:"n"},{v:"navnoril",en:"madness",pos:"n"},{v:"norolen",en:"sane",pos:"adj"},{v:"norven",en:"clever/sharp-witted",pos:"adj"},{v:"nalnorir",en:"to imagine",pos:"v"},{v:"nordhir",en:"to ponder/contemplate",pos:"v"},{v:"noraelir",en:"to intend",pos:"v"},{v:"dhesir",en:"to decide",pos:"v"},{v:"dhesveth",en:"decision",pos:"n"},{v:"dhesil",en:"judgment",pos:"n"},{v:"norvethun",en:"opinion",pos:"n"},{v:"navesheth",en:"ignorance",pos:"n"},{v:"noreleth",en:"understanding",pos:"n"},{v:"aurvesheth",en:"insight",pos:"n"},{v:"vaelvesheth",en:"intuition",pos:"n"},{v:"noraelveth",en:"curiosity",pos:"n"},{v:"noralen",en:"curious",pos:"adj"},{v:"norvis",en:"attention",pos:"n"},{v:"norviseth",en:"focus",pos:"n"},{v:"norvisir",en:"to focus",pos:"v"},{v:"norveneth",en:"wit",pos:"n"},{v:"norvethin",en:"genius",pos:"title"},{v:"veshnir",en:"to realize",pos:"v"},{v:"veshmir",en:"to suspect/surmise",pos:"v"},{v:"veshorir",en:"to assume/suppose",pos:"v"},{v:"norveshir",en:"to recognize",pos:"v"},{v:"norsir",en:"to perceive",pos:"v"},{v:"dhesvir",en:"to conclude",pos:"v"},{v:"veshvelir",en:"to interpret",pos:"v"},{v:"aurnorir",en:"to foresee",pos:"v"},{v:"lhunvir",en:"to recall",pos:"v"},{v:"navnorun",en:"confusion",pos:"n"},{v:"aurnoreth",en:"clarity",pos:"n"},{v:"norvun",en:"concept",pos:"n"},{v:"norvaen",en:"notion",pos:"n"},{v:"vethsil",en:"whisper",pos:"n"},{v:"vethsir",en:"to whisper",pos:"v"},{v:"vethvrun",en:"shout/cry",pos:"n"},{v:"vethvrir",en:"to shout",pos:"v"},{v:"velvethun",en:"rumor",pos:"n"},{v:"selfaesun",en:"greeting",pos:"n"},{v:"felvethun",en:"farewell",pos:"n"},{v:"veshvethun",en:"plea/entreaty",pos:"n"},{v:"lhalun",en:"warning",pos:"n"},{v:"orvethun",en:"praise",pos:"n"},{v:"orvethir",en:"to praise",pos:"v"},{v:"dharvethun",en:"insult",pos:"n"},{v:"dharvethir",en:"to insult",pos:"v"},{v:"orvathun",en:"boast",pos:"n"},{v:"orvathir",en:"to boast",pos:"v"},{v:"sorvethir",en:"to confess",pos:"v"},{v:"vethvrelir",en:"to argue",pos:"v"},{v:"vethnorir",en:"to persuade",pos:"v"},{v:"vetheskir",en:"to threaten",pos:"v"},{v:"dharvelir",en:"to mock",pos:"v"},{v:"velvethir",en:"to announce",pos:"v"},{v:"vethorir",en:"to reply/respond",pos:"v"},{v:"aelvethir",en:"to request",pos:"v"},{v:"veshvaelir",en:"to beg/implore",pos:"v"},{v:"morvethir",en:"to scold/rebuke",pos:"v"},{v:"velvethil",en:"gossip",pos:"n"},{v:"vethsun",en:"utterance/saying",pos:"n"},{v:"solvethun",en:"dialogue",pos:"n"},{v:"dhareleth",en:"ugliness",pos:"n"},{v:"mineth",en:"weakness",pos:"n"},{v:"navdhetheth",en:"injustice",pos:"n"},{v:"navgoldun",en:"poverty",pos:"n"},{v:"vaeloleth",en:"health",pos:"n"},{v:"vaeldhareth",en:"sickness/illness",pos:"n"},{v:"siloreth",en:"purity",pos:"n"},{v:"olveth",en:"wholeness",pos:"n"},{v:"navelth",en:"emptiness/void",pos:"n"},{v:"orvatheth",en:"vanity",pos:"n"},{v:"orveleth",en:"dignity",pos:"n"},{v:"dharvath",en:"disgrace",pos:"n"},{v:"aurvreth",en:"splendor/radiance",pos:"n"},{v:"dharvun",en:"squalor/filth",pos:"n"},{v:"dhaeveleth",en:"vice",pos:"n"},{v:"selvath",en:"grace/favor",pos:"n"},{v:"ornvreth",en:"majesty/grandeur",pos:"n"},{v:"minvaeleth",en:"frailty/infirmity",pos:"n"},{v:"Aurfelveth",en:"the Going-Out (the founding deliverance)",pos:"n"},{v:"kaldrin",en:"jaw",pos:"n"},{v:"maensil",en:"nail",pos:"n"},{v:"maelvun",en:"stomach",pos:"n"},{v:"felgorn",en:"spine",pos:"n"},{v:"falnil",en:"toe",pos:"n"},{v:"morsil",en:"muscle",pos:"n"},{v:"vraevil",en:"vein",pos:"n"},{v:"kethgorn",en:"rib",pos:"n"},{v:"vraedun",en:"pulse",pos:"n"},{v:"vethvil",en:"gum",pos:"n"},{v:"maensel",en:"palm",pos:"n"},{v:"falven",en:"ankle",pos:"n"},{v:"falsil",en:"heel",pos:"n"},{v:"kalvil",en:"brow",pos:"n"},{v:"lhinsil",en:"eyelash",pos:"n"},{v:"rhovkal",en:"nostril",pos:"n"},{v:"maengorn",en:"knuckle",pos:"n"},{v:"morvis",en:"tendon",pos:"n"},{v:"gornvil",en:"marrow",pos:"n"},{v:"maeldin",en:"womb",pos:"n"},{v:"vaelsil",en:"kidney",pos:"n"},{v:"mirvil",en:"bladder",pos:"n"},{v:"morsael",en:"sinew",pos:"n"},{v:"maeldril",en:"gut/entrails",pos:"n"},{v:"minaor",en:"parent",pos:"n"},{v:"minras",en:"grandchild",pos:"n"},{v:"thandin",en:"cousin",pos:"n"},{v:"thanmin",en:"nephew",pos:"n"},{v:"thanmael",en:"niece",pos:"n"},{v:"solden",en:"spouse",pos:"n"},{v:"maordin",en:"elder (kin)",pos:"n"},{v:"minsil",en:"infant",pos:"n"},{v:"solmin",en:"twin",pos:"n"},{v:"solvaeldin",en:"in-law",pos:"n"},{v:"mindin",en:"offspring",pos:"n"},{v:"vraedael",en:"bloodline",pos:"n"},{v:"aenmin",en:"firstborn",pos:"n"},{v:"urvel",en:"era",pos:"n"},{v:"urvath",en:"epoch",pos:"n"},{v:"urael",en:"the present",pos:"n"},{v:"urveth",en:"eternity",pos:"n"},{v:"urvaen",en:"decade",pos:"n"},{v:"urvreth",en:"century",pos:"n"},{v:"urvun",en:"cycle",pos:"n"},{v:"ursel",en:"interval",pos:"n"},{v:"ursil",en:"duration/span",pos:"n"},{v:"vaelur",en:"lifetime",pos:"n"},{v:"lhinis",en:"sight",pos:"n"},{v:"maenis",en:"touch (sense)",pos:"n"},{v:"nalven",en:"dim",pos:"adj"},{v:"rhovmen",en:"fragrant",pos:"adj"},{v:"dharhovis",en:"stench/reek",pos:"n"},{v:"aurnil",en:"glow",pos:"n"},{v:"aurdril",en:"glare",pos:"n"},{v:"nallhin",en:"blur",pos:"n"},{v:"aursun",en:"flicker",pos:"n"},{v:"aurmis",en:"shimmer",pos:"n"},{v:"selelar",en:"rustle",pos:"n"},{v:"elarun",en:"hum",pos:"n"},{v:"rhoveth",en:"aroma",pos:"n"},{v:"lhinun",en:"glimpse",pos:"n"},{v:"lhinveth",en:"gaze",pos:"n"},{v:"maenveth",en:"texture",pos:"n"},{v:"maeldrim",en:"tang",pos:"n"},
+
 /* pronouns */
 {v:"en",en:"I/me",pos:"pron"},{v:"enai",en:"we/us",pos:"pron"},{v:"vir",en:"you",pos:"pron"},
 {v:"virai",en:"you (all)",pos:"pron"},{v:"thol",en:"he/she/they",pos:"pron"},{v:"tholai",en:"they",pos:"pron"},
@@ -1432,40 +1435,29 @@ function renderTranslate(){
   const text=$('inText').value;
   const out=$('outBox'), gloss=$('glossBox');
   if(!text.trim()){ out.innerHTML='<div class="placeholder">The translation will appear here.</div>'; gloss.innerHTML=''; if($('pngBtn')) $('pngBtn').style.display='none'; return; }
-  // Translate line by line so the output mirrors the input's line structure;
-  // each line is its own clause context (capitalization, tense state reset).
-  let romanLines=[], scriptLines=[], plainLines=[], glossHtml='';
-  const tidy=/\s+([.,;:!?])/g;
-  text.replace(/\r\n?/g,'\n').split('\n').forEach(line=>{
-    if(!line.trim()){ romanLines.push(''); scriptLines.push(''); plainLines.push(''); return; }
-    let toks = dir==='en2val' ? translateEnToVal(line) : translateValToEn(line);
-    toks = dir==='en2val' ? reorderEnToVal(toks) : reorderValToEn(toks);
-    let romanParts=[], scriptParts=[], plainParts=[];
-    toks.forEach(t=>{
-      const form = dir==='en2val' ? t.v : t.en;
-      const surface = dir==='en2val' ? t.en : t.v;
-      if(!t.miss && form!=null){
-        const disp = applyCase(form, surface);
-        romanParts.push((t.pre||'')+escapeHtml(disp)+(t.post||''));
-        plainParts.push((t.pre||'')+disp+(t.post||''));
-        scriptParts.push((t.pre||'')+escapeHtml(disp)+(t.post||''));   // conscript mirrors source capitalization
-        glossHtml+='<div class="tok"><span class="t-v">'+escapeHtml(t.v)+'</span><span class="t-en">'+escapeHtml(t.en)+'</span>'+(t.note?'<span class="t-note">'+escapeHtml(t.note)+'</span>':'')+'</div>';
-      } else {
-        romanParts.push((t.pre||'')+'<span class="miss">'+escapeHtml(surface)+'</span>'+(t.post||''));
-        plainParts.push((t.pre||'')+surface+(t.post||''));
-        scriptParts.push((t.pre||'')+'<span class="miss">'+escapeHtml(surface)+'</span>'+(t.post||''));
-        glossHtml+='<div class="tok bad"><span class="t-v">'+escapeHtml(surface)+'</span><span class="t-en">'+(dir==='en2val'?'not in lexicon':'unknown')+'</span></div>';
-      }
-    });
-    romanLines.push(romanParts.join(' ').replace(tidy,'$1'));
-    scriptLines.push(scriptParts.join(' ').replace(tidy,'$1'));
-    plainLines.push(plainParts.join(' ').replace(tidy,'$1'));
+  let toks = dir==='en2val' ? translateEnToVal(text) : translateValToEn(text);
+  toks = dir==='en2val' ? reorderEnToVal(toks) : reorderValToEn(toks);
+  let romanParts=[], scriptParts=[], glossHtml='', plainParts=[];
+  toks.forEach(t=>{
+    const form = dir==='en2val' ? t.v : t.en;
+    const surface = dir==='en2val' ? t.en : t.v;
+    if(!t.miss && form!=null){
+      const disp = applyCase(form, surface);
+      romanParts.push((t.pre||'')+escapeHtml(disp)+(t.post||''));
+      plainParts.push((t.pre||'')+disp+(t.post||''));
+      scriptParts.push((t.pre||'')+escapeHtml(disp)+(t.post||''));   // conscript mirrors source capitalization
+      glossHtml+='<div class="tok"><span class="t-v">'+escapeHtml(t.v)+'</span><span class="t-en">'+escapeHtml(t.en)+'</span>'+(t.note?'<span class="t-note">'+escapeHtml(t.note)+'</span>':'')+'</div>';
+    } else {
+      romanParts.push((t.pre||'')+'<span class="miss">'+escapeHtml(surface)+'</span>'+(t.post||''));
+      plainParts.push((t.pre||'')+surface+(t.post||''));
+      scriptParts.push((t.pre||'')+'<span class="miss">'+escapeHtml(surface)+'</span>'+(t.post||''));
+      glossHtml+='<div class="tok bad"><span class="t-v">'+escapeHtml(surface)+'</span><span class="t-en">'+(dir==='en2val'?'not in lexicon':'unknown')+'</span></div>';
+    }
   });
-  const roman=romanLines.join('<br>');
-  const script=scriptLines.join('<br>');
-  const plain=plainLines.join('\n');
-  const ipaHtml = plainLines.map(l=> l ? escapeHtml(ipaText(l)) : '').join('<br>');
-  out.innerHTML='<div class="roman">'+roman+'</div>'+(dir==='en2val'?'<div class="script">'+script+'</div>':'')+(dir==='en2val'?'<div class="ipa">'+ipaHtml+'</div>':'');
+  const roman=romanParts.join(' ').replace(/\s+([.,;:!?])/g,'$1');
+  const script=scriptParts.join(' ').replace(/\s+([.,;:!?])/g,'$1');
+  const plain=plainParts.join(' ').replace(/\s+([.,;:!?])/g,'$1');
+  out.innerHTML='<div class="roman">'+roman+'</div>'+(dir==='en2val'?'<div class="script">'+script+'</div>':'')+(dir==='en2val'?'<div class="ipa">'+escapeHtml(ipaText(plain))+'</div>':'');
   out.classList.toggle('show-ipa',$('ipaToggle').checked && dir==='en2val');
   if($('pngBtn')) $('pngBtn').style.display = (dir==='en2val') ? '' : 'none';
   out.dataset.plain=plain;
@@ -1517,13 +1509,9 @@ function drawConscriptPng(text){
   const draw=()=>{
     const c=document.createElement('canvas'), x=c.getContext('2d');
     x.font=fontPx+"px 'Vethrin'";
-    const lines=[];
-    (text.split('\n')).forEach(seg=>{
-      if(!seg.trim()){ lines.push(''); return; }
-      const words=seg.trim().split(/\s+/); let cur='';
-      words.forEach(w=>{ const t=cur?cur+' '+w:w; if(x.measureText(t).width>maxW && cur){lines.push(cur);cur=w;} else {cur=t;} });
-      if(cur) lines.push(cur);
-    });
+    const words=text.split(/\s+/); const lines=[]; let cur='';
+    words.forEach(w=>{ const t=cur?cur+' '+w:w; if(x.measureText(t).width>maxW && cur){lines.push(cur);cur=w;} else {cur=t;} });
+    if(cur) lines.push(cur);
     const lineH=fontPx*scriptPrefs.lh;
     let w=0; lines.forEach(l=>{ w=Math.max(w,x.measureText(l).width); });
     const W=Math.ceil(w)+pad*2, H=Math.ceil(lineH*lines.length)+pad*2;
