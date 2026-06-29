@@ -90,6 +90,14 @@ h1{
 .swap{background:var(--panel2);border:1px solid var(--line);color:var(--verd);width:40px;height:40px;
   border-radius:50%;cursor:pointer;font-size:18px;transition:all .25s;display:grid;place-items:center;}
 .swap:hover{transform:rotate(180deg);border-color:var(--verd);}
+.tongue-pick{display:inline-flex;margin-left:14px;border:1px solid var(--line);border-radius:4px;overflow:hidden;}
+.tongue-pick.hide{display:none;}
+.tg-opt{font-family:'Cinzel',serif;font-size:12px;letter-spacing:1px;background:var(--panel2);color:var(--ink-dim);
+  border:none;padding:7px 13px;cursor:pointer;transition:background .18s,color .18s;}
+.tg-opt+.tg-opt{border-left:1px solid var(--line);}
+.tg-opt.on{background:var(--verd);color:var(--abyss);}
+.out .script.vethralad{color:var(--verd);}
+.out .script.vethralad .seam{color:var(--gold,#e0b54a);}
 
 .field{background:linear-gradient(180deg,var(--panel),var(--slate));border:1px solid var(--line);
   border-radius:4px;padding:15px 16px;position:relative;margin-bottom:16px;
@@ -372,6 +380,10 @@ footer b{color:var(--bronze);font-variant:small-caps;letter-spacing:1px;}
       <span class="dirlabel on" id="dlLeft">English</span>
       <button class="swap" id="swapBtn" title="Swap direction">&#8646;</button>
       <span class="dirlabel" id="dlRight">Vethrin</span>
+      <div class="tongue-pick" id="tonguePick" title="Choose the target tongue">
+        <button class="tg-opt on" data-tongue="vethrin">Vethrin</button>
+        <button class="tg-opt" data-tongue="vethralad">Vethralad</button>
+      </div>
     </div>
     <div class="field">
       <div class="lbl"><span id="inLbl">English</span></div>
@@ -934,6 +946,65 @@ async function loadFetchedLexicon(){
 
 function lex(){ return DATA.concat(fetchedWords).concat(customWords); }
 
+/* ====================== VETHRALAD (contact tongue) ====================== */
+/* Vethralad is derived from Vethrin by regular sound-laws, so every Vethrin word
+   (built-in or fetched) gets a Vethralad form for free. The fused apostrophe
+   seam-words cannot be derived; those are authored in vethralad.json and override
+   the derived form, keyed by English meaning. Add seam-words there, not here. */
+let vethraladOverrides={};   /* englishKey -> {v, seam:true} */
+function vethEnKey(en){ return String(en||'').toLowerCase().split('/')[0].trim(); }
+async function loadVethralad(){
+  try{
+    const res=await fetch('vethralad.json',{cache:'no-store'});
+    if(!res.ok) throw new Error('HTTP '+res.status);
+    const raw=await res.json();
+    const arr=Array.isArray(raw)?raw:(raw&&Array.isArray(raw.words)?raw.words:null);
+    if(!arr) throw new Error('expected {words:[...]}');
+    const map={}; let n=0;
+    arr.forEach(w=>{
+      if(!w||w.v==null||w.en==null) return;
+      const v=String(w.v).trim(); if(!v) return;
+      /* only the fused seam-words override; derived/substrate forms are recomputed
+         live so they track edits to the Vethrin lexicon. */
+      const seam = (w.src==='VL-fused') || /'$/.test(v);
+      if(!seam) return;
+      map[vethEnKey(w.en)]={v:v, seam:true};
+      n++;
+    });
+    vethraladOverrides=map;
+    console.info('[Vethralad] vethralad.json: '+n+' seam-word'+(n===1?'':'s')+' loaded as overrides.');
+  }catch(e){
+    vethraladOverrides={};
+    console.warn('[Vethralad] vethralad.json not loaded ('+(e&&e.message?e.message:e)+'); using derived forms only.');
+  }
+}
+/* The sound-laws: Vethrin spelling -> Vethralad spelling.
+   ae->ai (signature merger); dh->d (hardening, casual register);
+   lh->l, hr->r (lost clusters); ts->s, zh->sh (affricate softening);
+   final unstressed e -> i. th and lv survive untouched. */
+function vethrinToVethralad(s){
+  if(s==null) return s;
+  let w=String(s);
+  const wasCap = /^[A-Z]/.test(w);
+  w=w.toLowerCase();
+  w=w.replace(/dh/g,'\u0001');   // protect dh, resolve to d below
+  w=w.replace(/lh/g,'l');
+  w=w.replace(/hr/g,'r');
+  w=w.replace(/ts/g,'s');
+  w=w.replace(/zh/g,'sh');
+  w=w.replace(/ae/g,'ai');
+  w=w.replace(/e\b/g,'i');       // final unstressed e -> i
+  w=w.replace(/\u0001/g,'d');    // dh -> d (casual)
+  if(wasCap) w=w.charAt(0).toUpperCase()+w.slice(1);
+  return w;
+}
+/* Look up the Vethralad form for a translated Vethrin token. Returns {v, seam}. */
+function vethraladForm(tok){
+  const ov = vethraladOverrides[vethEnKey(tok.en)];
+  if(ov) return {v:ov.v, seam:true};
+  return {v:vethrinToVethralad(tok.v), seam:false};
+}
+
 /* ====================== MAPS ====================== */
 let vToEn={}, enToV={};
 function addEn(key,rec){ key=key.trim().toLowerCase(); if(!key)return; (enToV[key]=enToV[key]||[]).push(rec); }
@@ -1418,6 +1489,7 @@ spinTicker(); setInterval(spinTicker,2800);
 
 /* translate */
 let dir='en2val';
+let tongue='vethrin';   /* target tongue for en2val: 'vethrin' | 'vethralad' */
 /* mirror the capitalization of the source word onto the translated word */
 function applyCase(target, src){
   if(!target || !src) return target;
@@ -1435,6 +1507,7 @@ function renderTranslate(){
   const text=$('inText').value;
   const out=$('outBox'), gloss=$('glossBox');
   if(!text.trim()){ out.innerHTML='<div class="placeholder">The translation will appear here.</div>'; gloss.innerHTML=''; if($('pngBtn')) $('pngBtn').style.display='none'; return; }
+  const vlMode = (dir==='en2val' && tongue==='vethralad');
   let toks = dir==='en2val' ? translateEnToVal(text) : translateValToEn(text);
   toks = dir==='en2val' ? reorderEnToVal(toks) : reorderValToEn(toks);
   let romanParts=[], scriptParts=[], glossHtml='', plainParts=[];
@@ -1443,10 +1516,22 @@ function renderTranslate(){
     const surface = dir==='en2val' ? t.en : t.v;
     if(!t.miss && form!=null){
       const disp = applyCase(form, surface);
-      romanParts.push((t.pre||'')+escapeHtml(disp)+(t.post||''));
-      plainParts.push((t.pre||'')+disp+(t.post||''));
-      scriptParts.push((t.pre||'')+escapeHtml(disp)+(t.post||''));   // conscript mirrors source capitalization
-      glossHtml+='<div class="tok"><span class="t-v">'+escapeHtml(t.v)+'</span><span class="t-en">'+escapeHtml(t.en)+'</span>'+(t.note?'<span class="t-note">'+escapeHtml(t.note)+'</span>':'')+'</div>';
+      if(vlMode){
+        const vl = vethraladForm(t);
+        const vlDisp = applyCase(vl.v, surface);
+        /* color the seam apostrophe on fused words */
+        const shown = vl.seam ? escapeHtml(vlDisp).replace(/&#039;|'/g,'<span class="seam">\u2019</span>')
+                              : escapeHtml(vlDisp);
+        romanParts.push((t.pre||'')+shown+(t.post||''));
+        plainParts.push((t.pre||'')+vlDisp+(t.post||''));
+        scriptParts.push((t.pre||'')+shown+(t.post||''));
+        glossHtml+='<div class="tok"><span class="t-v">'+escapeHtml(vlDisp)+'</span><span class="t-en">'+escapeHtml(t.en)+'</span>'+(vl.seam?'<span class="t-note">fused (seam)</span>':'<span class="t-note">from Vethrin '+escapeHtml(t.v)+'</span>')+'</div>';
+      } else {
+        romanParts.push((t.pre||'')+escapeHtml(disp)+(t.post||''));
+        plainParts.push((t.pre||'')+disp+(t.post||''));
+        scriptParts.push((t.pre||'')+escapeHtml(disp)+(t.post||''));   // conscript mirrors source capitalization
+        glossHtml+='<div class="tok"><span class="t-v">'+escapeHtml(t.v)+'</span><span class="t-en">'+escapeHtml(t.en)+'</span>'+(t.note?'<span class="t-note">'+escapeHtml(t.note)+'</span>':'')+'</div>';
+      }
     } else {
       romanParts.push((t.pre||'')+'<span class="miss">'+escapeHtml(surface)+'</span>'+(t.post||''));
       plainParts.push((t.pre||'')+surface+(t.post||''));
@@ -1457,9 +1542,15 @@ function renderTranslate(){
   const roman=romanParts.join(' ').replace(/\s+([.,;:!?])/g,'$1');
   const script=scriptParts.join(' ').replace(/\s+([.,;:!?])/g,'$1');
   const plain=plainParts.join(' ').replace(/\s+([.,;:!?])/g,'$1');
-  out.innerHTML='<div class="roman">'+roman+'</div>'+(dir==='en2val'?'<div class="script">'+script+'</div>':'')+(dir==='en2val'?'<div class="ipa">'+escapeHtml(ipaText(plain))+'</div>':'');
-  out.classList.toggle('show-ipa',$('ipaToggle').checked && dir==='en2val');
-  if($('pngBtn')) $('pngBtn').style.display = (dir==='en2val') ? '' : 'none';
+  const showScript = (dir==='en2val' && !vlMode);   /* conscript font is Vethrin-only */
+  const showVlText = vlMode;                          /* Vethralad shows romanized line, verdigris */
+  let html='<div class="roman">'+roman+'</div>';
+  if(showScript) html+='<div class="script">'+script+'</div>';
+  else if(showVlText) html+='<div class="script vethralad">'+script+'</div>';
+  if(dir==='en2val' && !vlMode) html+='<div class="ipa">'+escapeHtml(ipaText(plain))+'</div>';
+  out.innerHTML=html;
+  out.classList.toggle('show-ipa',$('ipaToggle').checked && dir==='en2val' && !vlMode);
+  if($('pngBtn')) $('pngBtn').style.display = (dir==='en2val' && !vlMode) ? '' : 'none';
   out.dataset.plain=plain;
   out.dataset.script=plain;
   gloss.innerHTML=glossHtml;
@@ -1469,13 +1560,31 @@ $('ipaToggle').addEventListener('change',renderTranslate);
 $('swapBtn').addEventListener('click',()=>{
   dir = dir==='en2val' ? 'val2en' : 'en2val';
   const en2v = dir==='en2val';
+  const tgt = (en2v && tongue==='vethralad') ? 'Vethralad' : 'Vethrin';
   $('dlLeft').textContent = en2v?'English':'Vethrin'; $('dlLeft').classList.toggle('on',true);
-  $('dlRight').textContent = en2v?'Vethrin':'English';
+  $('dlRight').textContent = en2v?tgt:'English';
   $('inLbl').textContent = en2v?'English':'Vethrin';
-  $('outLbl').textContent = en2v?'Vethrin':'English';
-  $('inText').placeholder = en2v?'Type a phrase to render into Vethrin\u2026':'Type Vethrin to read it back\u2026';
+  $('outLbl').textContent = en2v?tgt:'English';
+  $('inText').placeholder = en2v?('Type a phrase to render into '+tgt+'\u2026'):'Type Vethrin to read it back\u2026';
+  if($('tonguePick')) $('tonguePick').classList.toggle('hide',!en2v);
   renderTranslate();
 });
+(function(){
+  const pick=$('tonguePick'); if(!pick) return;
+  pick.querySelectorAll('.tg-opt').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      tongue=btn.getAttribute('data-tongue');
+      pick.querySelectorAll('.tg-opt').forEach(b=>b.classList.toggle('on',b===btn));
+      const tgt = tongue==='vethralad' ? 'Vethralad' : 'Vethrin';
+      if(dir==='en2val'){
+        $('dlRight').textContent=tgt;
+        $('outLbl').textContent=tgt;
+        $('inText').placeholder='Type a phrase to render into '+tgt+'\u2026';
+      }
+      renderTranslate();
+    });
+  });
+})();
 function exportScriptPng(){
   const text=($('outBox').dataset.script||$('outBox').dataset.plain||'').trim();
   if(!text || dir!=='en2val') return;
@@ -2206,7 +2315,7 @@ function renderAll(){
 /* Boot immediately on built-in + saved words so nothing blocks on the network. */
 loadCustom(); loadWants(); loadScriptPrefs(); applyScriptPrefs(); loadScratch(); loadScratchOpen(); renderAll();
 /* Then pull lexicon.json (GitHub Pages / any web host) and fold its words in. */
-loadFetchedLexicon().then(()=>{ renderAll(); if($('inText')&&$('inText').value.trim()) renderTranslate(); });
+Promise.all([loadFetchedLexicon(), loadVethralad()]).then(()=>{ renderAll(); if($('inText')&&$('inText').value.trim()) renderTranslate(); });
 </script>
 </body>
 </html>
