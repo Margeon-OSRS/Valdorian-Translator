@@ -1,6 +1,6 @@
 {
   "format": "valdorian-lexicon",
-  "version": 1,
+  "version": 2,
   "words": [
     {
       "v": "soluthel",
@@ -6472,59 +6472,545 @@
       "pos": "n"
     },
     {
-      "v": "sulvar",
-      "en": "west",
+      "v": "Aurfelveth",
+      "en": "the Going-Out (the founding deliverance)",
       "pos": "n"
     },
     {
-      "v": "aurvar",
-      "en": "east",
+      "v": "kaldrin",
+      "en": "jaw",
       "pos": "n"
     },
     {
-      "v": "velhar",
-      "en": "north",
+      "v": "maensil",
+      "en": "nail",
       "pos": "n"
     },
     {
-      "v": "dhunhar",
-      "en": "south",
+      "v": "maelvun",
+      "en": "stomach",
       "pos": "n"
     },
     {
-      "v": "sulen",
-      "en": "western",
+      "v": "felgorn",
+      "en": "spine",
+      "pos": "n"
+    },
+    {
+      "v": "falnil",
+      "en": "toe",
+      "pos": "n"
+    },
+    {
+      "v": "morsil",
+      "en": "muscle",
+      "pos": "n"
+    },
+    {
+      "v": "vraevil",
+      "en": "vein",
+      "pos": "n"
+    },
+    {
+      "v": "kethgorn",
+      "en": "rib",
+      "pos": "n"
+    },
+    {
+      "v": "vraedun",
+      "en": "pulse",
+      "pos": "n"
+    },
+    {
+      "v": "vethvil",
+      "en": "gum",
+      "pos": "n"
+    },
+    {
+      "v": "maensel",
+      "en": "palm",
+      "pos": "n"
+    },
+    {
+      "v": "falven",
+      "en": "ankle",
+      "pos": "n"
+    },
+    {
+      "v": "falsil",
+      "en": "heel",
+      "pos": "n"
+    },
+    {
+      "v": "kalvil",
+      "en": "brow",
+      "pos": "n"
+    },
+    {
+      "v": "lhinsil",
+      "en": "eyelash",
+      "pos": "n"
+    },
+    {
+      "v": "rhovkal",
+      "en": "nostril",
+      "pos": "n"
+    },
+    {
+      "v": "maengorn",
+      "en": "knuckle",
+      "pos": "n"
+    },
+    {
+      "v": "morvis",
+      "en": "tendon",
+      "pos": "n"
+    },
+    {
+      "v": "gornvil",
+      "en": "marrow",
+      "pos": "n"
+    },
+    {
+      "v": "maeldin",
+      "en": "womb",
+      "pos": "n"
+    },
+    {
+      "v": "vaelsil",
+      "en": "kidney",
+      "pos": "n"
+    },
+    {
+      "v": "mirvil",
+      "en": "bladder",
+      "pos": "n"
+    },
+    {
+      "v": "morsael",
+      "en": "sinew",
+      "pos": "n"
+    },
+    {
+      "v": "maeldril",
+      "en": "gut/entrails",
+      "pos": "n"
+    },
+    {
+      "v": "minaor",
+      "en": "parent",
+      "pos": "n"
+    },
+    {
+      "v": "minras",
+      "en": "grandchild",
+      "pos": "n"
+    },
+    {
+      "v": "thandin",
+      "en": "cousin",
+      "pos": "n"
+    },
+    {
+      "v": "thanmin",
+      "en": "nephew",
+      "pos": "n"
+    },
+    {
+      "v": "thanmael",
+      "en": "niece",
+      "pos": "n"
+    },
+    {
+      "v": "solden",
+      "en": "spouse",
+      "pos": "n"
+    },
+    {
+      "v": "maordin",
+      "en": "elder (kin)",
+      "pos": "n"
+    },
+    {
+      "v": "minsil",
+      "en": "infant",
+      "pos": "n"
+    },
+    {
+      "v": "solmin",
+      "en": "twin",
+      "pos": "n"
+    },
+    {
+      "v": "solvaeldin",
+      "en": "in-law",
+      "pos": "n"
+    },
+    {
+      "v": "mindin",
+      "en": "offspring",
+      "pos": "n"
+    },
+    {
+      "v": "vraedael",
+      "en": "bloodline",
+      "pos": "n"
+    },
+    {
+      "v": "aenmin",
+      "en": "firstborn",
+      "pos": "n"
+    },
+    {
+      "v": "urvel",
+      "en": "era",
+      "pos": "n"
+    },
+    {
+      "v": "urvath",
+      "en": "epoch",
+      "pos": "n"
+    },
+    {
+      "v": "urael",
+      "en": "the present",
+      "pos": "n"
+    },
+    {
+      "v": "urveth",
+      "en": "eternity",
+      "pos": "n"
+    },
+    {
+      "v": "urvaen",
+      "en": "decade",
+      "pos": "n"
+    },
+    {
+      "v": "urvreth",
+      "en": "century",
+      "pos": "n"
+    },
+    {
+      "v": "urvun",
+      "en": "cycle",
+      "pos": "n"
+    },
+    {
+      "v": "ursel",
+      "en": "interval",
+      "pos": "n"
+    },
+    {
+      "v": "ursil",
+      "en": "duration/span",
+      "pos": "n"
+    },
+    {
+      "v": "vaelur",
+      "en": "lifetime",
+      "pos": "n"
+    },
+    {
+      "v": "lhinis",
+      "en": "sight",
+      "pos": "n"
+    },
+    {
+      "v": "maenis",
+      "en": "touch (sense)",
+      "pos": "n"
+    },
+    {
+      "v": "nalven",
+      "en": "dim",
       "pos": "adj"
     },
     {
-      "v": "aurvaren",
-      "en": "eastern",
+      "v": "rhovmen",
+      "en": "fragrant",
       "pos": "adj"
     },
     {
-      "v": "velharen",
-      "en": "northern",
-      "pos": "adj"
-    },
-    {
-      "v": "dhunharen",
-      "en": "southern",
-      "pos": "adj"
-    },
-    {
-      "v": "sulvarin",
-      "en": "westerner (derog.)",
+      "v": "dharhovis",
+      "en": "stench/reek",
       "pos": "n"
     },
     {
-      "v": "navsenin",
-      "en": "lawless one, barbarian (derog.)",
+      "v": "aurnil",
+      "en": "glow",
       "pos": "n"
     },
     {
-      "v": "velnavin",
-      "en": "outcast, one the spoken won't touch (derog.)",
+      "v": "aurdril",
+      "en": "glare",
       "pos": "n"
+    },
+    {
+      "v": "nallhin",
+      "en": "blur",
+      "pos": "n"
+    },
+    {
+      "v": "aursun",
+      "en": "flicker",
+      "pos": "n"
+    },
+    {
+      "v": "aurmis",
+      "en": "shimmer",
+      "pos": "n"
+    },
+    {
+      "v": "selelar",
+      "en": "rustle",
+      "pos": "n"
+    },
+    {
+      "v": "elarun",
+      "en": "hum",
+      "pos": "n"
+    },
+    {
+      "v": "rhoveth",
+      "en": "aroma",
+      "pos": "n"
+    },
+    {
+      "v": "lhinun",
+      "en": "glimpse",
+      "pos": "n"
+    },
+    {
+      "v": "lhinveth",
+      "en": "gaze",
+      "pos": "n"
+    },
+    {
+      "v": "maenveth",
+      "en": "texture",
+      "pos": "n"
+    },
+    {
+      "v": "maeldrim",
+      "en": "tang",
+      "pos": "n"
+    },
+    {
+      "v": "vethrin",
+      "en": "Vethrin (the tongue and its people)",
+      "pos": "n",
+      "note": "the standard tongue; canonical autonym of speakers and language"
+    },
+    {
+      "v": "veshelen",
+      "en": "known",
+      "pos": "adj",
+      "note": "from vesheth (knowledge) + -en: held in knowledge"
+    },
+    {
+      "v": "velthae",
+      "en": "text/written passage",
+      "pos": "n",
+      "note": "velth- (the written record), cf velthel (decree)"
+    },
+    {
+      "v": "sael",
+      "en": "already",
+      "pos": "adv",
+      "note": "marks prior completion"
+    },
+    {
+      "v": "morrandel",
+      "en": "office (post/bureau)",
+      "pos": "n",
+      "note": "morren (council) + -del (seat/vessel): a seat of authority"
+    },
+    {
+      "v": "aenlhar",
+      "en": "alone",
+      "pos": "adv",
+      "note": "aen (one) + lhar (cf lhaeren, lonely): in oneness"
+    },
+    {
+      "v": "morranden",
+      "en": "official",
+      "pos": "adj",
+      "note": "genitive of morrandel (office): of the office"
+    },
+    {
+      "v": "velsen",
+      "en": "written",
+      "pos": "adj",
+      "note": "velsir (to inscribe) + -en: set in the record"
+    },
+    {
+      "v": "kalseth",
+      "en": "to pass/go by",
+      "pos": "v",
+      "note": "kal (over/above) + -seth: to move past"
+    },
+    {
+      "v": "nassir",
+      "en": "to separate/divide",
+      "pos": "v",
+      "note": "nassol (apart) + -ir: to set apart"
+    },
+    {
+      "v": "velfaren",
+      "en": "to treat/handle/deal with",
+      "pos": "v",
+      "note": "velf- + -aren: to deal with"
+    },
+    {
+      "v": "velsoren",
+      "en": "issued",
+      "pos": "adj",
+      "note": "velsir (record) read as far-past -oren, adjectival: put forth on the record"
+    },
+    {
+      "v": "sethen",
+      "en": "fixed/set",
+      "pos": "adj",
+      "note": "seth (set/place) + -en: made fast"
+    },
+    {
+      "v": "lirsen",
+      "en": "drawn",
+      "pos": "adj",
+      "note": "lirvir (to draw) + -en: drawn/depicted"
+    },
+    {
+      "v": "norvesheth",
+      "en": "recognition",
+      "pos": "n",
+      "note": "norveshir (to recognize) + -eth: the act of knowing-again"
+    },
+    {
+      "v": "vethen",
+      "en": "spoken",
+      "pos": "adj",
+      "note": "veth (speech) + -en: uttered, of speech"
+    },
+    {
+      "v": "sonfas",
+      "en": "furthest",
+      "pos": "adj",
+      "note": "superlative of sonfen (far)"
+    },
+    {
+      "v": "thraven",
+      "en": "scattered",
+      "pos": "adj",
+      "note": "thrav- (cast/strew) + -en: strewn abroad"
+    },
+    {
+      "v": "duvel",
+      "en": "settlement",
+      "pos": "n",
+      "note": "a dwelt-place; base for collective/plural"
+    },
+    {
+      "v": "duvelai",
+      "en": "settlements",
+      "pos": "n",
+      "note": "count plural of duvel (settlement)"
+    },
+    {
+      "v": "vrelir",
+      "en": "to twist/wind",
+      "pos": "v",
+      "note": "vr- onset + -elir: to wind about"
+    },
+    {
+      "v": "morrenath",
+      "en": "senate",
+      "pos": "n",
+      "note": "morren (council) + -ath (great body): the supreme governing council"
+    },
+    {
+      "v": "morrenathen",
+      "en": "senate's/of the senate",
+      "pos": "adj",
+      "note": "genitive -en of morrenath (senate)"
+    },
+    {
+      "v": "ornarn",
+      "en": "king",
+      "pos": "title",
+      "note": "orn- (rule) + -arn (one who rules)"
+    },
+    {
+      "v": "ornarnen",
+      "en": "king's/of the king",
+      "pos": "adj",
+      "note": "genitive -en of ornarn (king)"
+    },
+    {
+      "v": "kavor",
+      "en": "got (near past of kavir)",
+      "pos": "v",
+      "note": "near-past -or of kavir (to get); cited past form"
+    },
+    {
+      "v": "rothras",
+      "en": "greatest",
+      "pos": "adj",
+      "note": "superlative of roth (great)"
+    },
+    {
+      "v": "kavael",
+      "en": "getting (continuous of kavir)",
+      "pos": "v",
+      "note": "continuous -ael of kavir (to get)"
+    },
+    {
+      "v": "maoreth",
+      "en": "importance",
+      "pos": "n",
+      "note": "maor (weight/grave) + -eth: weightiness"
+    },
+    {
+      "v": "maorir",
+      "en": "to matter/weigh",
+      "pos": "v",
+      "note": "maor (weight/grave) + -ir: to carry weight"
+    },
+    {
+      "v": "sethun",
+      "en": "consequence",
+      "pos": "n",
+      "note": "seth (set/follow) + -un: that which is set after, an outcome"
+    },
+    {
+      "v": "navsenel",
+      "en": "cult (heterodox sect)",
+      "pos": "n",
+      "note": "nav- (false) + sen (belief) + -el: a vessel of false belief"
+    },
+    {
+      "v": "noraeleth",
+      "en": "intention",
+      "pos": "n",
+      "note": "noraelir (to intend) + -eth: settled aim"
+    },
+    {
+      "v": "aenven",
+      "en": "special/singular",
+      "pos": "adj",
+      "note": "aen (one) + -ven: set-apart, singular"
+    },
+    {
+      "v": "faelas",
+      "en": "best",
+      "pos": "adj",
+      "note": "superlative of fael (good), cf faelvir (to grant)"
+    },
+    {
+      "v": "navdir",
+      "en": "do not (negative auxiliary)",
+      "pos": "v",
+      "note": "nav- (not) + dir: the don't of prohibition/denial"
     }
   ]
 }
